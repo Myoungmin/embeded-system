@@ -35,7 +35,7 @@ unsigned char up_count1;
 unsigned char down_count1;
 
 
-void UART1_Putch(char ch)
+void UART1_Putch(char ch)	//송신 기본함수
 {
 	while(!(UCSR1A & 0x20));
 
@@ -43,7 +43,7 @@ void UART1_Putch(char ch)
 }
 
 
-void SendCMD(char cmd, char data)
+void SendCMD(char cmd, char data)	//규칙 만든 것에 해당하는 송신함수 만든것
 {
 	UART1_Putch(0x02);
 	UART1_Putch(cmd);
@@ -169,42 +169,46 @@ ISR(USART1_RX_vect)
 	unsigned char ch;
 	ch = UDR1; // 수신
 
-	if(RX == 0 && ch == 0x02) RX = 1;
+	if(RX == 0 && ch == 0x02) RX = 1;	//RX == 0 조건에서 시작해야한다, 이걸 생각 못했다.
 	else if(RX == 1)
 	{
-		if(ch == 0x03) rx_complete = 1;
-		else
+		if(ch == 0x03)
 		{
-			cmd = ch;
-			RX = 2;
-		}
-	}
-	else if(RX == 2)
-	{
-		if(ch == 0x03) 
-		{
-			rx_complete = 1;
-			RX = 0;
+			rx_complete = 1;	//시작비트 받은 후 바로 정지비트 받을경우 이것도 신호 분석한다
+			RX = 0;	//다시 대기 단계로
 		}
 		else
 		{
-			data = ch;
-			RX = 3;
+			cmd = ch;	//정지비트를 받지않았다면 다음은 커맨드로 저장
+			RX = 2;	//커맨드를 받았다면 단계를 하나더 진행시킨다
 		}
 	}
-	else if(RX == 3)
+	else if(RX == 2)	//단계 2일 경우
 	{
-		if(ch == 0x03) rx_complete = 1;
-		RX = 0;
+		if(ch == 0x03)	//정지비트를 받을 경우
+		{
+			rx_complete = 1;	//정지비트를 받았다면 신호 분석 한다
+			RX = 0;	//다시 대기 단계로
+		}
+		else  //정지 비트를 받지 않았다면
+		{
+			data = ch;	//다음 신호는 데이터 신호
+			RX = 3;	//다음 단계로 
+		}
+	}
+	else if(RX == 3)	//단계 3일 경우
+	{
+		if(ch == 0x03) rx_complete = 1;	//정지비트를 받았다면 신호 분석 한다
+		RX = 0;	//다시 대기 단계 만들어준다
 	}
 
-	if(rx_complete == 1)
+	if(rx_complete == 1)	//신호 분석하는 단계
 	{
 		if(cmd == 'A') your_number = data - '0';	//이부분 내꺼랑 차이나는듯? data로 변수 한번 더 거침
 		else if(cmd == 'B') select = data - '0' + 1;	//1: up, 2:down
 		else if(cmd == 'C') select = 0;	//0 : stop
 
-		rx_complete = 0;
+		rx_complete = 0;	//신호분석 플래그 지움
 	}
 }
 

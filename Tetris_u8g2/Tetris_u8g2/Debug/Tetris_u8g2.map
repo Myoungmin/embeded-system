@@ -9,7 +9,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
+                              u8g2_input_value.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_umulhisi3.o)
@@ -32,7 +32,7 @@ bitmap              0x80              u8x8_d_stdio.o
 cur_line            0x1               main.o
 cur_col             0x1               main.o
 pattern             0x1               main.o
-temp_line           0x8               main.o
+temp_line           0x10              main.o
 u8g2_pg             0x42              u8g2_polygon.o
 shape               0x1               main.o
 u8g2                0x66              main.o
@@ -46,12 +46,9 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text.NewTetriminos
-                0x00000000       0xac main.o
- .text.Collision
-                0x00000000      0x112 main.o
- .data.tetriminos
-                0x00000000       0x38 main.o
+ .bss.next_board
+                0x00000000       0x40 main.o
+ .bss.crush     0x00000000        0x1 main.o
  .text          0x00000000        0x0 u8g2_bitmap.o
  .data          0x00000000        0x0 u8g2_bitmap.o
  .bss           0x00000000        0x0 u8g2_bitmap.o
@@ -7771,7 +7768,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x18d0
+.text           0x00000000     0x2970
  *(.vectors)
  .vectors       0x00000000       0x8c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
                 0x00000000                __vector_default
@@ -7787,39 +7784,42 @@ END GROUP
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
+ .progmem.data.tetriminos
+                0x0000008c       0x38 main.o
+                0x0000008c                tetriminos
  .progmem.u8g2_font_6x10_tf
-                0x0000008c      0x7e1 u8g2_fonts.o
-                0x0000008c                u8g2_font_6x10_tf
-                0x0000086e                . = ALIGN (0x2)
- *fill*         0x0000086d        0x1 
+                0x000000c4      0x7e1 u8g2_fonts.o
+                0x000000c4                u8g2_font_6x10_tf
+                0x000008a6                . = ALIGN (0x2)
+ *fill*         0x000008a5        0x1 
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000086e                __ctors_start = .
+                0x000008a6                __ctors_start = .
  *(.ctors)
-                0x0000086e                __ctors_end = .
-                0x0000086e                __dtors_start = .
+                0x000008a6                __ctors_end = .
+                0x000008a6                __dtors_start = .
  *(.dtors)
-                0x0000086e                __dtors_end = .
+                0x000008a6                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000086e        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
-                0x0000086e                __init
+ .init0         0x000008a6        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
+                0x000008a6                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000086e        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
+ .init2         0x000008a6        0xc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x0000087a       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
-                0x0000087a                __do_copy_data
- .init4         0x00000894       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_clear_bss.o)
-                0x00000894                __do_clear_bss
+ .init4         0x000008b2       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_copy_data.o)
+                0x000008b2                __do_copy_data
+ .init4         0x000008cc       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_clear_bss.o)
+                0x000008cc                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -7830,241 +7830,262 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000008a4        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
+ .init9         0x000008dc        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
  *(.init9)
  *(.text)
- .text          0x000008aa        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
-                0x000008aa                __vector_22
-                0x000008aa                __vector_28
-                0x000008aa                __vector_1
-                0x000008aa                __vector_32
-                0x000008aa                __vector_34
-                0x000008aa                __vector_24
-                0x000008aa                __vector_12
-                0x000008aa                __bad_interrupt
-                0x000008aa                __vector_6
-                0x000008aa                __vector_31
-                0x000008aa                __vector_3
-                0x000008aa                __vector_23
-                0x000008aa                __vector_30
-                0x000008aa                __vector_25
-                0x000008aa                __vector_11
-                0x000008aa                __vector_13
-                0x000008aa                __vector_17
-                0x000008aa                __vector_19
-                0x000008aa                __vector_7
-                0x000008aa                __vector_27
-                0x000008aa                __vector_5
-                0x000008aa                __vector_33
-                0x000008aa                __vector_4
-                0x000008aa                __vector_9
-                0x000008aa                __vector_2
-                0x000008aa                __vector_21
-                0x000008aa                __vector_15
-                0x000008aa                __vector_29
-                0x000008aa                __vector_8
-                0x000008aa                __vector_26
-                0x000008aa                __vector_14
-                0x000008aa                __vector_10
-                0x000008aa                __vector_16
-                0x000008aa                __vector_18
-                0x000008aa                __vector_20
-                0x000008ac                . = ALIGN (0x2)
+ .text          0x000008e4        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
+                0x000008e4                __vector_22
+                0x000008e4                __vector_28
+                0x000008e4                __vector_1
+                0x000008e4                __vector_32
+                0x000008e4                __vector_34
+                0x000008e4                __vector_24
+                0x000008e4                __bad_interrupt
+                0x000008e4                __vector_31
+                0x000008e4                __vector_3
+                0x000008e4                __vector_23
+                0x000008e4                __vector_30
+                0x000008e4                __vector_25
+                0x000008e4                __vector_11
+                0x000008e4                __vector_13
+                0x000008e4                __vector_17
+                0x000008e4                __vector_19
+                0x000008e4                __vector_27
+                0x000008e4                __vector_33
+                0x000008e4                __vector_9
+                0x000008e4                __vector_2
+                0x000008e4                __vector_21
+                0x000008e4                __vector_15
+                0x000008e4                __vector_29
+                0x000008e4                __vector_26
+                0x000008e4                __vector_14
+                0x000008e4                __vector_10
+                0x000008e4                __vector_16
+                0x000008e4                __vector_18
+                0x000008e4                __vector_20
+                0x000008e6                . = ALIGN (0x2)
  *(.text.*)
  .text.u8x8_avr_delay
-                0x000008ac       0x8e main.o
-                0x000008ac                u8x8_avr_delay
+                0x000008e6       0x92 main.o
+                0x000008e6                u8x8_avr_delay
  .text.u8x8_avr_gpio_and_delay
-                0x0000093a       0x42 main.o
-                0x0000093a                u8x8_avr_gpio_and_delay
+                0x00000978       0x42 main.o
+                0x00000978                u8x8_avr_gpio_and_delay
  .text.u8g2_prepare
-                0x0000097c       0x28 main.o
-                0x0000097c                u8g2_prepare
- .text.main     0x000009a4      0x10c main.o
-                0x000009a4                main
+                0x000009ba       0x32 main.o
+                0x000009ba                u8g2_prepare
+ .text.Collision
+                0x000009ec      0x10e main.o
+                0x000009ec                Collision
+ .text.__vector_5
+                0x00000afa      0x2d2 main.o
+                0x00000afa                __vector_5
+ .text.__vector_6
+                0x00000dcc      0x30a main.o
+                0x00000dcc                __vector_6
+ .text.__vector_7
+                0x000010d6      0x136 main.o
+                0x000010d6                __vector_7
+ .text.__vector_8
+                0x0000120c      0x2d2 main.o
+                0x0000120c                __vector_8
+ .text.__vector_4
+                0x000014de       0x14 main.o
+                0x000014de                __vector_4
+ .text.__vector_12
+                0x000014f2      0x284 main.o
+                0x000014f2                __vector_12
+ .text.draw_map
+                0x00001776       0xe6 main.o
+                0x00001776                draw_map
+ .text.NewTetriminos
+                0x0000185c      0x1c4 main.o
+                0x0000185c                NewTetriminos
+ .text.main     0x00001a20      0x130 main.o
+                0x00001a20                main
  .text.u8g2_send_buffer
-                0x00000ab0       0x96 u8g2_buffer.o
+                0x00001b50       0x96 u8g2_buffer.o
  .text.u8g2_ClearBuffer
-                0x00000b46       0x2a u8g2_buffer.o
-                0x00000b46                u8g2_ClearBuffer
+                0x00001be6       0x2a u8g2_buffer.o
+                0x00001be6                u8g2_ClearBuffer
  .text.u8g2_SendBuffer
-                0x00000b70       0x12 u8g2_buffer.o
-                0x00000b70                u8g2_SendBuffer
+                0x00001c10       0x12 u8g2_buffer.o
+                0x00001c10                u8g2_SendBuffer
  .text.u8g2_m_16_8_f
-                0x00000b82        0xc u8g2_d_memory.o
-                0x00000b82                u8g2_m_16_8_f
+                0x00001c22        0xc u8g2_d_memory.o
+                0x00001c22                u8g2_m_16_8_f
  .text.u8g2_Setup_ssd1306_i2c_128x64_noname_f
-                0x00000b8e       0x50 u8g2_d_setup.o
-                0x00000b8e                u8g2_Setup_ssd1306_i2c_128x64_noname_f
+                0x00001c2e       0x50 u8g2_d_setup.o
+                0x00001c2e                u8g2_Setup_ssd1306_i2c_128x64_noname_f
  .text.u8g2_font_get_word
-                0x00000bde       0x18 u8g2_font.o
+                0x00001c7e       0x18 u8g2_font.o
  .text.u8g2_font_calc_vref_font
-                0x00000bf6        0x4 u8g2_font.o
-                0x00000bf6                u8g2_font_calc_vref_font
+                0x00001c96        0x4 u8g2_font.o
+                0x00001c96                u8g2_font_calc_vref_font
  .text.u8g2_font_calc_vref_top
-                0x00000bfa        0xc u8g2_font.o
-                0x00000bfa                u8g2_font_calc_vref_top
+                0x00001c9a        0xc u8g2_font.o
+                0x00001c9a                u8g2_font_calc_vref_top
  .text.u8g2_read_font_info
-                0x00000c06       0xb8 u8g2_font.o
-                0x00000c06                u8g2_read_font_info
+                0x00001ca6       0xb8 u8g2_font.o
+                0x00001ca6                u8g2_read_font_info
  .text.u8g2_UpdateRefHeight
-                0x00000cbe       0x86 u8g2_font.o
-                0x00000cbe                u8g2_UpdateRefHeight
+                0x00001d5e       0x86 u8g2_font.o
+                0x00001d5e                u8g2_UpdateRefHeight
  .text.u8g2_SetFontRefHeightExtendedText
-                0x00000d44        0xe u8g2_font.o
-                0x00000d44                u8g2_SetFontRefHeightExtendedText
+                0x00001de4        0xe u8g2_font.o
+                0x00001de4                u8g2_SetFontRefHeightExtendedText
  .text.u8g2_SetFontPosBaseline
-                0x00000d52        0xc u8g2_font.o
-                0x00000d52                u8g2_SetFontPosBaseline
+                0x00001df2        0xc u8g2_font.o
+                0x00001df2                u8g2_SetFontPosBaseline
  .text.u8g2_SetFontPosTop
-                0x00000d5e        0xc u8g2_font.o
-                0x00000d5e                u8g2_SetFontPosTop
+                0x00001dfe        0xc u8g2_font.o
+                0x00001dfe                u8g2_SetFontPosTop
  .text.u8g2_SetFont
-                0x00000d6a       0x26 u8g2_font.o
-                0x00000d6a                u8g2_SetFont
+                0x00001e0a       0x26 u8g2_font.o
+                0x00001e0a                u8g2_SetFont
  .text.u8g2_SetFontDirection
-                0x00000d90        0xa u8g2_font.o
-                0x00000d90                u8g2_SetFontDirection
+                0x00001e30        0xa u8g2_font.o
+                0x00001e30                u8g2_SetFontDirection
  .text.u8g2_draw_hv_line_2dir
-                0x00000d9a       0x1a u8g2_hvline.o
-                0x00000d9a                u8g2_draw_hv_line_2dir
+                0x00001e3a       0x1a u8g2_hvline.o
+                0x00001e3a                u8g2_draw_hv_line_2dir
  .text.u8g2_DrawHVLine
-                0x00000db4       0xde u8g2_hvline.o
-                0x00000db4                u8g2_DrawHVLine
+                0x00001e54       0xde u8g2_hvline.o
+                0x00001e54                u8g2_DrawHVLine
  .text.u8g2_DrawPixel
-                0x00000e92       0x28 u8g2_hvline.o
-                0x00000e92                u8g2_DrawPixel
+                0x00001f32       0x28 u8g2_hvline.o
+                0x00001f32                u8g2_DrawPixel
  .text.u8g2_SetDrawColor
-                0x00000eba       0x1a u8g2_hvline.o
-                0x00000eba                u8g2_SetDrawColor
+                0x00001f5a       0x1a u8g2_hvline.o
+                0x00001f5a                u8g2_SetDrawColor
  .text.u8g2_is_intersection_decision_tree
-                0x00000ed4       0x28 u8g2_intersection.o
-                0x00000ed4                u8g2_is_intersection_decision_tree
+                0x00001f74       0x28 u8g2_intersection.o
+                0x00001f74                u8g2_is_intersection_decision_tree
  .text.u8g2_IsIntersection
-                0x00000efc       0x32 u8g2_intersection.o
-                0x00000efc                u8g2_IsIntersection
+                0x00001f9c       0x32 u8g2_intersection.o
+                0x00001f9c                u8g2_IsIntersection
  .text.u8g2_ll_hvline_vertical_top_lsb
-                0x00000f2e       0xc6 u8g2_ll_hvline.o
-                0x00000f2e                u8g2_ll_hvline_vertical_top_lsb
+                0x00001fce       0xc6 u8g2_ll_hvline.o
+                0x00001fce                u8g2_ll_hvline_vertical_top_lsb
  .text.u8g2_update_dimension_common
-                0x00000ff4       0x76 u8g2_setup.o
+                0x00002094       0x76 u8g2_setup.o
  .text.u8g2_update_dimension_r0
-                0x0000106a        0x4 u8g2_setup.o
-                0x0000106a                u8g2_update_dimension_r0
+                0x0000210a        0x4 u8g2_setup.o
+                0x0000210a                u8g2_update_dimension_r0
  .text.u8g2_apply_clip_window
-                0x0000106e       0x58 u8g2_setup.o
+                0x0000210e       0x58 u8g2_setup.o
  .text.u8g2_update_page_win_r0
-                0x000010c6       0x16 u8g2_setup.o
-                0x000010c6                u8g2_update_page_win_r0
+                0x00002166       0x16 u8g2_setup.o
+                0x00002166                u8g2_update_page_win_r0
  .text.u8g2_draw_l90_r0
-                0x000010dc        0x8 u8g2_setup.o
-                0x000010dc                u8g2_draw_l90_r0
+                0x0000217c        0x8 u8g2_setup.o
+                0x0000217c                u8g2_draw_l90_r0
  .text.u8g2_SetMaxClipWindow
-                0x000010e4       0x30 u8g2_setup.o
-                0x000010e4                u8g2_SetMaxClipWindow
+                0x00002184       0x30 u8g2_setup.o
+                0x00002184                u8g2_SetMaxClipWindow
  .text.u8g2_SetupBuffer
-                0x00001114       0x56 u8g2_setup.o
-                0x00001114                u8g2_SetupBuffer
+                0x000021b4       0x56 u8g2_setup.o
+                0x000021b4                u8g2_SetupBuffer
  .text.i2c_delay
-                0x0000116a        0xe u8x8_byte.o
+                0x0000220a        0xe u8x8_byte.o
  .text.i2c_read_scl_and_delay
-                0x00001178       0x16 u8x8_byte.o
+                0x00002218       0x16 u8x8_byte.o
  .text.i2c_read_sda
-                0x0000118e        0x8 u8x8_byte.o
+                0x0000222e        0x8 u8x8_byte.o
  .text.i2c_write_bit
-                0x00001196       0x2a u8x8_byte.o
+                0x00002236       0x2a u8x8_byte.o
  .text.i2c_write_byte
-                0x000011c0       0x6a u8x8_byte.o
+                0x00002260       0x6a u8x8_byte.o
  .text.u8x8_byte_SendBytes
-                0x0000122a       0x14 u8x8_byte.o
-                0x0000122a                u8x8_byte_SendBytes
+                0x000022ca       0x14 u8x8_byte.o
+                0x000022ca                u8x8_byte_SendBytes
  .text.u8x8_byte_SendByte
-                0x0000123e       0x1e u8x8_byte.o
-                0x0000123e                u8x8_byte_SendByte
+                0x000022de       0x1e u8x8_byte.o
+                0x000022de                u8x8_byte_SendByte
  .text.u8x8_byte_StartTransfer
-                0x0000125c       0x16 u8x8_byte.o
-                0x0000125c                u8x8_byte_StartTransfer
+                0x000022fc       0x16 u8x8_byte.o
+                0x000022fc                u8x8_byte_StartTransfer
  .text.u8x8_byte_EndTransfer
-                0x00001272       0x16 u8x8_byte.o
-                0x00001272                u8x8_byte_EndTransfer
+                0x00002312       0x16 u8x8_byte.o
+                0x00002312                u8x8_byte_EndTransfer
  .text.u8x8_byte_sw_i2c
-                0x00001288       0xda u8x8_byte.o
-                0x00001288                u8x8_byte_sw_i2c
+                0x00002328       0xda u8x8_byte.o
+                0x00002328                u8x8_byte_sw_i2c
  .text.u8x8_i2c_data_transfer
-                0x00001362       0x36 u8x8_cad.o
+                0x00002402       0x36 u8x8_cad.o
  .text.u8x8_cad_SendCmd
-                0x00001398       0x16 u8x8_cad.o
-                0x00001398                u8x8_cad_SendCmd
+                0x00002438       0x16 u8x8_cad.o
+                0x00002438                u8x8_cad_SendCmd
  .text.u8x8_cad_SendArg
-                0x000013ae       0x16 u8x8_cad.o
-                0x000013ae                u8x8_cad_SendArg
+                0x0000244e       0x16 u8x8_cad.o
+                0x0000244e                u8x8_cad_SendArg
  .text.u8x8_cad_SendData
-                0x000013c4       0x14 u8x8_cad.o
-                0x000013c4                u8x8_cad_SendData
+                0x00002464       0x14 u8x8_cad.o
+                0x00002464                u8x8_cad_SendData
  .text.u8x8_cad_StartTransfer
-                0x000013d8       0x16 u8x8_cad.o
-                0x000013d8                u8x8_cad_StartTransfer
+                0x00002478       0x16 u8x8_cad.o
+                0x00002478                u8x8_cad_StartTransfer
  .text.u8x8_cad_EndTransfer
-                0x000013ee       0x16 u8x8_cad.o
-                0x000013ee                u8x8_cad_EndTransfer
+                0x0000248e       0x16 u8x8_cad.o
+                0x0000248e                u8x8_cad_EndTransfer
  .text.u8x8_cad_SendSequence
-                0x00001404       0xa2 u8x8_cad.o
-                0x00001404                u8x8_cad_SendSequence
+                0x000024a4       0xa2 u8x8_cad.o
+                0x000024a4                u8x8_cad_SendSequence
  .text.u8x8_cad_ssd13xx_fast_i2c
-                0x000014a6       0xe2 u8x8_cad.o
-                0x000014a6                u8x8_cad_ssd13xx_fast_i2c
+                0x00002546       0xe2 u8x8_cad.o
+                0x00002546                u8x8_cad_ssd13xx_fast_i2c
  .text.u8x8_d_helper_display_setup_memory
-                0x00001588       0x10 u8x8_display.o
-                0x00001588                u8x8_d_helper_display_setup_memory
+                0x00002628       0x10 u8x8_display.o
+                0x00002628                u8x8_d_helper_display_setup_memory
  .text.u8x8_d_helper_display_init
-                0x00001598       0x66 u8x8_display.o
-                0x00001598                u8x8_d_helper_display_init
+                0x00002638       0x66 u8x8_display.o
+                0x00002638                u8x8_d_helper_display_init
  .text.u8x8_DrawTile
-                0x000015fe       0x46 u8x8_display.o
-                0x000015fe                u8x8_DrawTile
+                0x0000269e       0x46 u8x8_display.o
+                0x0000269e                u8x8_DrawTile
  .text.u8x8_SetupMemory
-                0x00001644       0x16 u8x8_display.o
-                0x00001644                u8x8_SetupMemory
+                0x000026e4       0x16 u8x8_display.o
+                0x000026e4                u8x8_SetupMemory
  .text.u8x8_InitDisplay
-                0x0000165a       0x16 u8x8_display.o
-                0x0000165a                u8x8_InitDisplay
+                0x000026fa       0x16 u8x8_display.o
+                0x000026fa                u8x8_InitDisplay
  .text.u8x8_SetPowerSave
-                0x00001670       0x16 u8x8_display.o
-                0x00001670                u8x8_SetPowerSave
+                0x00002710       0x16 u8x8_display.o
+                0x00002710                u8x8_SetPowerSave
  .text.u8x8_RefreshDisplay
-                0x00001686       0x16 u8x8_display.o
-                0x00001686                u8x8_RefreshDisplay
+                0x00002726       0x16 u8x8_display.o
+                0x00002726                u8x8_RefreshDisplay
  .text.u8x8_d_ssd1306_sh1106_generic
-                0x0000169c       0xf4 u8x8_d_ssd1306_128x64_noname.o
+                0x0000273c       0xf4 u8x8_d_ssd1306_128x64_noname.o
  .text.u8x8_d_ssd1306_128x64_noname
-                0x00001790       0x3e u8x8_d_ssd1306_128x64_noname.o
-                0x00001790                u8x8_d_ssd1306_128x64_noname
+                0x00002830       0x3e u8x8_d_ssd1306_128x64_noname.o
+                0x00002830                u8x8_d_ssd1306_128x64_noname
  .text.u8x8_gpio_call
-                0x000017ce       0x12 u8x8_gpio.o
-                0x000017ce                u8x8_gpio_call
+                0x0000286e       0x12 u8x8_gpio.o
+                0x0000286e                u8x8_gpio_call
  .text.u8x8_dummy_cb
-                0x000017e0        0x4 u8x8_setup.o
-                0x000017e0                u8x8_dummy_cb
+                0x00002880        0x4 u8x8_setup.o
+                0x00002880                u8x8_dummy_cb
  .text.u8x8_SetupDefaults
-                0x000017e4       0x30 u8x8_setup.o
-                0x000017e4                u8x8_SetupDefaults
+                0x00002884       0x30 u8x8_setup.o
+                0x00002884                u8x8_SetupDefaults
  .text.u8x8_Setup
-                0x00001814       0x48 u8x8_setup.o
-                0x00001814                u8x8_Setup
+                0x000028b4       0x48 u8x8_setup.o
+                0x000028b4                u8x8_Setup
  .text.libgcc.div
-                0x0000185c       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodsi4.o)
-                0x0000185c                __udivmodsi4
+                0x000028fc       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_udivmodsi4.o)
+                0x000028fc                __udivmodsi4
  .text.libgcc.mul
-                0x000018a0       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_umulhisi3.o)
-                0x000018a0                __umulhisi3
+                0x00002940       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_umulhisi3.o)
+                0x00002940                __umulhisi3
  .text.avr-libc
-                0x000018be        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memset.o)
-                0x000018be                memset
-                0x000018cc                . = ALIGN (0x2)
+                0x0000295e        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51\libc.a(memset.o)
+                0x0000295e                memset
+                0x0000296c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000018cc        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
-                0x000018cc                _exit
-                0x000018cc                exit
+ .fini9         0x0000296c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+                0x0000296c                _exit
+                0x0000296c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -8083,11 +8104,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000018cc        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
+ .fini0         0x0000296c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x000018d0                _etext = .
+                0x00002970                _etext = .
 
-.data           0x00800100       0x6c load address 0x000018d0
+.data           0x00800100       0x6c load address 0x00002970
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -8115,31 +8136,43 @@ END GROUP
                 0x0080016c                _edata = .
                 0x0080016c                PROVIDE (__data_end, .)
 
-.bss            0x0080016c      0x573
+.bss            0x0080016c      0x67e
                 0x0080016c                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.buf.8183  0x0080016c      0x400 u8g2_d_memory.o
+ .bss.next_block
+                0x0080016c        0x1 main.o
+                0x0080016c                next_block
+ .bss.game_over
+                0x0080016d        0x1 main.o
+                0x0080016d                game_over
+ .bss.new_block
+                0x0080016e        0x1 main.o
+                0x0080016e                new_block
+ .bss.main_board
+                0x0080016f      0x100 main.o
+                0x0080016f                main_board
+ .bss.buf.8183  0x0080026f      0x400 u8g2_d_memory.o
  .bss.in_transfer.3254
-                0x0080056c        0x1 u8x8_cad.o
+                0x0080066f        0x1 u8x8_cad.o
  *(COMMON)
- COMMON         0x0080056d      0x172 main.o
-                0x0080056d                cur_line
-                0x0080056e                cur_col
-                0x0080056f                pattern
-                0x00800570                temp_line
-                0x00800578                shape
-                0x00800579                u8g2
-                0x008005df                game_board
-                0x008006df                PROVIDE (__bss_end, .)
-                0x000018d0                __data_load_start = LOADADDR (.data)
-                0x0000193c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800670      0x17a main.o
+                0x00800670                cur_line
+                0x00800671                cur_col
+                0x00800672                pattern
+                0x00800673                temp_line
+                0x00800683                shape
+                0x00800684                u8g2
+                0x008006ea                game_board
+                0x008007ea                PROVIDE (__bss_end, .)
+                0x00002970                __data_load_start = LOADADDR (.data)
+                0x000029dc                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008006df        0x0
+.noinit         0x008007ea        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008006df                _end = .
+                0x008007ea                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -8219,175 +8252,175 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000     0x1ce8
+.debug_aranges  0x00000000     0x1d20
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 main.o
+                0x00000000       0x80 main.o
  .debug_aranges
-                0x00000048       0x78 u8g2_buffer.o
+                0x00000080       0x78 u8g2_buffer.o
  .debug_aranges
-                0x000000c0      0x438 u8g2_d_memory.o
+                0x000000f8      0x438 u8g2_d_memory.o
  .debug_aranges
-                0x000004f8     0x1260 u8g2_d_setup.o
+                0x00000530     0x1260 u8g2_d_setup.o
  .debug_aranges
-                0x00001758      0x190 u8g2_font.o
+                0x00001790      0x190 u8g2_font.o
  .debug_aranges
-                0x000018e8       0x18 u8g2_fonts.o
+                0x00001920       0x18 u8g2_fonts.o
  .debug_aranges
-                0x00001900       0x48 u8g2_hvline.o
+                0x00001938       0x48 u8g2_hvline.o
  .debug_aranges
-                0x00001948       0x28 u8g2_intersection.o
+                0x00001980       0x28 u8g2_intersection.o
  .debug_aranges
-                0x00001970       0x28 u8g2_ll_hvline.o
+                0x000019a8       0x28 u8g2_ll_hvline.o
  .debug_aranges
-                0x00001998       0xb8 u8g2_setup.o
+                0x000019d0       0xb8 u8g2_setup.o
  .debug_aranges
-                0x00001a50       0xb0 u8x8_byte.o
+                0x00001a88       0xb0 u8x8_byte.o
  .debug_aranges
-                0x00001b00       0xc0 u8x8_cad.o
+                0x00001b38       0xc0 u8x8_cad.o
  .debug_aranges
-                0x00001bc0       0x80 u8x8_display.o
+                0x00001bf8       0x80 u8x8_display.o
  .debug_aranges
-                0x00001c40       0x50 u8x8_d_ssd1306_128x64_noname.o
+                0x00001c78       0x50 u8x8_d_ssd1306_128x64_noname.o
  .debug_aranges
-                0x00001c90       0x20 u8x8_gpio.o
+                0x00001cc8       0x20 u8x8_gpio.o
  .debug_aranges
-                0x00001cb0       0x38 u8x8_setup.o
+                0x00001ce8       0x38 u8x8_setup.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x3e1c9
+.debug_info     0x00000000    0x3e407
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_info    0x00000780      0xe84 main.o
- .debug_info    0x00001604      0xea2 u8g2_buffer.o
- .debug_info    0x000024a6     0x2644 u8g2_d_memory.o
- .debug_info    0x00004aea    0x217e1 u8g2_d_setup.o
- .debug_info    0x000262cb     0x29e8 u8g2_font.o
- .debug_info    0x00028cb3     0xd1ce u8g2_fonts.o
- .debug_info    0x00035e81      0xc00 u8g2_hvline.o
- .debug_info    0x00036a81      0x938 u8g2_intersection.o
- .debug_info    0x000373b9      0x9b5 u8g2_ll_hvline.o
- .debug_info    0x00037d6e     0x1118 u8g2_setup.o
- .debug_info    0x00038e86     0x1a58 u8x8_byte.o
- .debug_info    0x0003a8de     0x1909 u8x8_cad.o
- .debug_info    0x0003c1e7      0x9b5 u8x8_display.o
- .debug_info    0x0003cb9c      0xd1e u8x8_d_ssd1306_128x64_noname.o
- .debug_info    0x0003d8ba      0x3d5 u8x8_gpio.o
- .debug_info    0x0003dc8f      0x53a u8x8_setup.o
+ .debug_info    0x00000780     0x10c2 main.o
+ .debug_info    0x00001842      0xea2 u8g2_buffer.o
+ .debug_info    0x000026e4     0x2644 u8g2_d_memory.o
+ .debug_info    0x00004d28    0x217e1 u8g2_d_setup.o
+ .debug_info    0x00026509     0x29e8 u8g2_font.o
+ .debug_info    0x00028ef1     0xd1ce u8g2_fonts.o
+ .debug_info    0x000360bf      0xc00 u8g2_hvline.o
+ .debug_info    0x00036cbf      0x938 u8g2_intersection.o
+ .debug_info    0x000375f7      0x9b5 u8g2_ll_hvline.o
+ .debug_info    0x00037fac     0x1118 u8g2_setup.o
+ .debug_info    0x000390c4     0x1a58 u8x8_byte.o
+ .debug_info    0x0003ab1c     0x1909 u8x8_cad.o
+ .debug_info    0x0003c425      0x9b5 u8x8_display.o
+ .debug_info    0x0003cdda      0xd1e u8x8_d_ssd1306_128x64_noname.o
+ .debug_info    0x0003daf8      0x3d5 u8x8_gpio.o
+ .debug_info    0x0003decd      0x53a u8x8_setup.o
 
-.debug_abbrev   0x00000000     0x2445
+.debug_abbrev   0x00000000     0x24c6
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_abbrev  0x00000718      0x2d9 main.o
- .debug_abbrev  0x000009f1      0x230 u8g2_buffer.o
- .debug_abbrev  0x00000c21       0xd8 u8g2_d_memory.o
- .debug_abbrev  0x00000cf9      0x196 u8g2_d_setup.o
- .debug_abbrev  0x00000e8f      0x402 u8g2_font.o
- .debug_abbrev  0x00001291       0x88 u8g2_fonts.o
- .debug_abbrev  0x00001319      0x1aa u8g2_hvline.o
- .debug_abbrev  0x000014c3      0x159 u8g2_intersection.o
- .debug_abbrev  0x0000161c      0x14f u8g2_ll_hvline.o
- .debug_abbrev  0x0000176b      0x25a u8g2_setup.o
- .debug_abbrev  0x000019c5      0x263 u8x8_byte.o
- .debug_abbrev  0x00001c28      0x25c u8x8_cad.o
- .debug_abbrev  0x00001e84      0x1bf u8x8_display.o
- .debug_abbrev  0x00002043      0x19f u8x8_d_ssd1306_128x64_noname.o
- .debug_abbrev  0x000021e2       0xe9 u8x8_gpio.o
- .debug_abbrev  0x000022cb      0x17a u8x8_setup.o
+ .debug_abbrev  0x00000718      0x35a main.o
+ .debug_abbrev  0x00000a72      0x230 u8g2_buffer.o
+ .debug_abbrev  0x00000ca2       0xd8 u8g2_d_memory.o
+ .debug_abbrev  0x00000d7a      0x196 u8g2_d_setup.o
+ .debug_abbrev  0x00000f10      0x402 u8g2_font.o
+ .debug_abbrev  0x00001312       0x88 u8g2_fonts.o
+ .debug_abbrev  0x0000139a      0x1aa u8g2_hvline.o
+ .debug_abbrev  0x00001544      0x159 u8g2_intersection.o
+ .debug_abbrev  0x0000169d      0x14f u8g2_ll_hvline.o
+ .debug_abbrev  0x000017ec      0x25a u8g2_setup.o
+ .debug_abbrev  0x00001a46      0x263 u8x8_byte.o
+ .debug_abbrev  0x00001ca9      0x25c u8x8_cad.o
+ .debug_abbrev  0x00001f05      0x1bf u8x8_display.o
+ .debug_abbrev  0x000020c4      0x19f u8x8_d_ssd1306_128x64_noname.o
+ .debug_abbrev  0x00002263       0xe9 u8x8_gpio.o
+ .debug_abbrev  0x0000234c      0x17a u8x8_setup.o
 
-.debug_line     0x00000000     0xa904
+.debug_line     0x00000000     0xacbd
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x169 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_line    0x00000169      0x351 main.o
- .debug_line    0x000004ba      0x369 u8g2_buffer.o
- .debug_line    0x00000823      0xf80 u8g2_d_memory.o
- .debug_line    0x000017a3     0x5e4f u8g2_d_setup.o
- .debug_line    0x000075f2      0xd82 u8g2_font.o
- .debug_line    0x00008374       0x91 u8g2_fonts.o
- .debug_line    0x00008405      0x230 u8g2_hvline.o
- .debug_line    0x00008635      0x10a u8g2_intersection.o
- .debug_line    0x0000873f      0x233 u8g2_ll_hvline.o
- .debug_line    0x00008972      0x50f u8g2_setup.o
- .debug_line    0x00008e81      0x8b8 u8x8_byte.o
- .debug_line    0x00009739      0x986 u8x8_cad.o
- .debug_line    0x0000a0bf      0x299 u8x8_display.o
- .debug_line    0x0000a358      0x38e u8x8_d_ssd1306_128x64_noname.o
- .debug_line    0x0000a6e6       0xb0 u8x8_gpio.o
- .debug_line    0x0000a796      0x16e u8x8_setup.o
+ .debug_line    0x00000169      0x70a main.o
+ .debug_line    0x00000873      0x369 u8g2_buffer.o
+ .debug_line    0x00000bdc      0xf80 u8g2_d_memory.o
+ .debug_line    0x00001b5c     0x5e4f u8g2_d_setup.o
+ .debug_line    0x000079ab      0xd82 u8g2_font.o
+ .debug_line    0x0000872d       0x91 u8g2_fonts.o
+ .debug_line    0x000087be      0x230 u8g2_hvline.o
+ .debug_line    0x000089ee      0x10a u8g2_intersection.o
+ .debug_line    0x00008af8      0x233 u8g2_ll_hvline.o
+ .debug_line    0x00008d2b      0x50f u8g2_setup.o
+ .debug_line    0x0000923a      0x8b8 u8x8_byte.o
+ .debug_line    0x00009af2      0x986 u8x8_cad.o
+ .debug_line    0x0000a478      0x299 u8x8_display.o
+ .debug_line    0x0000a711      0x38e u8x8_d_ssd1306_128x64_noname.o
+ .debug_line    0x0000aa9f       0xb0 u8x8_gpio.o
+ .debug_line    0x0000ab4f      0x16e u8x8_setup.o
 
-.debug_frame    0x00000000     0xaf44
+.debug_frame    0x00000000     0xb2ec
  *(.debug_frame)
- .debug_frame   0x00000000       0xb4 main.o
- .debug_frame   0x000000b4      0x1c8 u8g2_buffer.o
- .debug_frame   0x0000027c      0x854 u8g2_d_memory.o
- .debug_frame   0x00000ad0     0x9254 u8g2_d_setup.o
- .debug_frame   0x00009d24      0x5c4 u8g2_font.o
- .debug_frame   0x0000a2e8       0x9c u8g2_hvline.o
- .debug_frame   0x0000a384       0x50 u8g2_intersection.o
- .debug_frame   0x0000a3d4       0x60 u8g2_ll_hvline.o
- .debug_frame   0x0000a434      0x1ec u8g2_setup.o
- .debug_frame   0x0000a620      0x2c0 u8x8_byte.o
- .debug_frame   0x0000a8e0      0x340 u8x8_cad.o
- .debug_frame   0x0000ac20      0x174 u8x8_display.o
- .debug_frame   0x0000ad94      0x104 u8x8_d_ssd1306_128x64_noname.o
- .debug_frame   0x0000ae98       0x24 u8x8_gpio.o
- .debug_frame   0x0000aebc       0x88 u8x8_setup.o
+ .debug_frame   0x00000000      0x45c main.o
+ .debug_frame   0x0000045c      0x1c8 u8g2_buffer.o
+ .debug_frame   0x00000624      0x854 u8g2_d_memory.o
+ .debug_frame   0x00000e78     0x9254 u8g2_d_setup.o
+ .debug_frame   0x0000a0cc      0x5c4 u8g2_font.o
+ .debug_frame   0x0000a690       0x9c u8g2_hvline.o
+ .debug_frame   0x0000a72c       0x50 u8g2_intersection.o
+ .debug_frame   0x0000a77c       0x60 u8g2_ll_hvline.o
+ .debug_frame   0x0000a7dc      0x1ec u8g2_setup.o
+ .debug_frame   0x0000a9c8      0x2c0 u8x8_byte.o
+ .debug_frame   0x0000ac88      0x340 u8x8_cad.o
+ .debug_frame   0x0000afc8      0x174 u8x8_display.o
+ .debug_frame   0x0000b13c      0x104 u8x8_d_ssd1306_128x64_noname.o
+ .debug_frame   0x0000b240       0x24 u8x8_gpio.o
+ .debug_frame   0x0000b264       0x88 u8x8_setup.o
 
-.debug_str      0x00000000     0xec34
+.debug_str      0x00000000     0xeca8
  *(.debug_str)
  .debug_str     0x00000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.3.300/gcc/dev/atmega128a/avr51/crtatmega128a.o
- .debug_str     0x0000027d      0x9b0 main.o
-                                0xa51 (size before relaxing)
- .debug_str     0x00000c2d      0x1d3 u8g2_buffer.o
+ .debug_str     0x0000027d      0xa24 main.o
+                                0xaca (size before relaxing)
+ .debug_str     0x00000ca1      0x1d3 u8g2_buffer.o
                                 0xa30 (size before relaxing)
- .debug_str     0x00000e00      0x780 u8g2_d_memory.o
+ .debug_str     0x00000e74      0x780 u8g2_d_memory.o
                                 0x8dd (size before relaxing)
- .debug_str     0x00001580     0x4935 u8g2_d_setup.o
+ .debug_str     0x000015f4     0x4935 u8g2_d_setup.o
                                0x58ee (size before relaxing)
- .debug_str     0x00005eb5      0x55b u8g2_font.o
+ .debug_str     0x00005f29      0x55b u8g2_font.o
                                 0xe1f (size before relaxing)
- .debug_str     0x00006410     0x7d7f u8g2_fonts.o
+ .debug_str     0x00006484     0x7d7f u8g2_fonts.o
                                0x7eee (size before relaxing)
- .debug_str     0x0000e18f       0x60 u8g2_hvline.o
+ .debug_str     0x0000e203       0x60 u8g2_hvline.o
                                 0x8c7 (size before relaxing)
- .debug_str     0x0000e1ef       0x3c u8g2_intersection.o
+ .debug_str     0x0000e263       0x3c u8g2_intersection.o
                                 0x880 (size before relaxing)
- .debug_str     0x0000e22b       0x63 u8g2_ll_hvline.o
+ .debug_str     0x0000e29f       0x63 u8g2_ll_hvline.o
                                 0x8af (size before relaxing)
- .debug_str     0x0000e28e      0x1f0 u8g2_setup.o
+ .debug_str     0x0000e302      0x1f0 u8g2_setup.o
                                 0xaa9 (size before relaxing)
- .debug_str     0x0000e47e      0x1f4 u8x8_byte.o
+ .debug_str     0x0000e4f2      0x1f4 u8x8_byte.o
                                 0x635 (size before relaxing)
- .debug_str     0x0000e672      0x1c9 u8x8_cad.o
+ .debug_str     0x0000e6e6      0x1c9 u8x8_cad.o
                                 0x681 (size before relaxing)
- .debug_str     0x0000e83b      0x118 u8x8_display.o
+ .debug_str     0x0000e8af      0x118 u8x8_display.o
                                 0x598 (size before relaxing)
- .debug_str     0x0000e953      0x277 u8x8_d_ssd1306_128x64_noname.o
+ .debug_str     0x0000e9c7      0x277 u8x8_d_ssd1306_128x64_noname.o
                                 0x78f (size before relaxing)
- .debug_str     0x0000ebca       0x11 u8x8_gpio.o
+ .debug_str     0x0000ec3e       0x11 u8x8_gpio.o
                                 0x439 (size before relaxing)
- .debug_str     0x0000ebdb       0x59 u8x8_setup.o
+ .debug_str     0x0000ec4f       0x59 u8x8_setup.o
                                 0x4dc (size before relaxing)
 
-.debug_loc      0x00000000    0x452aa
+.debug_loc      0x00000000    0x45c25
  *(.debug_loc)
- .debug_loc     0x00000000      0x44d main.o
- .debug_loc     0x0000044d      0x910 u8g2_buffer.o
- .debug_loc     0x00000d5d     0x14a0 u8g2_d_memory.o
- .debug_loc     0x000021fd    0x39fc6 u8g2_d_setup.o
- .debug_loc     0x0003c1c3     0x2e78 u8g2_font.o
- .debug_loc     0x0003f03b      0x69d u8g2_hvline.o
- .debug_loc     0x0003f6d8      0x192 u8g2_intersection.o
- .debug_loc     0x0003f86a      0x4b3 u8g2_ll_hvline.o
- .debug_loc     0x0003fd1d      0xce8 u8g2_setup.o
- .debug_loc     0x00040a05     0x1b9a u8x8_byte.o
- .debug_loc     0x0004259f     0x1c7b u8x8_cad.o
- .debug_loc     0x0004421a      0x588 u8x8_display.o
- .debug_loc     0x000447a2      0x7c1 u8x8_d_ssd1306_128x64_noname.o
- .debug_loc     0x00044f63       0x68 u8x8_gpio.o
- .debug_loc     0x00044fcb      0x2df u8x8_setup.o
+ .debug_loc     0x00000000      0xdc8 main.o
+ .debug_loc     0x00000dc8      0x910 u8g2_buffer.o
+ .debug_loc     0x000016d8     0x14a0 u8g2_d_memory.o
+ .debug_loc     0x00002b78    0x39fc6 u8g2_d_setup.o
+ .debug_loc     0x0003cb3e     0x2e78 u8g2_font.o
+ .debug_loc     0x0003f9b6      0x69d u8g2_hvline.o
+ .debug_loc     0x00040053      0x192 u8g2_intersection.o
+ .debug_loc     0x000401e5      0x4b3 u8g2_ll_hvline.o
+ .debug_loc     0x00040698      0xce8 u8g2_setup.o
+ .debug_loc     0x00041380     0x1b9a u8x8_byte.o
+ .debug_loc     0x00042f1a     0x1c7b u8x8_cad.o
+ .debug_loc     0x00044b95      0x588 u8x8_display.o
+ .debug_loc     0x0004511d      0x7c1 u8x8_d_ssd1306_128x64_noname.o
+ .debug_loc     0x000458de       0x68 u8x8_gpio.o
+ .debug_loc     0x00045946      0x2df u8x8_setup.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -8407,23 +8440,23 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000     0x1cf8
+.debug_ranges   0x00000000     0x1d48
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x90 main.o
- .debug_ranges  0x00000090       0x68 u8g2_buffer.o
- .debug_ranges  0x000000f8      0x428 u8g2_d_memory.o
- .debug_ranges  0x00000520     0x1250 u8g2_d_setup.o
- .debug_ranges  0x00001770      0x240 u8g2_font.o
- .debug_ranges  0x000019b0       0x38 u8g2_hvline.o
- .debug_ranges  0x000019e8       0x18 u8g2_intersection.o
- .debug_ranges  0x00001a00       0x18 u8g2_ll_hvline.o
- .debug_ranges  0x00001a18       0xa8 u8g2_setup.o
- .debug_ranges  0x00001ac0       0xa0 u8x8_byte.o
- .debug_ranges  0x00001b60       0xb0 u8x8_cad.o
- .debug_ranges  0x00001c10       0x70 u8x8_display.o
- .debug_ranges  0x00001c80       0x40 u8x8_d_ssd1306_128x64_noname.o
- .debug_ranges  0x00001cc0       0x10 u8x8_gpio.o
- .debug_ranges  0x00001cd0       0x28 u8x8_setup.o
+ .debug_ranges  0x00000000       0xe0 main.o
+ .debug_ranges  0x000000e0       0x68 u8g2_buffer.o
+ .debug_ranges  0x00000148      0x428 u8g2_d_memory.o
+ .debug_ranges  0x00000570     0x1250 u8g2_d_setup.o
+ .debug_ranges  0x000017c0      0x240 u8g2_font.o
+ .debug_ranges  0x00001a00       0x38 u8g2_hvline.o
+ .debug_ranges  0x00001a38       0x18 u8g2_intersection.o
+ .debug_ranges  0x00001a50       0x18 u8g2_ll_hvline.o
+ .debug_ranges  0x00001a68       0xa8 u8g2_setup.o
+ .debug_ranges  0x00001b10       0xa0 u8x8_byte.o
+ .debug_ranges  0x00001bb0       0xb0 u8x8_cad.o
+ .debug_ranges  0x00001c60       0x70 u8x8_display.o
+ .debug_ranges  0x00001cd0       0x40 u8x8_d_ssd1306_128x64_noname.o
+ .debug_ranges  0x00001d10       0x10 u8x8_gpio.o
+ .debug_ranges  0x00001d20       0x28 u8x8_setup.o
 
 .debug_macro
  *(.debug_macro)

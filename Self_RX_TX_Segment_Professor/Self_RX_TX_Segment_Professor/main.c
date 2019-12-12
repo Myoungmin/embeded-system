@@ -111,13 +111,18 @@ ISR(INT7_vect)
 }
 
 
+char RX = 0;
+char rx_complete = 0;
+char cmd, data;
+char select = 0;
+
 
 
 ISR(USART1_RX_vect)
 {
-	unsigned char ch;
+	/*unsigned char ch;
 	ch = UDR1; // 수신
-	if(ch == 0x02) start_RX1 = 1;
+	if(ch == 0x02 && start_RX1 == 0) start_RX1 = 1;	//start_RX1 == 0 이 조건을 생각 못함
 	else if(start_RX1 == 1 && ch == 0x03)
 	{
 		start_RX1 = 0;
@@ -159,8 +164,48 @@ ISR(USART1_RX_vect)
 		B_mode0 = 0;
 		up_count1 = 0;
 		down_count1 = 0;
+	}*/
+
+	unsigned char ch;
+	ch = UDR1; // 수신
+
+	if(RX == 0 && ch == 0x02) RX = 1;
+	else if(RX == 1)
+	{
+		if(ch == 0x03) rx_complete = 1;
+		else
+		{
+			cmd = ch;
+			RX = 2;
+		}
+	}
+	else if(RX == 2)
+	{
+		if(ch == 0x03) 
+		{
+			rx_complete = 1;
+			RX = 0;
+		}
+		else
+		{
+			data = ch;
+			RX = 3;
+		}
+	}
+	else if(RX == 3)
+	{
+		if(ch == 0x03) rx_complete = 1;
+		RX = 0;
 	}
 
+	if(rx_complete == 1)
+	{
+		if(cmd == 'A') your_number = data - '0';	//이부분 내꺼랑 차이나는듯? data로 변수 한번 더 거침
+		else if(cmd == 'B') select = data - '0' + 1;	//1: up, 2:down
+		else if(cmd == 'C') select = 0;	//0 : stop
+
+		rx_complete = 0;
+	}
 }
 
 ISR(TIMER1_OVF_vect)
@@ -169,21 +214,32 @@ ISR(TIMER1_OVF_vect)
 
 	if(up_count0 == 1)
 	{
-		if(++my_number == 10) my_number = 0;
+		//if(++my_number == 10) my_number = 0;
 	}
 	
 	else if(down_count0 == 1)
 	{
-		if(my_number != 0) --my_number;
-		else my_number = 9;
+		//if(my_number != 0) --my_number;
+		//else my_number = 9;
 	}
 
-	if(up_count1 == 1)
+	/*if(up_count1 == 1)
 	{
 		if(++your_number == 10) your_number = 0;
 	}
 	
 	else if(down_count1 == 1)
+	{
+		if(your_number != 0) --your_number;
+		else your_number = 9;
+	}*/
+
+	if(select == 1)
+	{
+		if(++your_number == 10) your_number = 0;
+	}
+	
+	else if(select== 2)
 	{
 		if(your_number != 0) --your_number;
 		else your_number = 9;

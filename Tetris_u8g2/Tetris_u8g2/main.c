@@ -1,7 +1,8 @@
 #include <avr/io.h>
 #include "u8g2.h"
 #include <util/delay.h>
-#include <math.h>
+#include <avr/interrupt.h>
+
 
 #define DISPLAY_CLK_DIR DDRD
 #define DISPLAY_CLK_PORT PORTD
@@ -99,7 +100,7 @@ void u8g2_prepare(void) {
 }
 
 
-unsigned short tetriminos[7][4] = {
+__flash const unsigned short tetriminos[7][4] = {
 
 	{0x6600, 0x6600, 0x6600, 0x6600},       // O
 	{0xF000, 0x4444, 0xF000, 0x4444},        // I
@@ -113,14 +114,20 @@ unsigned short tetriminos[7][4] = {
 
 
 
-unsigned long int game_board[64];
+
 
 unsigned char shape;                  // 테트리미노스의 7가지 모양
 unsigned char pattern;                 // 테트리미노스의 4가지 패턴
 unsigned char cur_line;               // 테트리니노스의 현재 라인
 unsigned char cur_col;                // 테트리니노스의 현재 칸
-unsigned short temp_line[4];          // 테트리미노스 라인 임시 저장소
-
+unsigned long int temp_line[4];          // 테트리미노스 라인 임시 저장소
+unsigned long int main_board[64] = {0};	//테르리미노스가 굳어진 후 저장된 게임보드
+unsigned long int game_board[64];	//테트리미노스가 움직이면서 변화하는 게임보드
+unsigned char crush = 0;	//부딪힘을 나타내는 플레그
+unsigned char new_block = 0;	//새로운 블록이 생성되야함을 나타내는 플레그
+unsigned char game_over = 0;	//게임이 종료되었음을 나타내는 플레그
+unsigned char next_block = 0;
+unsigned char next_board[8][8] = {0};
 
  void NewTetriminos(void)
  {
@@ -149,7 +156,249 @@ unsigned short temp_line[4];          // 테트리미노스 라인 임시 저장소
 	 return 0;  // 충돌 없음
  }
 
+ ISR(INT4_vect)
+ {
+	 
+	 for(int i = 0; j < 64; i++)
+	 {
+		 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+	 }
 
+
+	 if(cur_col > 3) cur_col--;	//테트리미노스 현재칸 오른쪽으로 이동(3보다 클 시)
+	 else if(cur_col == 3 && pattern == 1 || pattern == 3) cur_col--;
+
+	 
+	  for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
+	  {
+		  temp_line[i] = 0;
+	  }
+
+
+	 temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	 temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
+	 temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
+	 temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
+
+	 
+	 if(Collision() == 1) cur_col++;
+
+	 for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 temp_line[i] = 0;
+	 }
+
+	 temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);
+	 temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
+	 temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
+	 temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
+
+	 
+	 game_board[cur_line] = temp_line[0];	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	 game_board[cur_line + 1] = temp_line[1];
+	 game_board[cur_line + 2] = temp_line[2];
+	 game_board[cur_line + 3] = temp_line[3];
+
+ }
+
+ ISR(INT5_vect)
+ {
+	 for(int i = 0; i < 12; i++)
+	 {
+		 for(int j = 0; j< 32; j++)
+		 {
+			 game_board[i][j] = main_board[i][j];
+		 }
+	 }
+
+	 pattern++;	//회전으로 상태 변화
+	 if(pattern == 4) pattern = 0; //마지막에서 처음으로
+
+	 for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 for(int j = 0; j < 4; j++)
+		 {
+			 temp_line[i][j] = 0;
+		 }
+	 }
+
+	 for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	 {
+		 temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+		 temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		 temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		 temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	 }
+
+	 if(Collision() == 1) pattern--;
+
+
+	 for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 for(int j = 0; j < 4; j++)
+		 {
+			 temp_line[i][j] = 0;
+		 }
+	 }
+
+	 for(int i = 0; i < 4; i++)
+	 {
+		 temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+		 temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		 temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		 temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	 }
+
+	 for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	 {
+		 if(cur_col-i > 0) game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+		 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+		 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+		 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+	 }
+ }
+
+ ISR(INT6_vect)
+ {
+	 for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 for(int j = 0; j < 4; j++)
+		 {
+			 temp_line[i][j] = 0;
+		 }
+	 }
+
+	 for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	 {
+		 temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+		 temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		 temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		 temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	 }
+
+	 while(Collision() == 0) cur_line++;
+
+	 cur_line--;
+ }
+
+ ISR(INT7_vect)
+ {
+	 for(int i = 0; i < 12; i++)
+	 {
+		 for(int j = 0; j< 32; j++)
+		 {
+			 game_board[i][j] = main_board[i][j];
+		 }
+	 }
+
+	 if(cur_col < 11) cur_col++;
+
+	 for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 for(int j = 0; j < 4; j++)
+		 {
+			 temp_line[i][j] = 0;
+		 }
+	 }
+
+	 for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	 {
+		 temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+		 temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		 temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		 temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	 }
+
+	 if(Collision() == 1) cur_col--;
+	 
+	 for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	 {
+		 for(int j = 0; j < 4; j++)
+		 {
+			 temp_line[i][j] = 0;
+		 }
+	 }
+
+	 for(int i = 0; i < 4; i++)
+	 {
+		 temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+		 temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		 temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		 temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	 }
+
+	 
+	 for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	 {
+		 game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+		 game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+		 game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+		 game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+	 }
+ }
+
+
+
+ ISR(INT3_vect)
+ {
+	 
+ }
+
+
+ ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+ {
+	 if(new_block == 0)
+	 {
+		 for(int i = 0; i < 12; i++)
+		 {
+			 for(int j = 0; j< 32; j++)
+			 {
+				 game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+			 }
+		 }
+
+		 cur_line++;	//현재라인 아래로 이동
+		 
+		 if(Collision() == 1)	//이동후 충돌 발생시
+		 {
+			 cur_line--;	//원래 라인으로 복귀
+			 for(int i = 0; i < 4; i++)	//복귀후 임시저장소의 테트리미노스 메인보드에 저장
+			 {
+				 if(cur_col-i > 0) main_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+				 if(cur_col-i > 0) main_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+				 if(cur_col-i > 0) main_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+				 if(cur_col-i > 0) main_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+			 }
+
+			 new_block = 1;	//새로운 블록 플레그 켜짐
+		 }
+
+		 for(int i = 0; i < 12; i++)
+		 {
+			 for(int j = 0; j< 32; j++)
+			 {
+				 game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+			 }
+		 }
+		 for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+		 {
+			 if(cur_col-i > 0) game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+			 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+			 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+			 if(cur_col-i > 0) game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+		 }
+
+		 for(int i = 0; i < 31; i++)	//pattern = 1, 3 일때 너무 오른쪽으로 가면 옆에 벽 뚫리는 현상 방지 위해
+		 {
+			 game_board[0][i] = 1;
+			 game_board[11][i] = 1;
+		 }
+		 for(int i = 0; i < 12; i++)
+		 {
+			 game_board[i][31] = 1;
+		 }
+	 }
+ }
 
 
 int main(void)

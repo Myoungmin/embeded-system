@@ -121,13 +121,13 @@ unsigned char pattern;                 // 테트리미노스의 4가지 패턴
 unsigned char cur_line;               // 테트리니노스의 현재 라인
 unsigned char cur_col;                // 테트리니노스의 현재 칸
 unsigned long int temp_line[4];          // 테트리미노스 라인 임시 저장소
-unsigned long int main_board[64] = {0};	//테르리미노스가 굳어진 후 저장된 게임보드
-unsigned long int game_board[64];	//테트리미노스가 움직이면서 변화하는 게임보드
+unsigned long int main_board[32] = {0};	//테르리미노스가 굳어진 후 저장된 게임보드
+unsigned long int game_board[32];	//테트리미노스가 움직이면서 변화하는 게임보드
 unsigned char crush = 0;	//부딪힘을 나타내는 플레그
 unsigned char new_block = 0;	//새로운 블록이 생성되야함을 나타내는 플레그
 unsigned char game_over = 0;	//게임이 종료되었음을 나타내는 플레그
 unsigned char next_block = 0;
-unsigned char next_board[8][8] = {0};
+unsigned char next_board[8] = {0};
 
  
 
@@ -143,7 +143,7 @@ unsigned char next_board[8][8] = {0};
  ISR(INT4_vect)
  {
 	 
-	 for(int i = 0; i < 64; i++)
+	 for(int i = 0; i < 32; i++)
 	 {
 		 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 	 }
@@ -184,7 +184,7 @@ unsigned char next_board[8][8] = {0};
 
  ISR(INT5_vect)
  {
-	 for(int i = 0; i < 64; i++)
+	 for(int i = 0; i < 32; i++)
 	 {
 		 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 	 }
@@ -240,7 +240,7 @@ unsigned char next_board[8][8] = {0};
 
  ISR(INT7_vect)
  {
-	 for(int i = 0; i < 64; i++)
+	 for(int i = 0; i < 32; i++)
 	 {
 		 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 	 }
@@ -288,7 +288,7 @@ unsigned char next_board[8][8] = {0};
  {
 	 if(new_block == 0)
 	 {
-		 for(int i = 0; i < 64; i++)
+		 for(int i = 0; i < 32; i++)
 		 {
 			 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 		 }
@@ -306,7 +306,7 @@ unsigned char next_board[8][8] = {0};
 			 new_block = 1;	//새로운 블록 플레그 켜짐
 		 }
 
-		 for(int i = 0; i < 64; i++)
+		 for(int i = 0; i < 32; i++)
 		 {
 			 game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 		 }
@@ -316,16 +316,6 @@ unsigned char next_board[8][8] = {0};
 		 game_board[cur_line + 2] |= temp_line[2];
 		 game_board[cur_line + 3] |= temp_line[3];
 
-		 /*for(int i = 0; i < 31; i++)	//pattern = 1, 3 일때 너무 오른쪽으로 가면 옆에 벽 뚫리는 현상 방지 위해
-		 {
-			 game_board[0][i] = 1;
-			 game_board[11][i] = 1;
-		 }
-
-		 for(int i = 0; i < 12; i++)
-		 {
-			 game_board[i][31] = 1;
-		 }*/
 	 }
  }
 
@@ -333,20 +323,64 @@ unsigned char next_board[8][8] = {0};
 
  void draw_map()
  {
-	 for(int i = 0; i < 24; i++)
+	 for(int i = 0; i < 12; i++)
 	 {
-		 for(int j = 0; j < 64; j++)
+		 for(int j = 0; j < 32; j++)
 		 {
 			 if((game_board[j] & ((unsigned long int)1<< i)) != 0)
 			 {
-				 u8g2_DrawPixel(&u8g2, 2 * j, 16 + 2 * i);
-				 u8g2_DrawPixel(&u8g2, 2 * j, 16 + 2 * i + 1);
-				 u8g2_DrawPixel(&u8g2, 2 * j + 1, 16 + 2 * i);
-				 u8g2_DrawPixel(&u8g2, 2 * j + 1, 16 + 2 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 4 * j, 16 + 4 * i);
+				 u8g2_DrawPixel(&u8g2, 4 * j, 16 + 4 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 4 * j, 16 + 4 * i + 2);
+				 u8g2_DrawPixel(&u8g2, 4 * j, 16 + 4 * i + 3);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 1, 16 + 4 * i);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 1, 16 + 4 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 1, 16 + 4 * i + 2);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 1, 16 + 4 * i + 3);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 2, 16 + 4 * i);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 2, 16 + 4 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 2, 16 + 4 * i + 2);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 2, 16 + 4 * i + 3);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 3, 16 + 4 * i);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 3, 16 + 4 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 3, 16 + 4 * i + 2);
+				 u8g2_DrawPixel(&u8g2, 4 * j + 3, 16 + 4 * i + 3);
 			 }
 		 }
 	 }
-	 u8g2_DrawPixel(&u8g2, 127, 63);
+
+	 u8g2_DrawFrame(&u8g2, 8, 0, 16, 16);
+	 u8g2_SetFont(&u8g2, u8g2_font_5x7_t_cyrillic);
+	 u8g2_SetFontDirection(&u8g2, 3);
+	 u8g2_DrawStr(&u8g2, 33, 14, "KMM");
+
+	 u8g2_DrawStr(&u8g2, 50, 14, "T");
+	 u8g2_DrawStr(&u8g2, 60, 14, "e");
+	 u8g2_DrawStr(&u8g2, 70, 14, "t");
+	 u8g2_DrawStr(&u8g2, 80, 14, "r");
+	 u8g2_DrawStr(&u8g2, 90, 14, "i");
+	 u8g2_DrawStr(&u8g2, 100, 14, "s");
+
+	 u8g2_SetFont(&u8g2, u8g2_font_unifont_t_symbols);
+	 u8g2_DrawGlyph(&u8g2, 45, 7, 0x2660);
+	 u8g2_DrawGlyph(&u8g2, 65, 7, 0x2661);
+	 u8g2_DrawGlyph(&u8g2, 85, 7, 0x2662);
+	 u8g2_DrawGlyph(&u8g2, 105, 7, 0x2663);
+	 
+
+	 for(int i = 0; i < 8; i++)
+	 {
+		 for(int j = 0; j < 8; j++)
+		 {
+			 if((next_board[j] & (1<< i)) != 0)
+			 {
+				 u8g2_DrawPixel(&u8g2, 8 + 2 * j, 2 * i);
+				 u8g2_DrawPixel(&u8g2, 8 + 2 * j, 2 * i + 1);
+				 u8g2_DrawPixel(&u8g2, 8 + 2 * j + 1, 2 * i);
+				 u8g2_DrawPixel(&u8g2, 8 + 2 * j + 1, 2 * i + 1);
+			 }
+		 }
+	 }
 	 u8g2_SendBuffer(&u8g2);
 	 u8g2_ClearBuffer(&u8g2);
  }
@@ -358,7 +392,7 @@ unsigned char next_board[8][8] = {0};
 	 next_block = TCNT0 % 7;					//다음에 올 테트리미노스 랜덤 출력
 	 pattern = 0;	//기본 회전모향 설정
 	 cur_line = 0;                 // 테트리미노스 현재 라인 (최상위 라인)
-	 cur_col = 12;                // 테트리미노스의 현재 칸
+	 cur_col = 6;                // 테트리미노스의 현재 칸
 
 
 	 for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
@@ -385,7 +419,30 @@ unsigned char next_board[8][8] = {0};
 
  }
 
- 
+ void NextTetriminos()
+	{
+		/*for(int i = 1; i < 7; i++)	//넥스트 보드 초기화
+		{
+			next_board[i] = 0b10000001;
+		}
+		next_board[0] = 0xFF;
+		next_board[7] = 0xFF;*/
+
+		for(int i = 0; i < 8; i++)	//넥스트 보드 초기화
+		{
+			next_board[i] = 0;
+		}
+
+		
+		next_board[2] |= ((tetriminos[next_block][pattern] & 0xF000) >> 10);
+		next_board[3] |= ((tetriminos[next_block][pattern] & 0x0F00) >> 6);
+		next_board[4] |= ((tetriminos[next_block][pattern] & 0x00F0) >> 2);
+		next_board[5] |= ((tetriminos[next_block][pattern] & 0x000F) << 2);
+		
+		
+		//u8g2_SendBuffer(&u8g2);
+		//u8g2_ClearBuffer(&u8g2);
+	}
 
 int main(void)
 {
@@ -426,20 +483,20 @@ int main(void)
 		game_over = 0;	//게임종료 플레그 끄기
 
 
-		for (int i = 0; i < 63; i++ ) main_board[i] = 0xF0000F;	//메인보드 초기화
-		main_board[63] = 0xFFFFFF;
+		for (int i = 0; i < 31; i++ ) main_board[i] = 0x801;	//메인보드 초기화
+		main_board[31] = 0xFFF;
 
 
 
 
 		while(game_over == 0)	//게임종료 플레그가 꺼저있을동안 반복
 		{
-			for(int i = 0; i < 63; i++)
+			for(int i = 0; i < 31; i++)
 			{
-				if(main_board[i] == 0xFFFFFF)
+				if(main_board[i] == 0xFFF)
 				//1줄이 모두 완성되어서 깨질 줄이 있는지 확인
 				{
-					main_board[i] = 0xF0000F;
+					main_board[i] = 0x801;
 					for(int k = i; k > 0; k--)
 					{
 						main_board[k] = main_board[k - 1];	//깨진 줄의 위에 줄들 아래로 이동(행렬상 열 증가)
@@ -447,12 +504,13 @@ int main(void)
 				}
 			}
 
-			for(int i = 0; i < 64; i++)
+			for(int i = 0; i < 32; i++)
 			{
 				game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 			}
 			
 			NewTetriminos();	//새로운 테트리미노스 생성
+			NextTetriminos();
 			while(new_block == 0)	//새로운 블록 프레그 꺼져있는 동안 반복
 			{
 				draw_map();	//반영된 변화하는 보드 화면으로 출력

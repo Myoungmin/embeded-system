@@ -446,6 +446,29 @@ unsigned char Collision()	//충돌 여부 확인
 }
 
 
+void tetriminos_to_temp_line()
+{
+	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		temp_line[i] = 0;
+	}
+
+	if(cur_col == 2)
+	{
+		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
+		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
+		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
+		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
+	}
+	else if(cur_col >= 3)
+	{
+		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
+		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
+		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
+	}
+}
+
 
 ISR(INT4_vect)
 {
@@ -454,51 +477,15 @@ ISR(INT4_vect)
 		game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 	}
 
-	cur_col--;
+	if(cur_col >= 3) cur_col--;
+	else cur_col = 2;
 
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	tetriminos_to_temp_line();
 	
 	if(Collision() == 1) cur_col++;
 
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
+	tetriminos_to_temp_line();
 
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
-
-	
 	game_board[cur_line] |= temp_line[0];	//현재라인 아래로 이동 후 변화하는 보드에 반영
 	game_board[cur_line + 1] |= temp_line[1];
 	game_board[cur_line + 2] |= temp_line[2];
@@ -516,48 +503,12 @@ ISR(INT5_vect)
 	pattern++;	//회전으로 상태 변화
 	if(pattern == 4) pattern = 0; //마지막에서 처음으로
 
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	tetriminos_to_temp_line();
 
 	if(Collision() == 1) pattern--;
 
 
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	tetriminos_to_temp_line();
 
 	game_board[cur_line] |= temp_line[0];	//현재라인 아래로 이동 후 변화하는 보드에 반영
 	game_board[cur_line + 1] |= temp_line[1];
@@ -567,29 +518,23 @@ ISR(INT5_vect)
 
 ISR(INT6_vect)
 {
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
+	for(int i = 0; i < 32; i++)
 	{
-		temp_line[i] = 0;
+		game_board[i] = main_board[i];	//굳어진후 저장된 보드를 변화하는 보드로 복사
 	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	
+	tetriminos_to_temp_line();
 
 	while(Collision() == 0) cur_line++;
 
 	cur_line--;
+
+	tetriminos_to_temp_line();
+
+	game_board[cur_line] |= temp_line[0];	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	game_board[cur_line + 1] |= temp_line[1];
+	game_board[cur_line + 2] |= temp_line[2];
+	game_board[cur_line + 3] |= temp_line[3];
 }
 
 ISR(INT7_vect)
@@ -601,47 +546,11 @@ ISR(INT7_vect)
 
 	cur_col++;
 
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	tetriminos_to_temp_line();
 
 	if(Collision() == 1) cur_col--;
 	
-	for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-	{
-		temp_line[i] = 0;
-	}
-
-	if(cur_col < 3)
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-	}
-	else
-	{
-		temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-		temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-		temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-		temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-	}
+	tetriminos_to_temp_line();
 
 	
 	game_board[cur_line] |= temp_line[0];	//현재라인 아래로 이동 후 변화하는 보드에 반영
@@ -813,25 +722,7 @@ void draw_map()
 		cur_line = 0;                 // 테트리미노스 현재 라인 (최상위 라인)
 		cur_col = 6;                // 테트리미노스의 현재 칸
 
-		for(int i = 0; i < 4; i++)	//테트리미노스 라인 임시 저장소 초기화
-		{
-			temp_line[i] = 0;
-		}
-
-		if(cur_col < 3)
-		{
-			temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> (15 - cur_col));
-			temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> (11 - cur_col));
-			temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> (7 - cur_col));
-			temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F) >> (3 - cur_col));
-		}
-		else
-		{
-			temp_line[0] = ((unsigned long int)(tetriminos[shape][pattern] & 0xF000) >> 12) << (cur_col - 3);	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
-			temp_line[1] = ((unsigned long int)(tetriminos[shape][pattern] & 0x0F00) >> 8) << (cur_col - 3);
-			temp_line[2] = ((unsigned long int)(tetriminos[shape][pattern] & 0x00F0) >> 4) << (cur_col - 3);
-			temp_line[3] = ((unsigned long int)(tetriminos[shape][pattern] & 0x000F)) << (cur_col - 3);
-		}
+		tetriminos_to_temp_line();
 
 		
 		game_over |= game_board[cur_line] & temp_line[0];	//게임보드에 있는 테트리미노스와 임시저장소에 생긴 테트리미노스가 겹치는지 확인하고 겹치면 게임오버 플레그 켜짐

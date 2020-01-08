@@ -1086,7 +1086,7 @@ int main(void)
 		}
 		if(screen == Menu_snake)
 		{	
-			oled_msg(0, 3, "Myoung-min's GAME");
+			oled_msg(0, 3, "Myoungmin's GAME");
 			oled_msg(3, 3, ">> SNAKE GAME");
 			oled_msg(6, 3, "   TETRIS");
 			ssd1306_set_page_start(0);
@@ -1094,7 +1094,7 @@ int main(void)
 		}
 		else if (screen == Menu_tetris)
 		{		
-			oled_msg(0, 3, "Myoung-min's GAME");
+			oled_msg(0, 3, "Myoungmin's GAME");
 			oled_msg(3, 3, "   SNAKE GAME");
 			oled_msg(6, 3, ">> TETRIS");
 			ssd1306_set_page_start(0);

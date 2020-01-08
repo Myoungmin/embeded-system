@@ -506,6 +506,7 @@ void snake_clear_map();
 
 ISR(INT4_vect)
 {
+	SendCommand01(0x0F, 0x01, 0x03);
 	if(screen == Menu_snake)
 	{
 		screen = Play_snake;
@@ -518,7 +519,7 @@ ISR(INT4_vect)
 	{
 		if(dir != LEFT)
 		{
-			SendCommand01(0x0F, 0x01, 0x03);
+			//SendCommand01(0x0F, 0x01, 0x03);
 			
 			dir = RIGHT;
 		}
@@ -555,6 +556,7 @@ ISR(INT4_vect)
 
 ISR(INT5_vect)
 {
+	SendCommand01(0x0F, 0x01, 0x03);
 	if(screen == Menu_snake)
 	{
 		screen = Menu_tetris;
@@ -567,7 +569,7 @@ ISR(INT5_vect)
 	{
 		if(dir != DOWN)
 		{
-			SendCommand01(0x0F, 0x01, 0x03);
+			//SendCommand01(0x0F, 0x01, 0x03);
 			
 			dir = UP;
 		}
@@ -599,6 +601,7 @@ ISR(INT5_vect)
 
 ISR(INT6_vect)
 {
+	SendCommand01(0x0F, 0x01, 0x03);
 	if(screen == Menu_snake)
 	{
 		screen = Menu_tetris;
@@ -611,7 +614,7 @@ ISR(INT6_vect)
 	{
 		if(dir != UP)
 		{
-			SendCommand01(0x0F, 0x01, 0x03);
+			//SendCommand01(0x0F, 0x01, 0x03);
 			
 			dir = DOWN;
 		}
@@ -640,6 +643,7 @@ ISR(INT6_vect)
 
 ISR(INT7_vect)
 {
+	SendCommand01(0x0F, 0x01, 0x03);
 	if(screen == Menu_snake)
 	{
 		screen = Play_snake;

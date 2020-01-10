@@ -4,7 +4,7 @@
 #include <string.h>
 #include <avr/eeprom.h>
 
-#define EEPROM (const uint8_t*)1 
+#define EEPROM (const uint8_t*)1
 
 #define CMD_NEXT	0x01
 #define CMD_PRE		0x02
@@ -116,6 +116,7 @@ char ch = 0;
 char state = 0;
 char password[11] ={'0', '0', '0', '0', '\0'};	//비밀번호
 char input[11];	//입력값
+char old_password[11] = {0};
 char new_password[11] = {0};	//새로운 비밀번호
 char RX = 0;	//블루투스 프로토콜 단계
 char rx_complete = 0;	//블루투스 수신이 완료 플래그
@@ -124,66 +125,42 @@ enum{close, open};	//도어락 상태
 
 
 ISR(USART1_RX_vect)	
-
+//주의할점!! 블루투스 한꺼번에 인식 못한 이유가 중간 과정 잘 가는지 확인하려고 과정별로 LCD출력 하느라 속도가 늦어져 인식을 못했다.
 {
 	unsigned char ch;	//수신저장변수
-	static char input_spot = 0;	//비밀번호 자리
+	static char old_index = 0;	//이전 비밀번호 자리
+	static char new_index = 0;	//새 비밀번호 자리
 
 	ch = UDR1; // 수신
 
 	if(RX == 0 && ch == 'C') //C를 받았을때
 	{
 		RX = 1;
-		for(int i = 0; i < 11; i++)	
+		for(int i = 0; i < 11; i++)
 		{
-			input[i] = 0;	////뒤에서 에러나서 프로토콜이 초기화 될 경우 지금까지 저장된걸 지워서 비밀번호 겹치는거 방지 
+			old_password[i] = 0;
 		}
-		Command(ALLCLR);
-		LCD_String("PW :");
-		LCD_String(password);
-		Command(LINE2);
-		LCD_String("RX = 1");	//단계 LCD에서 확인하기 위해
+		for(int i = 0; i < 11; i++)
+		{
+			new_password[i] = 0;
+		}
 	}
-			
 	else if(RX == 1)
 	{
 		if(ch == 'E')	//E를 받았을때 아직 프로토콜이 완료 안된 상태라 초기화
-		{	
-			RX = 0;	//다시 대기 단계로
-			input_spot = 0;
-			Command(ALLCLR);
-			LCD_String("PW :");
-			LCD_String(password);
-			Command(LINE2);
-			LCD_String("RX = 0");
+		{
+			rx_complete = 1;
+			RX = 0;
 		}
 		else if(ch == 'R')	//비밀번호가 맞는지 확인하는 단계
 		{
-			if(strcmp(password, input) == 0)
-			{
-				Command(ALLCLR);
-				LCD_String("PW :");
-				LCD_String(password);
-				Command(LINE2);
-				LCD_String("RX = 2");	//맞으면 입력하는 단계 갔다고 확인하기 위해
-				RX = 2;
-				input_spot = 0;
-			}
-			else	//비밀번호 틀리면 초기화
-			{
-				RX = 0;
-				input_spot = 0;
-				Command(ALLCLR);
-				LCD_String("PW :");
-				LCD_String(password);
-				Command(LINE2);
-				LCD_String("RX = 0");
-			}
+			RX = 2;
+			old_index = 0;
 		}
 		else  //명령어가 아니면 비밀번호로 간주하여 입력값에 넣는다
 		{
-			input[input_spot] = ch;
-			input_spot++;
+			old_password[old_index] = ch;
+			old_index++;
 		}
 	}
 	else if(RX == 2)	//단계 2일 경우
@@ -192,48 +169,49 @@ ISR(USART1_RX_vect)
 		{
 			rx_complete = 1;
 			RX = 0;
-			Command(ALLCLR);
-			LCD_String("PW :");
-			LCD_String(password);
-			Command(LINE2);
-			LCD_String("RX = 0");
 		}
 		else if(ch == 'R')	//R이 나올 단계 아니므로 초기화
 		{
 			RX = 0;
-			input_spot = 0;
-			Command(ALLCLR);
-			LCD_String("PW :");
-			LCD_String(password);
-			Command(LINE2);
-			LCD_String("RX = 0");
+			new_index = 0;
 		}
 		else  //명령어가 아니면 새로운 비밀번호로 간주하여 입력값에 넣는다
 		{
-			new_password[input_spot] = ch;
-			input_spot++;
+			new_password[new_index] = ch;
+			new_index++;
 		}
 	}
 
 	if(rx_complete == 1)	//블루투스 완료시 새로운 비밀번호 입력하고 eeprom에도 저장
 	{
-		for(int i = 0; i <= input_spot; i++)
+		if(strcmp(password, old_password) == 0)
 		{
-			password[i] = new_password[i];
+			for(int i = 0; i <= new_index; i++)
+			{
+				password[i] = new_password[i];
+			}
+			for(uint8_t i = 0; i < 11; i++)
+			{
+				eeprom_update_byte(EEPROM + i,password[i]);
+			}
+			Command(ALLCLR);
+			LCD_String("PW :");
+			LCD_String(password);
+			Command(LINE2);
+			new_index = 0;	//비밀번호 자리 초기화
+			rx_complete = 0;	//신호분석 플래그 지움
 		}
-		for(int i = 0; i < 11; i++)
+		else
 		{
-			new_password[i] = 0;
+			RX = 0;
+			rx_complete = 0;	//신호분석 플래그 지움
+			new_index = 0;
+			Command(ALLCLR);
+			LCD_String("PW :");
+			LCD_String(password);
+			Command(LINE2);
 		}
-		for(uint8_t i = 0; i < 11; i++)
-		{
-			eeprom_update_byte(EEPROM + i,password[i]);
-		}
-		Command(ALLCLR);
-		LCD_String("PW :");
-		LCD_String(password);
-		input_spot = 0;	//비밀번호 자리 초기화
-		rx_complete = 0;	//신호분석 플래그 지움
+
 	}
 }
 
@@ -364,7 +342,7 @@ ISR(TIMER0_OVF_vect)
 			LCD_String(password);
 			Command(LINE2);
 		}
-		else if(ch == 'N')	//취소버튼 
+		else if(ch == 'N')	//취소버튼
 		{
 			Command(ALLCLR);
 			LCD_String("PW :");

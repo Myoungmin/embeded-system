@@ -290,6 +290,7 @@ ISR(TIMER0_OVF_vect)
 		OCR1A = 2000;	//1ms 펄스, 서보모터 제어
 		if(ch == 'Y')	//확인버튼 비밀번호 확인
 		{
+			_delay_ms(200);	//이중 입력 방지를 위한 딜레이 수정하고 싶은 부분
 			Command(ALLCLR);
 			input[input_spot] = '\0';
 			if(strcmp(password, input) == 0)	//맞으면 열려있는 상태로 전환
@@ -332,6 +333,7 @@ ISR(TIMER0_OVF_vect)
 			SendCommand01(0x0F, 0x01, 0x03);	//입력될때 mp3 스위치음
 			input_spot++;	//입력자리 증가
 			ch = 0;	//입력값 초기화
+			_delay_ms(200);	//이중 입력 방지를 위한 딜레이 수정하고 싶은 부분
 		}
 	}
 
@@ -387,6 +389,7 @@ ISR(TIMER0_OVF_vect)
 			SendCommand01(0x0F, 0x01, 0x03);	//입력될때 mp3 스위치 음
 			input_spot++;	//입력자리 증가
 			ch = 0;	//입력값 초기화
+			_delay_ms(200);	//이중 입력 방지를 위한 딜레이 수정하고 싶은 부분
 		}
 	}
 	

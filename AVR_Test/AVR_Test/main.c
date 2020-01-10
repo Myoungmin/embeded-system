@@ -20,12 +20,12 @@ void UART_Init(void)
 {
 	UCSR0B = 0x18;	//수신, 송신 인에블
 	UCSR0C = 0x06;
-	UBRR0L = 0;
+	UBRR0H = 0;
 	UBRR0L = 103;
 
 	UCSR1B |= (1<<RXCIE1) | (1<<RXEN1);	//수신, 수신인터럽트 인에블
 	UCSR1C = 0x06;	//8비트 전송
-	UBRR0L = 0;
+	UBRR1H = 0;
 	UBRR1L = 103;
 }
 

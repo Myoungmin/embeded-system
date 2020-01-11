@@ -1,0 +1,741 @@
+
+Ultrasonic_Sensor_Servo_Motor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800100  00000418  000004ac  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000418  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000a  00800104  00800104  000004b0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004b0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004e0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000068  00000000  00000000  00000520  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000bf8  00000000  00000000  00000588  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000092d  00000000  00000000  00001180  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000659  00000000  00000000  00001aad  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000cc  00000000  00000000  00002108  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004cb  00000000  00000000  000021d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000002a2  00000000  00000000  0000269f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  00002941  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	60 c0       	rjmp	.+192    	; 0xc6 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	5e c0       	rjmp	.+188    	; 0xc6 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	5c c0       	rjmp	.+184    	; 0xc6 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	5a c0       	rjmp	.+180    	; 0xc6 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	58 c0       	rjmp	.+176    	; 0xc6 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	56 c0       	rjmp	.+172    	; 0xc6 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	55 c0       	rjmp	.+170    	; 0xc8 <__vector_7>
+  1e:	00 00       	nop
+  20:	52 c0       	rjmp	.+164    	; 0xc6 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	50 c0       	rjmp	.+160    	; 0xc6 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	4e c0       	rjmp	.+156    	; 0xc6 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	4c c0       	rjmp	.+152    	; 0xc6 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	4a c0       	rjmp	.+148    	; 0xc6 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	48 c0       	rjmp	.+144    	; 0xc6 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	46 c0       	rjmp	.+140    	; 0xc6 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	44 c0       	rjmp	.+136    	; 0xc6 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	73 c0       	rjmp	.+230    	; 0x128 <__vector_16>
+  42:	00 00       	nop
+  44:	40 c0       	rjmp	.+128    	; 0xc6 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	3e c0       	rjmp	.+124    	; 0xc6 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	3c c0       	rjmp	.+120    	; 0xc6 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	3a c0       	rjmp	.+116    	; 0xc6 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	38 c0       	rjmp	.+112    	; 0xc6 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	36 c0       	rjmp	.+108    	; 0xc6 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	34 c0       	rjmp	.+104    	; 0xc6 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	32 c0       	rjmp	.+100    	; 0xc6 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	30 c0       	rjmp	.+96     	; 0xc6 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	2e c0       	rjmp	.+92     	; 0xc6 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	2c c0       	rjmp	.+88     	; 0xc6 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	2a c0       	rjmp	.+84     	; 0xc6 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	28 c0       	rjmp	.+80     	; 0xc6 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	26 c0       	rjmp	.+76     	; 0xc6 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	24 c0       	rjmp	.+72     	; 0xc6 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	22 c0       	rjmp	.+68     	; 0xc6 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	20 c0       	rjmp	.+64     	; 0xc6 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	1e c0       	rjmp	.+60     	; 0xc6 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	e8 e1       	ldi	r30, 0x18	; 24
+  a0:	f4 e0       	ldi	r31, 0x04	; 4
+  a2:	00 e0       	ldi	r16, 0x00	; 0
+  a4:	0b bf       	out	0x3b, r16	; 59
+  a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+  a8:	07 90       	elpm	r0, Z+
+  aa:	0d 92       	st	X+, r0
+  ac:	a4 30       	cpi	r26, 0x04	; 4
+  ae:	b1 07       	cpc	r27, r17
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+
+000000b2 <__do_clear_bss>:
+  b2:	21 e0       	ldi	r18, 0x01	; 1
+  b4:	a4 e0       	ldi	r26, 0x04	; 4
+  b6:	b1 e0       	ldi	r27, 0x01	; 1
+  b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
+
+000000ba <.do_clear_bss_loop>:
+  ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+  bc:	ae 30       	cpi	r26, 0x0E	; 14
+  be:	b2 07       	cpc	r27, r18
+  c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+  c2:	fd d0       	rcall	.+506    	; 0x2be <main>
+  c4:	a7 c1       	rjmp	.+846    	; 0x414 <_exit>
+
+000000c6 <__bad_interrupt>:
+  c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
+
+000000c8 <__vector_7>:
+unsigned char number = 0;	//상승 하강 에지 플레그
+unsigned char angle[4] = {0xFF, 0xFF, 0xFF, 0xFF};	//세그먼트 표시 초기화
+unsigned long int width;	//펄스폭, 서보모터 위치 결정
+
+ISR(INT6_vect)	//
+{
+  c8:	1f 92       	push	r1
+  ca:	0f 92       	push	r0
+  cc:	0f b6       	in	r0, 0x3f	; 63
+  ce:	0f 92       	push	r0
+  d0:	11 24       	eor	r1, r1
+  d2:	8f 93       	push	r24
+  d4:	9f 93       	push	r25
+	if(number == 0)	//초음파 센서 출력 상승 에지
+  d6:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <__data_end>
+  da:	81 11       	cpse	r24, r1
+  dc:	15 c0       	rjmp	.+42     	; 0x108 <__vector_7+0x40>
+	{
+		timer = 0;	//시간 초기화
+  de:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <timer>
+  e2:	10 92 07 01 	sts	0x0107, r1	; 0x800107 <timer+0x1>
+  e6:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <timer+0x2>
+  ea:	10 92 09 01 	sts	0x0109, r1	; 0x800109 <timer+0x3>
+		TIMSK = 0x01;	//오버플로우 인터럽트 인에블
+  ee:	81 e0       	ldi	r24, 0x01	; 1
+  f0:	87 bf       	out	0x37, r24	; 55
+		TCCR0 = 0b00000010;	//일반모드, 8분주
+  f2:	92 e0       	ldi	r25, 0x02	; 2
+  f4:	93 bf       	out	0x33, r25	; 51
+		TCNT0 = TC0;	//TCNT0 초기값(8분주와 16MHz일때 58us 주기 생성)
+  f6:	9b e8       	ldi	r25, 0x8B	; 139
+  f8:	92 bf       	out	0x32, r25	; 50
+		EICRB = (2 << ISC60);	//INT6 하강에지 설정
+  fa:	90 e2       	ldi	r25, 0x20	; 32
+  fc:	9a bf       	out	0x3a, r25	; 58
+		EIMSK = (1 << INT6);	//INT6 인에블
+  fe:	90 e4       	ldi	r25, 0x40	; 64
+ 100:	99 bf       	out	0x39, r25	; 57
+		number = 1;	//플레그 토글
+ 102:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <__data_end>
+ 106:	09 c0       	rjmp	.+18     	; 0x11a <__vector_7+0x52>
+	}
+	
+	else if(number == 1)	//초음파 센서 출력 하강 에지
+ 108:	81 30       	cpi	r24, 0x01	; 1
+ 10a:	39 f4       	brne	.+14     	; 0x11a <__vector_7+0x52>
+	{
+		TIMSK = 0x00;	//오버플로우 타임 인터럽트 디스에이블
+ 10c:	17 be       	out	0x37, r1	; 55
+		
+		EICRB = (3 << ISC60);	//IINT6 상승에지 설정
+ 10e:	80 e3       	ldi	r24, 0x30	; 48
+ 110:	8a bf       	out	0x3a, r24	; 58
+		EIMSK = (1 << INT6);	//INT6 켜기
+ 112:	80 e4       	ldi	r24, 0x40	; 64
+ 114:	89 bf       	out	0x39, r24	; 57
+		number = 0;	//플레그 토글
+ 116:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <__data_end>
+	}
+}
+ 11a:	9f 91       	pop	r25
+ 11c:	8f 91       	pop	r24
+ 11e:	0f 90       	pop	r0
+ 120:	0f be       	out	0x3f, r0	; 63
+ 122:	0f 90       	pop	r0
+ 124:	1f 90       	pop	r1
+ 126:	18 95       	reti
+
+00000128 <__vector_16>:
+
+ISR(TIMER0_OVF_vect)	//오버플로우 타임 인터럽트
+{
+ 128:	1f 92       	push	r1
+ 12a:	0f 92       	push	r0
+ 12c:	0f b6       	in	r0, 0x3f	; 63
+ 12e:	0f 92       	push	r0
+ 130:	11 24       	eor	r1, r1
+ 132:	8f 93       	push	r24
+ 134:	9f 93       	push	r25
+ 136:	af 93       	push	r26
+ 138:	bf 93       	push	r27
+	TCNT0 = TC0;	//0이 아닐 경우 반드시 써줘야 한다.
+ 13a:	8b e8       	ldi	r24, 0x8B	; 139
+ 13c:	82 bf       	out	0x32, r24	; 50
+	timer++;	//클락당 1증가(1cm 이동거리 시간과 동일)
+ 13e:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <timer>
+ 142:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <timer+0x1>
+ 146:	a0 91 08 01 	lds	r26, 0x0108	; 0x800108 <timer+0x2>
+ 14a:	b0 91 09 01 	lds	r27, 0x0109	; 0x800109 <timer+0x3>
+ 14e:	01 96       	adiw	r24, 0x01	; 1
+ 150:	a1 1d       	adc	r26, r1
+ 152:	b1 1d       	adc	r27, r1
+ 154:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <timer>
+ 158:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <timer+0x1>
+ 15c:	a0 93 08 01 	sts	0x0108, r26	; 0x800108 <timer+0x2>
+ 160:	b0 93 09 01 	sts	0x0109, r27	; 0x800109 <timer+0x3>
+}
+ 164:	bf 91       	pop	r27
+ 166:	af 91       	pop	r26
+ 168:	9f 91       	pop	r25
+ 16a:	8f 91       	pop	r24
+ 16c:	0f 90       	pop	r0
+ 16e:	0f be       	out	0x3f, r0	; 63
+ 170:	0f 90       	pop	r0
+ 172:	1f 90       	pop	r1
+ 174:	18 95       	reti
+
+00000176 <distance>:
+}
+
+
+void distance()	//특정 지점에서 거리 세그먼트 출력값으로 바꿔주는 함수
+{
+	if(width == 710)
+ 176:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <width>
+ 17a:	90 91 0b 01 	lds	r25, 0x010B	; 0x80010b <width+0x1>
+ 17e:	a0 91 0c 01 	lds	r26, 0x010C	; 0x80010c <width+0x2>
+ 182:	b0 91 0d 01 	lds	r27, 0x010D	; 0x80010d <width+0x3>
+ 186:	86 3c       	cpi	r24, 0xC6	; 198
+ 188:	22 e0       	ldi	r18, 0x02	; 2
+ 18a:	92 07       	cpc	r25, r18
+ 18c:	a1 05       	cpc	r26, r1
+ 18e:	b1 05       	cpc	r27, r1
+ 190:	b1 f4       	brne	.+44     	; 0x1be <distance+0x48>
+	{
+		if(dist <= 10)	angle[3] = 0b11110111;
+ 192:	20 91 05 01 	lds	r18, 0x0105	; 0x800105 <dist>
+ 196:	2b 30       	cpi	r18, 0x0B	; 11
+ 198:	20 f4       	brcc	.+8      	; 0x1a2 <distance+0x2c>
+ 19a:	27 ef       	ldi	r18, 0xF7	; 247
+ 19c:	20 93 03 01 	sts	0x0103, r18	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
+ 1a0:	46 c0       	rjmp	.+140    	; 0x22e <distance+0xb8>
+		else if(dist > 10 && dist <= 100) angle[3] = 0b10111111;
+ 1a2:	35 ef       	ldi	r19, 0xF5	; 245
+ 1a4:	32 0f       	add	r19, r18
+ 1a6:	3a 35       	cpi	r19, 0x5A	; 90
+ 1a8:	20 f4       	brcc	.+8      	; 0x1b2 <distance+0x3c>
+ 1aa:	2f eb       	ldi	r18, 0xBF	; 191
+ 1ac:	20 93 03 01 	sts	0x0103, r18	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
+ 1b0:	3e c0       	rjmp	.+124    	; 0x22e <distance+0xb8>
+		else if(dist > 100)	angle[3] = 0b11111110;
+ 1b2:	25 36       	cpi	r18, 0x65	; 101
+ 1b4:	e0 f1       	brcs	.+120    	; 0x22e <distance+0xb8>
+ 1b6:	2e ef       	ldi	r18, 0xFE	; 254
+ 1b8:	20 93 03 01 	sts	0x0103, r18	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
+ 1bc:	38 c0       	rjmp	.+112    	; 0x22e <distance+0xb8>
+	}
+	if(width == 1250)
+ 1be:	82 3e       	cpi	r24, 0xE2	; 226
+ 1c0:	24 e0       	ldi	r18, 0x04	; 4
+ 1c2:	92 07       	cpc	r25, r18
+ 1c4:	a1 05       	cpc	r26, r1
+ 1c6:	b1 05       	cpc	r27, r1
+ 1c8:	b1 f4       	brne	.+44     	; 0x1f6 <distance+0x80>
+	{
+		if(dist <= 10)	angle[2] = 0b11110111;
+ 1ca:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dist>
+ 1ce:	8b 30       	cpi	r24, 0x0B	; 11
+ 1d0:	20 f4       	brcc	.+8      	; 0x1da <distance+0x64>
+ 1d2:	87 ef       	ldi	r24, 0xF7	; 247
+ 1d4:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 1d8:	08 95       	ret
+		else if(dist > 10 && dist <= 100) angle[2] = 0b10111111;
+ 1da:	95 ef       	ldi	r25, 0xF5	; 245
+ 1dc:	98 0f       	add	r25, r24
+ 1de:	9a 35       	cpi	r25, 0x5A	; 90
+ 1e0:	20 f4       	brcc	.+8      	; 0x1ea <distance+0x74>
+ 1e2:	8f eb       	ldi	r24, 0xBF	; 191
+ 1e4:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 1e8:	08 95       	ret
+		else if(dist > 100)	angle[2] = 0b11111110;
+ 1ea:	85 36       	cpi	r24, 0x65	; 101
+ 1ec:	d0 f1       	brcs	.+116    	; 0x262 <distance+0xec>
+ 1ee:	8e ef       	ldi	r24, 0xFE	; 254
+ 1f0:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 1f4:	08 95       	ret
+	}
+	if(width == 1750)
+ 1f6:	86 3d       	cpi	r24, 0xD6	; 214
+ 1f8:	26 e0       	ldi	r18, 0x06	; 6
+ 1fa:	92 07       	cpc	r25, r18
+ 1fc:	a1 05       	cpc	r26, r1
+ 1fe:	b1 05       	cpc	r27, r1
+ 200:	b1 f4       	brne	.+44     	; 0x22e <distance+0xb8>
+	{
+		if(dist <= 10)	angle[1] = 0b11110111;
+ 202:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dist>
+ 206:	8b 30       	cpi	r24, 0x0B	; 11
+ 208:	20 f4       	brcc	.+8      	; 0x212 <distance+0x9c>
+ 20a:	87 ef       	ldi	r24, 0xF7	; 247
+ 20c:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 210:	08 95       	ret
+		else if(dist > 10 && dist <= 100) angle[1] = 0b10111111;
+ 212:	95 ef       	ldi	r25, 0xF5	; 245
+ 214:	98 0f       	add	r25, r24
+ 216:	9a 35       	cpi	r25, 0x5A	; 90
+ 218:	20 f4       	brcc	.+8      	; 0x222 <distance+0xac>
+ 21a:	8f eb       	ldi	r24, 0xBF	; 191
+ 21c:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 220:	08 95       	ret
+		else if(dist > 100)	angle[1] = 0b11111110;
+ 222:	85 36       	cpi	r24, 0x65	; 101
+ 224:	f0 f0       	brcs	.+60     	; 0x262 <distance+0xec>
+ 226:	8e ef       	ldi	r24, 0xFE	; 254
+ 228:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 22c:	08 95       	ret
+	}
+	if(width == 2290)
+ 22e:	82 3f       	cpi	r24, 0xF2	; 242
+ 230:	98 40       	sbci	r25, 0x08	; 8
+ 232:	a1 05       	cpc	r26, r1
+ 234:	b1 05       	cpc	r27, r1
+ 236:	a9 f4       	brne	.+42     	; 0x262 <distance+0xec>
+	{
+		if(dist <= 10)	angle[0] = 0b11110111;
+ 238:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <dist>
+ 23c:	8b 30       	cpi	r24, 0x0B	; 11
+ 23e:	20 f4       	brcc	.+8      	; 0x248 <distance+0xd2>
+ 240:	87 ef       	ldi	r24, 0xF7	; 247
+ 242:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 246:	08 95       	ret
+		else if(dist > 10 && dist <= 100) angle[0] = 0b10111111;
+ 248:	95 ef       	ldi	r25, 0xF5	; 245
+ 24a:	98 0f       	add	r25, r24
+ 24c:	9a 35       	cpi	r25, 0x5A	; 90
+ 24e:	20 f4       	brcc	.+8      	; 0x258 <distance+0xe2>
+ 250:	8f eb       	ldi	r24, 0xBF	; 191
+ 252:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 256:	08 95       	ret
+		else if(dist > 100)	angle[0] = 0b11111110;
+ 258:	85 36       	cpi	r24, 0x65	; 101
+ 25a:	18 f0       	brcs	.+6      	; 0x262 <distance+0xec>
+ 25c:	8e ef       	ldi	r24, 0xFE	; 254
+ 25e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 262:	08 95       	ret
+
+00000264 <display>:
+
+
+void display()	//세그먼트 출력 함수
+{
+	
+	PORTG = 0b00000001;
+ 264:	a5 e6       	ldi	r26, 0x65	; 101
+ 266:	b0 e0       	ldi	r27, 0x00	; 0
+ 268:	81 e0       	ldi	r24, 0x01	; 1
+ 26a:	8c 93       	st	X, r24
+	PORTD = angle[3];
+ 26c:	e0 e0       	ldi	r30, 0x00	; 0
+ 26e:	f1 e0       	ldi	r31, 0x01	; 1
+ 270:	83 81       	ldd	r24, Z+3	; 0x03
+ 272:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 274:	8f e1       	ldi	r24, 0x1F	; 31
+ 276:	9e e4       	ldi	r25, 0x4E	; 78
+ 278:	01 97       	sbiw	r24, 0x01	; 1
+ 27a:	f1 f7       	brne	.-4      	; 0x278 <display+0x14>
+ 27c:	00 c0       	rjmp	.+0      	; 0x27e <display+0x1a>
+ 27e:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000010;
+ 280:	82 e0       	ldi	r24, 0x02	; 2
+ 282:	8c 93       	st	X, r24
+	PORTD = angle[2];
+ 284:	82 81       	ldd	r24, Z+2	; 0x02
+ 286:	82 bb       	out	0x12, r24	; 18
+ 288:	8f e1       	ldi	r24, 0x1F	; 31
+ 28a:	9e e4       	ldi	r25, 0x4E	; 78
+ 28c:	01 97       	sbiw	r24, 0x01	; 1
+ 28e:	f1 f7       	brne	.-4      	; 0x28c <display+0x28>
+ 290:	00 c0       	rjmp	.+0      	; 0x292 <display+0x2e>
+ 292:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000100;
+ 294:	84 e0       	ldi	r24, 0x04	; 4
+ 296:	8c 93       	st	X, r24
+	PORTD = angle[1];
+ 298:	81 81       	ldd	r24, Z+1	; 0x01
+ 29a:	82 bb       	out	0x12, r24	; 18
+ 29c:	8f e1       	ldi	r24, 0x1F	; 31
+ 29e:	9e e4       	ldi	r25, 0x4E	; 78
+ 2a0:	01 97       	sbiw	r24, 0x01	; 1
+ 2a2:	f1 f7       	brne	.-4      	; 0x2a0 <display+0x3c>
+ 2a4:	00 c0       	rjmp	.+0      	; 0x2a6 <display+0x42>
+ 2a6:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00001000;
+ 2a8:	88 e0       	ldi	r24, 0x08	; 8
+ 2aa:	8c 93       	st	X, r24
+	PORTD = angle[0];
+ 2ac:	80 81       	ld	r24, Z
+ 2ae:	82 bb       	out	0x12, r24	; 18
+ 2b0:	8f e1       	ldi	r24, 0x1F	; 31
+ 2b2:	9e e4       	ldi	r25, 0x4E	; 78
+ 2b4:	01 97       	sbiw	r24, 0x01	; 1
+ 2b6:	f1 f7       	brne	.-4      	; 0x2b4 <display+0x50>
+ 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <display+0x56>
+ 2ba:	00 00       	nop
+ 2bc:	08 95       	ret
+
+000002be <main>:
+void distance();
+void display();
+
+int main(void)
+{ 
+	RCServoInit(10000);
+ 2be:	80 e1       	ldi	r24, 0x10	; 16
+ 2c0:	97 e2       	ldi	r25, 0x27	; 39
+ 2c2:	92 d0       	rcall	.+292    	; 0x3e8 <RCServoInit>
+	   
+	while (1) 
+    {
+		DDRD = 0xFF;	//세그먼트 표현부분 출력
+ 2c4:	66 24       	eor	r6, r6
+ 2c6:	6a 94       	dec	r6
+		DDRG = 0xFF;	//세가먼트 전원부분 출력
+ 2c8:	0f 2e       	mov	r0, r31
+ 2ca:	f4 e6       	ldi	r31, 0x64	; 100
+ 2cc:	af 2e       	mov	r10, r31
+ 2ce:	b1 2c       	mov	r11, r1
+ 2d0:	f0 2d       	mov	r31, r0
+		DDRE = 0x0F; //초음파 센서 입, 출력 연결 부분 입력
+ 2d2:	0f 2e       	mov	r0, r31
+ 2d4:	ff e0       	ldi	r31, 0x0F	; 15
+ 2d6:	3f 2e       	mov	r3, r31
+ 2d8:	f0 2d       	mov	r31, r0
+
+
+		EICRB = (3 << ISC60); //INT 6 상승에지 설정
+ 2da:	0f 2e       	mov	r0, r31
+ 2dc:	f0 e3       	ldi	r31, 0x30	; 48
+ 2de:	4f 2e       	mov	r4, r31
+ 2e0:	f0 2d       	mov	r31, r0
+		EIMSK = (1 << INT6);	//INT 6 켜기
+ 2e2:	68 94       	set
+ 2e4:	55 24       	eor	r5, r5
+ 2e6:	56 f8       	bld	r5, 6
+		TIMSK |= 0b00000100;	//
+		sei();	//인터럽트 인에이블
+
+
+
+		for(width = 700 ; width < 2300 ; width += 10) //최소 최대 사이에서 펄스폭 10씩 증가
+ 2e8:	0f 2e       	mov	r0, r31
+ 2ea:	fc eb       	ldi	r31, 0xBC	; 188
+ 2ec:	7f 2e       	mov	r7, r31
+ 2ee:	f0 2d       	mov	r31, r0
+ 2f0:	68 94       	set
+ 2f2:	88 24       	eor	r8, r8
+ 2f4:	81 f8       	bld	r8, 1
+ 2f6:	91 2c       	mov	r9, r1
+ 2f8:	c1 2c       	mov	r12, r1
+		{
+			RCServoSetOnWidth(width);	//모터 위치 설정
+			
+
+			//초음파센서에 입력신호 출력해준다
+			PORTE = 0x08;	//입력 트리거 상승 에지
+ 2fa:	18 e0       	ldi	r17, 0x08	; 8
+			_delay_us(10);
+			PORTE = 0x00;	//입력 트리거 하강 에지
+
+			dist = timer / ((10000 / 170) / ((256 - TC0) / 2));	//거리계산 cm 단위
+ 2fc:	c6 e0       	ldi	r28, 0x06	; 6
+ 2fe:	d1 e0       	ldi	r29, 0x01	; 1
+
+			distance();
+			display();
+		}
+
+		for(width = 2300 ; width > 700 ; width -= 10)	//최소 최대 사이에서 펄스폭 10씩 감소
+ 300:	0f 2e       	mov	r0, r31
+ 302:	fc ef       	ldi	r31, 0xFC	; 252
+ 304:	df 2e       	mov	r13, r31
+ 306:	f0 2d       	mov	r31, r0
+ 308:	68 94       	set
+ 30a:	ee 24       	eor	r14, r14
+ 30c:	e3 f8       	bld	r14, 3
+ 30e:	f1 2c       	mov	r15, r1
+ 310:	00 e0       	ldi	r16, 0x00	; 0
+{ 
+	RCServoInit(10000);
+	   
+	while (1) 
+    {
+		DDRD = 0xFF;	//세그먼트 표현부분 출력
+ 312:	61 ba       	out	0x11, r6	; 17
+		DDRG = 0xFF;	//세가먼트 전원부분 출력
+ 314:	f5 01       	movw	r30, r10
+ 316:	60 82       	st	Z, r6
+		DDRE = 0x0F; //초음파 센서 입, 출력 연결 부분 입력
+ 318:	32 b8       	out	0x02, r3	; 2
+
+
+		EICRB = (3 << ISC60); //INT 6 상승에지 설정
+ 31a:	4a be       	out	0x3a, r4	; 58
+		EIMSK = (1 << INT6);	//INT 6 켜기
+ 31c:	59 be       	out	0x39, r5	; 57
+		TIMSK |= 0b00000100;	//
+ 31e:	87 b7       	in	r24, 0x37	; 55
+ 320:	84 60       	ori	r24, 0x04	; 4
+ 322:	87 bf       	out	0x37, r24	; 55
+		sei();	//인터럽트 인에이블
+ 324:	78 94       	sei
+
+
+
+		for(width = 700 ; width < 2300 ; width += 10) //최소 최대 사이에서 펄스폭 10씩 증가
+ 326:	70 92 0a 01 	sts	0x010A, r7	; 0x80010a <width>
+ 32a:	80 92 0b 01 	sts	0x010B, r8	; 0x80010b <width+0x1>
+ 32e:	90 92 0c 01 	sts	0x010C, r9	; 0x80010c <width+0x2>
+ 332:	c0 92 0d 01 	sts	0x010D, r12	; 0x80010d <width+0x3>
+ 336:	87 2d       	mov	r24, r7
+		{
+			RCServoSetOnWidth(width);	//모터 위치 설정
+ 338:	98 2d       	mov	r25, r8
+ 33a:	67 d0       	rcall	.+206    	; 0x40a <RCServoSetOnWidth>
+			
+
+			//초음파센서에 입력신호 출력해준다
+			PORTE = 0x08;	//입력 트리거 상승 에지
+ 33c:	13 b9       	out	0x03, r17	; 3
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 33e:	f5 e3       	ldi	r31, 0x35	; 53
+ 340:	fa 95       	dec	r31
+ 342:	f1 f7       	brne	.-4      	; 0x340 <main+0x82>
+ 344:	00 00       	nop
+			_delay_us(10);
+			PORTE = 0x00;	//입력 트리거 하강 에지
+ 346:	13 b8       	out	0x03, r1	; 3
+
+			dist = timer / ((10000 / 170) / ((256 - TC0) / 2));	//거리계산 cm 단위
+ 348:	88 81       	ld	r24, Y
+ 34a:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <dist>
+
+			distance();
+ 34e:	13 df       	rcall	.-474    	; 0x176 <distance>
+			display();
+ 350:	89 df       	rcall	.-238    	; 0x264 <display>
+ 352:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <width>
+		TIMSK |= 0b00000100;	//
+		sei();	//인터럽트 인에이블
+
+
+
+		for(width = 700 ; width < 2300 ; width += 10) //최소 최대 사이에서 펄스폭 10씩 증가
+ 356:	90 91 0b 01 	lds	r25, 0x010B	; 0x80010b <width+0x1>
+ 35a:	a0 91 0c 01 	lds	r26, 0x010C	; 0x80010c <width+0x2>
+ 35e:	b0 91 0d 01 	lds	r27, 0x010D	; 0x80010d <width+0x3>
+ 362:	0a 96       	adiw	r24, 0x0a	; 10
+ 364:	a1 1d       	adc	r26, r1
+ 366:	b1 1d       	adc	r27, r1
+ 368:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <width>
+ 36c:	90 93 0b 01 	sts	0x010B, r25	; 0x80010b <width+0x1>
+ 370:	a0 93 0c 01 	sts	0x010C, r26	; 0x80010c <width+0x2>
+ 374:	b0 93 0d 01 	sts	0x010D, r27	; 0x80010d <width+0x3>
+ 378:	8c 3f       	cpi	r24, 0xFC	; 252
+ 37a:	28 e0       	ldi	r18, 0x08	; 8
+ 37c:	92 07       	cpc	r25, r18
+ 37e:	a1 05       	cpc	r26, r1
+ 380:	b1 05       	cpc	r27, r1
+ 382:	d8 f2       	brcs	.-74     	; 0x33a <main+0x7c>
+ 384:	26 c0       	rjmp	.+76     	; 0x3d2 <main+0x114>
+			display();
+		}
+
+		for(width = 2300 ; width > 700 ; width -= 10)	//최소 최대 사이에서 펄스폭 10씩 감소
+		{
+			RCServoSetOnWidth(width);
+ 386:	41 d0       	rcall	.+130    	; 0x40a <RCServoSetOnWidth>
+ 388:	13 b9       	out	0x03, r17	; 3
+			
+			PORTE = 0x08;	//입력 트리거 상승 에지
+ 38a:	85 e3       	ldi	r24, 0x35	; 53
+ 38c:	8a 95       	dec	r24
+ 38e:	f1 f7       	brne	.-4      	; 0x38c <main+0xce>
+ 390:	00 00       	nop
+			_delay_us(10);
+			PORTE = 0x00;	//입력 트리거 하강 에지
+
+			dist = timer / ((10000 / 170) / ((256 - TC0) / 2));
+ 392:	13 b8       	out	0x03, r1	; 3
+ 394:	88 81       	ld	r24, Y
+ 396:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <dist>
+
+			distance();
+ 39a:	ed de       	rcall	.-550    	; 0x176 <distance>
+			display();
+ 39c:	63 df       	rcall	.-314    	; 0x264 <display>
+ 39e:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <width>
+
+			distance();
+			display();
+		}
+
+		for(width = 2300 ; width > 700 ; width -= 10)	//최소 최대 사이에서 펄스폭 10씩 감소
+ 3a2:	90 91 0b 01 	lds	r25, 0x010B	; 0x80010b <width+0x1>
+ 3a6:	a0 91 0c 01 	lds	r26, 0x010C	; 0x80010c <width+0x2>
+ 3aa:	b0 91 0d 01 	lds	r27, 0x010D	; 0x80010d <width+0x3>
+ 3ae:	0a 97       	sbiw	r24, 0x0a	; 10
+ 3b0:	a1 09       	sbc	r26, r1
+ 3b2:	b1 09       	sbc	r27, r1
+ 3b4:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <width>
+ 3b8:	90 93 0b 01 	sts	0x010B, r25	; 0x80010b <width+0x1>
+ 3bc:	a0 93 0c 01 	sts	0x010C, r26	; 0x80010c <width+0x2>
+ 3c0:	b0 93 0d 01 	sts	0x010D, r27	; 0x80010d <width+0x3>
+ 3c4:	8d 3b       	cpi	r24, 0xBD	; 189
+ 3c6:	e2 e0       	ldi	r30, 0x02	; 2
+ 3c8:	9e 07       	cpc	r25, r30
+ 3ca:	a1 05       	cpc	r26, r1
+ 3cc:	b1 05       	cpc	r27, r1
+ 3ce:	d8 f6       	brcc	.-74     	; 0x386 <main+0xc8>
+ 3d0:	a0 cf       	rjmp	.-192    	; 0x312 <main+0x54>
+ 3d2:	d0 92 0a 01 	sts	0x010A, r13	; 0x80010a <width>
+ 3d6:	e0 92 0b 01 	sts	0x010B, r14	; 0x80010b <width+0x1>
+ 3da:	f0 92 0c 01 	sts	0x010C, r15	; 0x80010c <width+0x2>
+ 3de:	00 93 0d 01 	sts	0x010D, r16	; 0x80010d <width+0x3>
+ 3e2:	8d 2d       	mov	r24, r13
+ 3e4:	9e 2d       	mov	r25, r14
+ 3e6:	cf cf       	rjmp	.-98     	; 0x386 <main+0xc8>
+
+000003e8 <RCServoInit>:
+
+void RCServoInit(unsigned short period)
+{
+	unsigned short oncount;
+
+	DDRB |= (1<<PORTB5);// OC1A 출력설정
+ 3e8:	bd 9a       	sbi	0x17, 5	; 23
+	//타이머카운터 1 설정 
+	TCCR1A = 0xAA;// Fast PWM 모드, OC1A/B/C 
+ 3ea:	2a ea       	ldi	r18, 0xAA	; 170
+ 3ec:	2f bd       	out	0x2f, r18	; 47
+	
+	// 비교 출력 모드 2 사용 
+	TCCR1B = 0x18;// WGM13:0 = 14 (ICR1로 TOP 설정)
+ 3ee:	28 e1       	ldi	r18, 0x18	; 24
+ 3f0:	2e bd       	out	0x2e, r18	; 46
+	
+	// Fast PWM의 TOP은 ICR1으로 설정 
+	// TOP은 PWM의 주기로부터 설정
+	
+	ICR1 = period * 2;//주기 period usec
+ 3f2:	88 0f       	add	r24, r24
+ 3f4:	99 1f       	adc	r25, r25
+ 3f6:	97 bd       	out	0x27, r25	; 39
+ 3f8:	86 bd       	out	0x26, r24	; 38
+	
+	//초기 펄스폭 중립 
+	oncount = NEUTRAL_WIDTH * 2;
+
+	OCR1A = oncount;
+ 3fa:	88 eb       	ldi	r24, 0xB8	; 184
+ 3fc:	9b e0       	ldi	r25, 0x0B	; 11
+ 3fe:	9b bd       	out	0x2b, r25	; 43
+ 400:	8a bd       	out	0x2a, r24	; 42
+
+	TCCR1B |= (2<<CS10);// 분주비 8로 타이머 시작
+ 402:	8e b5       	in	r24, 0x2e	; 46
+ 404:	82 60       	ori	r24, 0x02	; 2
+ 406:	8e bd       	out	0x2e, r24	; 46
+ 408:	08 95       	ret
+
+0000040a <RCServoSetOnWidth>:
+//////////////////////////////////////////////////////////////////////////
+
+
+void RCServoSetOnWidth(unsigned short onWidth)
+{
+	OCR1A = onWidth * 2;// RC servo #0
+ 40a:	88 0f       	add	r24, r24
+ 40c:	99 1f       	adc	r25, r25
+ 40e:	9b bd       	out	0x2b, r25	; 43
+ 410:	8a bd       	out	0x2a, r24	; 42
+ 412:	08 95       	ret
+
+00000414 <_exit>:
+ 414:	f8 94       	cli
+
+00000416 <__stop_program>:
+ 416:	ff cf       	rjmp	.-2      	; 0x416 <__stop_program>

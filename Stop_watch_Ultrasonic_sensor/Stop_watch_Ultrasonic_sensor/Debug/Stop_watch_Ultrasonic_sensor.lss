@@ -1,0 +1,1098 @@
+
+Stop_watch_Ultrasonic_sensor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  000006ea  0000077e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000006ea  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000028  0080010a  0080010a  00000788  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000788  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000007b8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000058  00000000  00000000  000007f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000d92  00000000  00000000  00000850  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000008f1  00000000  00000000  000015e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000006e4  00000000  00000000  00001ed3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000011c  00000000  00000000  000025b8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004d0  00000000  00000000  000026d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000559  00000000  00000000  00002ba4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  000030fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	60 c0       	rjmp	.+192    	; 0xc6 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	5e c0       	rjmp	.+188    	; 0xc6 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	5c c0       	rjmp	.+184    	; 0xc6 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	5a c0       	rjmp	.+180    	; 0xc6 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	59 c0       	rjmp	.+178    	; 0xc8 <__vector_5>
+  16:	00 00       	nop
+  18:	9d c0       	rjmp	.+314    	; 0x154 <__vector_6>
+  1a:	00 00       	nop
+  1c:	03 c1       	rjmp	.+518    	; 0x224 <__vector_7>
+  1e:	00 00       	nop
+  20:	33 c1       	rjmp	.+614    	; 0x288 <__vector_8>
+  22:	00 00       	nop
+  24:	50 c0       	rjmp	.+160    	; 0xc6 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	4e c0       	rjmp	.+156    	; 0xc6 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	4c c0       	rjmp	.+152    	; 0xc6 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	4a c0       	rjmp	.+148    	; 0xc6 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	48 c0       	rjmp	.+144    	; 0xc6 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	46 c0       	rjmp	.+140    	; 0xc6 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	44 c0       	rjmp	.+136    	; 0xc6 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	61 c1       	rjmp	.+706    	; 0x304 <__vector_16>
+  42:	00 00       	nop
+  44:	40 c0       	rjmp	.+128    	; 0xc6 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	3e c0       	rjmp	.+124    	; 0xc6 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	3c c0       	rjmp	.+120    	; 0xc6 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	3a c0       	rjmp	.+116    	; 0xc6 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	38 c0       	rjmp	.+112    	; 0xc6 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	36 c0       	rjmp	.+108    	; 0xc6 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	34 c0       	rjmp	.+104    	; 0xc6 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	32 c0       	rjmp	.+100    	; 0xc6 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	30 c0       	rjmp	.+96     	; 0xc6 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	2e c0       	rjmp	.+92     	; 0xc6 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	2c c0       	rjmp	.+88     	; 0xc6 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	2a c0       	rjmp	.+84     	; 0xc6 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	28 c0       	rjmp	.+80     	; 0xc6 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	26 c0       	rjmp	.+76     	; 0xc6 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	24 c0       	rjmp	.+72     	; 0xc6 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	22 c0       	rjmp	.+68     	; 0xc6 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	20 c0       	rjmp	.+64     	; 0xc6 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	1e c0       	rjmp	.+60     	; 0xc6 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	ea ee       	ldi	r30, 0xEA	; 234
+  a0:	f6 e0       	ldi	r31, 0x06	; 6
+  a2:	00 e0       	ldi	r16, 0x00	; 0
+  a4:	0b bf       	out	0x3b, r16	; 59
+  a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+  a8:	07 90       	elpm	r0, Z+
+  aa:	0d 92       	st	X+, r0
+  ac:	aa 30       	cpi	r26, 0x0A	; 10
+  ae:	b1 07       	cpc	r27, r17
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+
+000000b2 <__do_clear_bss>:
+  b2:	21 e0       	ldi	r18, 0x01	; 1
+  b4:	aa e0       	ldi	r26, 0x0A	; 10
+  b6:	b1 e0       	ldi	r27, 0x01	; 1
+  b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
+
+000000ba <.do_clear_bss_loop>:
+  ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+  bc:	a2 33       	cpi	r26, 0x32	; 50
+  be:	b2 07       	cpc	r27, r18
+  c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+  c2:	53 d2       	rcall	.+1190   	; 0x56a <main>
+  c4:	10 c3       	rjmp	.+1568   	; 0x6e6 <_exit>
+
+000000c6 <__bad_interrupt>:
+  c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
+
+000000c8 <__vector_5>:
+unsigned char mode = 0;	//스탑워치 잠시 멈추게하기 위한 변수
+
+
+
+ISR(INT4_vect)	//스톱워치에서느 초 멈추게하는 역할, 초음파 센서에서는 거리 측정 역할
+{
+  c8:	1f 92       	push	r1
+  ca:	0f 92       	push	r0
+  cc:	0f b6       	in	r0, 0x3f	; 63
+  ce:	0f 92       	push	r0
+  d0:	11 24       	eor	r1, r1
+  d2:	8f 93       	push	r24
+  d4:	9f 93       	push	r25
+  d6:	af 93       	push	r26
+  d8:	bf 93       	push	r27
+	if(version == 0)	//스톱워치 초 멈추게하는 버튼역할
+  da:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+  de:	81 11       	cpse	r24, r1
+  e0:	27 c0       	rjmp	.+78     	; 0x130 <__vector_5+0x68>
+	{
+		if(mode == 0)	//초 멈추게 하기(누를 때 초 저장)
+  e2:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <__data_end>
+  e6:	81 11       	cpse	r24, r1
+  e8:	14 c0       	rjmp	.+40     	; 0x112 <__vector_5+0x4a>
+		{
+			mode = 1;
+  ea:	81 e0       	ldi	r24, 0x01	; 1
+  ec:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <__data_end>
+			stop = t;
+  f0:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <t>
+  f4:	90 91 21 01 	lds	r25, 0x0121	; 0x800121 <t+0x1>
+  f8:	a0 91 22 01 	lds	r26, 0x0122	; 0x800122 <t+0x2>
+  fc:	b0 91 23 01 	lds	r27, 0x0123	; 0x800123 <t+0x3>
+ 100:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <stop>
+ 104:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <stop+0x1>
+ 108:	a0 93 12 01 	sts	0x0112, r26	; 0x800112 <stop+0x2>
+ 10c:	b0 93 13 01 	sts	0x0113, r27	; 0x800113 <stop+0x3>
+ 110:	18 c0       	rjmp	.+48     	; 0x142 <__vector_5+0x7a>
+		}
+		else if(mode == 1)	//다시 누르면 처음부터 시작
+ 112:	81 30       	cpi	r24, 0x01	; 1
+ 114:	b1 f4       	brne	.+44     	; 0x142 <__vector_5+0x7a>
+		{
+			mode = 0;
+ 116:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <__data_end>
+			t = 0;
+ 11a:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <t>
+ 11e:	10 92 21 01 	sts	0x0121, r1	; 0x800121 <t+0x1>
+ 122:	10 92 22 01 	sts	0x0122, r1	; 0x800122 <t+0x2>
+ 126:	10 92 23 01 	sts	0x0123, r1	; 0x800123 <t+0x3>
+			phase = 0;	//카운팅 되는 단계
+ 12a:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <phase>
+ 12e:	09 c0       	rjmp	.+18     	; 0x142 <__vector_5+0x7a>
+		}
+	}
+	if(version == 1)	//초음파 센서 거리 측정 버튼 역할
+ 130:	81 30       	cpi	r24, 0x01	; 1
+ 132:	39 f4       	brne	.+14     	; 0x142 <__vector_5+0x7a>
+	{
+		PORTE = 0x08;	//입력 트리거 상승 에지
+ 134:	88 e0       	ldi	r24, 0x08	; 8
+ 136:	83 b9       	out	0x03, r24	; 3
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 138:	85 e3       	ldi	r24, 0x35	; 53
+ 13a:	8a 95       	dec	r24
+ 13c:	f1 f7       	brne	.-4      	; 0x13a <__vector_5+0x72>
+ 13e:	00 00       	nop
+		_delay_us(10);
+		PORTE = 0x00;	//입력 트리거 하강 에지
+ 140:	13 b8       	out	0x03, r1	; 3
+
+	}
+}
+ 142:	bf 91       	pop	r27
+ 144:	af 91       	pop	r26
+ 146:	9f 91       	pop	r25
+ 148:	8f 91       	pop	r24
+ 14a:	0f 90       	pop	r0
+ 14c:	0f be       	out	0x3f, r0	; 63
+ 14e:	0f 90       	pop	r0
+ 150:	1f 90       	pop	r1
+ 152:	18 95       	reti
+
+00000154 <__vector_6>:
+
+ISR(INT5_vect)	//초 저장하는 인터럽트
+{
+ 154:	1f 92       	push	r1
+ 156:	0f 92       	push	r0
+ 158:	0f b6       	in	r0, 0x3f	; 63
+ 15a:	0f 92       	push	r0
+ 15c:	11 24       	eor	r1, r1
+ 15e:	4f 93       	push	r20
+ 160:	5f 93       	push	r21
+ 162:	6f 93       	push	r22
+ 164:	7f 93       	push	r23
+ 166:	8f 93       	push	r24
+	if(version == 0)	//스톱워치 초 저장하는 버튼역할
+ 168:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 16c:	81 11       	cpse	r24, r1
+ 16e:	50 c0       	rjmp	.+160    	; 0x210 <__vector_6+0xbc>
+	{
+		
+			
+		if(phase == 0) t_1 = t;	//첫번째 저장
+ 170:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 174:	81 11       	cpse	r24, r1
+ 176:	11 c0       	rjmp	.+34     	; 0x19a <__vector_6+0x46>
+ 178:	40 91 20 01 	lds	r20, 0x0120	; 0x800120 <t>
+ 17c:	50 91 21 01 	lds	r21, 0x0121	; 0x800121 <t+0x1>
+ 180:	60 91 22 01 	lds	r22, 0x0122	; 0x800122 <t+0x2>
+ 184:	70 91 23 01 	lds	r23, 0x0123	; 0x800123 <t+0x3>
+ 188:	40 93 1c 01 	sts	0x011C, r20	; 0x80011c <t_1>
+ 18c:	50 93 1d 01 	sts	0x011D, r21	; 0x80011d <t_1+0x1>
+ 190:	60 93 1e 01 	sts	0x011E, r22	; 0x80011e <t_1+0x2>
+ 194:	70 93 1f 01 	sts	0x011F, r23	; 0x80011f <t_1+0x3>
+ 198:	29 c0       	rjmp	.+82     	; 0x1ec <__vector_6+0x98>
+		if(phase == 1) t_2 = t;
+ 19a:	81 30       	cpi	r24, 0x01	; 1
+ 19c:	89 f4       	brne	.+34     	; 0x1c0 <__vector_6+0x6c>
+ 19e:	40 91 20 01 	lds	r20, 0x0120	; 0x800120 <t>
+ 1a2:	50 91 21 01 	lds	r21, 0x0121	; 0x800121 <t+0x1>
+ 1a6:	60 91 22 01 	lds	r22, 0x0122	; 0x800122 <t+0x2>
+ 1aa:	70 91 23 01 	lds	r23, 0x0123	; 0x800123 <t+0x3>
+ 1ae:	40 93 18 01 	sts	0x0118, r20	; 0x800118 <t_2>
+ 1b2:	50 93 19 01 	sts	0x0119, r21	; 0x800119 <t_2+0x1>
+ 1b6:	60 93 1a 01 	sts	0x011A, r22	; 0x80011a <t_2+0x2>
+ 1ba:	70 93 1b 01 	sts	0x011B, r23	; 0x80011b <t_2+0x3>
+ 1be:	21 c0       	rjmp	.+66     	; 0x202 <__vector_6+0xae>
+		if(phase == 2) t_3 = t;
+ 1c0:	82 30       	cpi	r24, 0x02	; 2
+ 1c2:	a1 f4       	brne	.+40     	; 0x1ec <__vector_6+0x98>
+ 1c4:	40 91 20 01 	lds	r20, 0x0120	; 0x800120 <t>
+ 1c8:	50 91 21 01 	lds	r21, 0x0121	; 0x800121 <t+0x1>
+ 1cc:	60 91 22 01 	lds	r22, 0x0122	; 0x800122 <t+0x2>
+ 1d0:	70 91 23 01 	lds	r23, 0x0123	; 0x800123 <t+0x3>
+ 1d4:	40 93 14 01 	sts	0x0114, r20	; 0x800114 <t_3>
+ 1d8:	50 93 15 01 	sts	0x0115, r21	; 0x800115 <t_3+0x1>
+ 1dc:	60 93 16 01 	sts	0x0116, r22	; 0x800116 <t_3+0x2>
+ 1e0:	70 93 17 01 	sts	0x0117, r23	; 0x800117 <t_3+0x3>
+		if(phase == 3)	t = 0;	//0초로
+		phase++;	//초 저장하면 phase 변화
+ 1e4:	8f 5f       	subi	r24, 0xFF	; 255
+ 1e6:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <phase>
+ 1ea:	12 c0       	rjmp	.+36     	; 0x210 <__vector_6+0xbc>
+		
+			
+		if(phase == 0) t_1 = t;	//첫번째 저장
+		if(phase == 1) t_2 = t;
+		if(phase == 2) t_3 = t;
+		if(phase == 3)	t = 0;	//0초로
+ 1ec:	83 30       	cpi	r24, 0x03	; 3
+ 1ee:	49 f4       	brne	.+18     	; 0x202 <__vector_6+0xae>
+ 1f0:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <t>
+ 1f4:	10 92 21 01 	sts	0x0121, r1	; 0x800121 <t+0x1>
+ 1f8:	10 92 22 01 	sts	0x0122, r1	; 0x800122 <t+0x2>
+ 1fc:	10 92 23 01 	sts	0x0123, r1	; 0x800123 <t+0x3>
+ 200:	05 c0       	rjmp	.+10     	; 0x20c <__vector_6+0xb8>
+		phase++;	//초 저장하면 phase 변화
+ 202:	8f 5f       	subi	r24, 0xFF	; 255
+ 204:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <phase>
+		if(phase == 4) phase = 0;	//0초로 다시
+ 208:	84 30       	cpi	r24, 0x04	; 4
+ 20a:	11 f4       	brne	.+4      	; 0x210 <__vector_6+0xbc>
+ 20c:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <phase>
+	}
+}
+ 210:	8f 91       	pop	r24
+ 212:	7f 91       	pop	r23
+ 214:	6f 91       	pop	r22
+ 216:	5f 91       	pop	r21
+ 218:	4f 91       	pop	r20
+ 21a:	0f 90       	pop	r0
+ 21c:	0f be       	out	0x3f, r0	; 63
+ 21e:	0f 90       	pop	r0
+ 220:	1f 90       	pop	r1
+ 222:	18 95       	reti
+
+00000224 <__vector_7>:
+
+ISR(INT6_vect)	//초음파 센서 출력값 입력 받는 인터럽트
+{
+ 224:	1f 92       	push	r1
+ 226:	0f 92       	push	r0
+ 228:	0f b6       	in	r0, 0x3f	; 63
+ 22a:	0f 92       	push	r0
+ 22c:	11 24       	eor	r1, r1
+ 22e:	8f 93       	push	r24
+	if(version == 1)	//초음파 센서 출력 상승 하강 받을 때
+ 230:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 234:	81 30       	cpi	r24, 0x01	; 1
+ 236:	11 f5       	brne	.+68     	; 0x27c <__vector_7+0x58>
+	{
+		if(number == 0)	//초음파 센서 출력 상승 에지
+ 238:	80 91 28 01 	lds	r24, 0x0128	; 0x800128 <number>
+ 23c:	81 11       	cpse	r24, r1
+ 23e:	15 c0       	rjmp	.+42     	; 0x26a <__vector_7+0x46>
+		{
+			timer = 0;
+ 240:	10 92 2d 01 	sts	0x012D, r1	; 0x80012d <timer>
+ 244:	10 92 2e 01 	sts	0x012E, r1	; 0x80012e <timer+0x1>
+ 248:	10 92 2f 01 	sts	0x012F, r1	; 0x80012f <timer+0x2>
+ 24c:	10 92 30 01 	sts	0x0130, r1	; 0x800130 <timer+0x3>
+			TCCR0 = 0b00000010;	//일반모드, 8분주
+ 250:	82 e0       	ldi	r24, 0x02	; 2
+ 252:	83 bf       	out	0x33, r24	; 51
+			TCNT0 = TC1;	//TCNT0 초기값(8분주와 16MHz일때 58us 주기 생성)
+ 254:	8b e8       	ldi	r24, 0x8B	; 139
+ 256:	82 bf       	out	0x32, r24	; 50
+			EICRB = (2 << ISC40) | (2 << ISC60) | (2 << ISC70);	//INT4, INT6, INT7 하강에지 설정
+ 258:	82 ea       	ldi	r24, 0xA2	; 162
+ 25a:	8a bf       	out	0x3a, r24	; 58
+			EIMSK = (1 << INT4) |  (1 << INT6) |  (1 << INT7);	//INT4, INT6, INT7 인에블
+ 25c:	80 ed       	ldi	r24, 0xD0	; 208
+ 25e:	89 bf       	out	0x39, r24	; 57
+			TIMSK = 0x01;	//오버플로우 인터럽트 인에블
+ 260:	81 e0       	ldi	r24, 0x01	; 1
+ 262:	87 bf       	out	0x37, r24	; 55
+			
+			number = 1;	//플레그 토글
+ 264:	80 93 28 01 	sts	0x0128, r24	; 0x800128 <number>
+ 268:	09 c0       	rjmp	.+18     	; 0x27c <__vector_7+0x58>
+		}
+		
+		else if(number == 1)	//초음파 센서 출력 하강 에지
+ 26a:	81 30       	cpi	r24, 0x01	; 1
+ 26c:	39 f4       	brne	.+14     	; 0x27c <__vector_7+0x58>
+		{
+			TIMSK = 0x00;	//오버플로우 타임 인터럽트 디스에이블
+ 26e:	17 be       	out	0x37, r1	; 55
+			EICRB = (2 << ISC40) | (3 << ISC60) | (2 << ISC70);	//INT4, INT7 하강에지 INT6 상승에지 설정
+ 270:	82 eb       	ldi	r24, 0xB2	; 178
+ 272:	8a bf       	out	0x3a, r24	; 58
+			EIMSK = (1 << INT4) |  (1 << INT6) |  (1 << INT7);	//INT 모두 켜기
+ 274:	80 ed       	ldi	r24, 0xD0	; 208
+ 276:	89 bf       	out	0x39, r24	; 57
+
+			number = 0;	//플레그 토글
+ 278:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <number>
+		}
+
+	}
+}
+ 27c:	8f 91       	pop	r24
+ 27e:	0f 90       	pop	r0
+ 280:	0f be       	out	0x3f, r0	; 63
+ 282:	0f 90       	pop	r0
+ 284:	1f 90       	pop	r1
+ 286:	18 95       	reti
+
+00000288 <__vector_8>:
+
+ISR(INT7_vect)	//(스톱워치, 초음파 센서) 바꿔주는 인터럽트
+{
+ 288:	1f 92       	push	r1
+ 28a:	0f 92       	push	r0
+ 28c:	0f b6       	in	r0, 0x3f	; 63
+ 28e:	0f 92       	push	r0
+ 290:	11 24       	eor	r1, r1
+ 292:	8f 93       	push	r24
+	if(version == 0)	//스톱워치일때 초음파 초기값 설정
+ 294:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 298:	81 11       	cpse	r24, r1
+ 29a:	19 c0       	rjmp	.+50     	; 0x2ce <__vector_8+0x46>
+	{
+		cli();	//인터럽트 모드 해제
+ 29c:	f8 94       	cli
+		
+		DDRD = 0xFF;	//세그먼트 표현부분 출력
+ 29e:	8f ef       	ldi	r24, 0xFF	; 255
+ 2a0:	81 bb       	out	0x11, r24	; 17
+		DDRG = 0xFF;	//세가먼트 전원부분 출력
+ 2a2:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__TEXT_REGION_LENGTH__+0x7e0064>
+		DDRE = 0x0F; //스위치 연결 부분 입력
+ 2a6:	8f e0       	ldi	r24, 0x0F	; 15
+ 2a8:	82 b9       	out	0x02, r24	; 2
+		DDRB = 0x10;	//OCR0사용하기 위해
+ 2aa:	80 e1       	ldi	r24, 0x10	; 16
+ 2ac:	87 bb       	out	0x17, r24	; 23
+
+		EICRB = (2 << ISC40) | (3 << ISC60) | (2 << ISC70); //INT 4, INT7 하강에지, 6 상승에지 설정
+ 2ae:	82 eb       	ldi	r24, 0xB2	; 178
+ 2b0:	8a bf       	out	0x3a, r24	; 58
+		EIMSK = (1 << INT4) |  (1 << INT6) |  (1 << INT7);	//INT 모두 켜기
+ 2b2:	80 ed       	ldi	r24, 0xD0	; 208
+ 2b4:	89 bf       	out	0x39, r24	; 57
+
+
+		sei();	//모든 INT 활성화
+ 2b6:	78 94       	sei
+
+		PORTE = 0x08;	//입력 트리거 상승 에지
+ 2b8:	88 e0       	ldi	r24, 0x08	; 8
+ 2ba:	83 b9       	out	0x03, r24	; 3
+ 2bc:	85 e3       	ldi	r24, 0x35	; 53
+ 2be:	8a 95       	dec	r24
+ 2c0:	f1 f7       	brne	.-4      	; 0x2be <__vector_8+0x36>
+ 2c2:	00 00       	nop
+		_delay_us(10);
+		PORTE = 0x00;	//입력 트리거 하강 에지(이거 안 해주면 스톱워치에서 초음파 넘어올 때 번호가 떨리면서 순간적으로 바뀌는 현상 관찰됨 그래서 바뀌었을때 한번 읽어줬다)
+ 2c4:	13 b8       	out	0x03, r1	; 3
+
+		version = 1;	//초음파로 변경
+ 2c6:	81 e0       	ldi	r24, 0x01	; 1
+ 2c8:	80 93 31 01 	sts	0x0131, r24	; 0x800131 <version>
+ 2cc:	15 c0       	rjmp	.+42     	; 0x2f8 <__vector_8+0x70>
+	}
+	else if(version == 1)	//초음파일때 스톱워치 초기값 설정
+ 2ce:	81 30       	cpi	r24, 0x01	; 1
+ 2d0:	99 f4       	brne	.+38     	; 0x2f8 <__vector_8+0x70>
+	{
+		cli();
+ 2d2:	f8 94       	cli
+		
+		DDRD = 0xFF;	//세그먼트 표현부분 출력
+ 2d4:	8f ef       	ldi	r24, 0xFF	; 255
+ 2d6:	81 bb       	out	0x11, r24	; 17
+		DDRG = 0xFF;	//세그먼트 전원부분 출력
+ 2d8:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__TEXT_REGION_LENGTH__+0x7e0064>
+		DDRE = 0x0; //스위치 연결 부분 입력
+ 2dc:	12 b8       	out	0x02, r1	; 2
+
+		EICRB = (2 << ISC40) | (2 << ISC50) | (2 << ISC70); //INT 4, 5, 7 하강에지
+ 2de:	8a e8       	ldi	r24, 0x8A	; 138
+ 2e0:	8a bf       	out	0x3a, r24	; 58
+		EIMSK = (1 << INT4) |  (1 << INT5) |  (1 << INT7);	//INT 4, 5, 7 켜기
+ 2e2:	80 eb       	ldi	r24, 0xB0	; 176
+ 2e4:	89 bf       	out	0x39, r24	; 57
+
+		
+		TCCR0 = 0x07;	//노멀모드 오버플로우 인터럽트 1024분주
+ 2e6:	87 e0       	ldi	r24, 0x07	; 7
+ 2e8:	83 bf       	out	0x33, r24	; 51
+		TCNT0 = TC0;	//스톱워치 마이크로 초 설정위한 초기값(계산상으로는 192로 해서 us 초 단위로 만들고 1000번 헛돌게 해서 1ms를 만들어서 하려 했지만 세그먼트 관측상으로는 많이 느렸다.)
+ 2ea:	80 ef       	ldi	r24, 0xF0	; 240
+ 2ec:	82 bf       	out	0x32, r24	; 50
+		TIMSK = 0x01;	//타임 인터럽트 인에이블
+ 2ee:	81 e0       	ldi	r24, 0x01	; 1
+ 2f0:	87 bf       	out	0x37, r24	; 55
+
+		sei();	//모든 INT 활성화
+ 2f2:	78 94       	sei
+		version = 0;	//스톱워치로 변경
+ 2f4:	10 92 31 01 	sts	0x0131, r1	; 0x800131 <version>
+	}
+}
+ 2f8:	8f 91       	pop	r24
+ 2fa:	0f 90       	pop	r0
+ 2fc:	0f be       	out	0x3f, r0	; 63
+ 2fe:	0f 90       	pop	r0
+ 300:	1f 90       	pop	r1
+ 302:	18 95       	reti
+
+00000304 <__vector_16>:
+
+ISR(TIMER0_OVF_vect)	//오버 플로우 타임 인터럽트
+{
+ 304:	1f 92       	push	r1
+ 306:	0f 92       	push	r0
+ 308:	0f b6       	in	r0, 0x3f	; 63
+ 30a:	0f 92       	push	r0
+ 30c:	11 24       	eor	r1, r1
+ 30e:	2f 93       	push	r18
+ 310:	8f 93       	push	r24
+ 312:	9f 93       	push	r25
+ 314:	af 93       	push	r26
+ 316:	bf 93       	push	r27
+	
+	if(version == 0)	//스톱워치일때
+ 318:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 31c:	81 11       	cpse	r24, r1
+ 31e:	2d c0       	rjmp	.+90     	; 0x37a <__vector_16+0x76>
+	{
+		ut++;	//마이크로 초 변수 증가
+		if(ut = 1000)	//1000마이크로 초 경과 시
+		{
+			TCNT0 = TC0;	//0이 아닐 경우 반드시 써줘야 한다.
+ 320:	80 ef       	ldi	r24, 0xF0	; 240
+ 322:	82 bf       	out	0x32, r24	; 50
+			ut = 0;	//마이크로 초 초기화
+ 324:	10 92 24 01 	sts	0x0124, r1	; 0x800124 <ut>
+ 328:	10 92 25 01 	sts	0x0125, r1	; 0x800125 <ut+0x1>
+ 32c:	10 92 26 01 	sts	0x0126, r1	; 0x800126 <ut+0x2>
+ 330:	10 92 27 01 	sts	0x0127, r1	; 0x800127 <ut+0x3>
+			t++;	//1밀리 초 증가
+ 334:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <t>
+ 338:	90 91 21 01 	lds	r25, 0x0121	; 0x800121 <t+0x1>
+ 33c:	a0 91 22 01 	lds	r26, 0x0122	; 0x800122 <t+0x2>
+ 340:	b0 91 23 01 	lds	r27, 0x0123	; 0x800123 <t+0x3>
+ 344:	01 96       	adiw	r24, 0x01	; 1
+ 346:	a1 1d       	adc	r26, r1
+ 348:	b1 1d       	adc	r27, r1
+			if(t == 100000) t = 0;	//100초일때 초기화
+ 34a:	80 3a       	cpi	r24, 0xA0	; 160
+ 34c:	26 e8       	ldi	r18, 0x86	; 134
+ 34e:	92 07       	cpc	r25, r18
+ 350:	21 e0       	ldi	r18, 0x01	; 1
+ 352:	a2 07       	cpc	r26, r18
+ 354:	b1 05       	cpc	r27, r1
+ 356:	49 f0       	breq	.+18     	; 0x36a <__vector_16+0x66>
+		ut++;	//마이크로 초 변수 증가
+		if(ut = 1000)	//1000마이크로 초 경과 시
+		{
+			TCNT0 = TC0;	//0이 아닐 경우 반드시 써줘야 한다.
+			ut = 0;	//마이크로 초 초기화
+			t++;	//1밀리 초 증가
+ 358:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <t>
+ 35c:	90 93 21 01 	sts	0x0121, r25	; 0x800121 <t+0x1>
+ 360:	a0 93 22 01 	sts	0x0122, r26	; 0x800122 <t+0x2>
+ 364:	b0 93 23 01 	sts	0x0123, r27	; 0x800123 <t+0x3>
+ 368:	08 c0       	rjmp	.+16     	; 0x37a <__vector_16+0x76>
+			if(t == 100000) t = 0;	//100초일때 초기화
+ 36a:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <t>
+ 36e:	10 92 21 01 	sts	0x0121, r1	; 0x800121 <t+0x1>
+ 372:	10 92 22 01 	sts	0x0122, r1	; 0x800122 <t+0x2>
+ 376:	10 92 23 01 	sts	0x0123, r1	; 0x800123 <t+0x3>
+		}
+	}
+	if(version == 1)	//초음파 센서일때
+ 37a:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 37e:	81 30       	cpi	r24, 0x01	; 1
+ 380:	a9 f4       	brne	.+42     	; 0x3ac <__vector_16+0xa8>
+	{
+		TCNT0 = TC1;	//0이 아닐 경우 반드시 써줘야 한다.
+ 382:	8b e8       	ldi	r24, 0x8B	; 139
+ 384:	82 bf       	out	0x32, r24	; 50
+		timer++;	//클락당 1증가(1cm 이동거리 시간과 동일)
+ 386:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <timer>
+ 38a:	90 91 2e 01 	lds	r25, 0x012E	; 0x80012e <timer+0x1>
+ 38e:	a0 91 2f 01 	lds	r26, 0x012F	; 0x80012f <timer+0x2>
+ 392:	b0 91 30 01 	lds	r27, 0x0130	; 0x800130 <timer+0x3>
+ 396:	01 96       	adiw	r24, 0x01	; 1
+ 398:	a1 1d       	adc	r26, r1
+ 39a:	b1 1d       	adc	r27, r1
+ 39c:	80 93 2d 01 	sts	0x012D, r24	; 0x80012d <timer>
+ 3a0:	90 93 2e 01 	sts	0x012E, r25	; 0x80012e <timer+0x1>
+ 3a4:	a0 93 2f 01 	sts	0x012F, r26	; 0x80012f <timer+0x2>
+ 3a8:	b0 93 30 01 	sts	0x0130, r27	; 0x800130 <timer+0x3>
+	}
+}
+ 3ac:	bf 91       	pop	r27
+ 3ae:	af 91       	pop	r26
+ 3b0:	9f 91       	pop	r25
+ 3b2:	8f 91       	pop	r24
+ 3b4:	2f 91       	pop	r18
+ 3b6:	0f 90       	pop	r0
+ 3b8:	0f be       	out	0x3f, r0	; 63
+ 3ba:	0f 90       	pop	r0
+ 3bc:	1f 90       	pop	r1
+ 3be:	18 95       	reti
+
+000003c0 <display0>:
+	}
+}
+
+void display0(long int t)	//스톱워치 숫자표시 함수
+{
+	sec_10 = t / 10000;
+ 3c0:	20 e1       	ldi	r18, 0x10	; 16
+ 3c2:	37 e2       	ldi	r19, 0x27	; 39
+ 3c4:	40 e0       	ldi	r20, 0x00	; 0
+ 3c6:	50 e0       	ldi	r21, 0x00	; 0
+ 3c8:	50 d1       	rcall	.+672    	; 0x66a <__divmodsi4>
+ 3ca:	20 93 0f 01 	sts	0x010F, r18	; 0x80010f <sec_10>
+	sec_1 = (t % 10000) / 1000;
+ 3ce:	28 ee       	ldi	r18, 0xE8	; 232
+ 3d0:	33 e0       	ldi	r19, 0x03	; 3
+ 3d2:	40 e0       	ldi	r20, 0x00	; 0
+ 3d4:	50 e0       	ldi	r21, 0x00	; 0
+ 3d6:	49 d1       	rcall	.+658    	; 0x66a <__divmodsi4>
+ 3d8:	20 93 0e 01 	sts	0x010E, r18	; 0x80010e <sec_1>
+	msec_10 = ((t % 10000) % 1000) / 100;
+ 3dc:	24 e6       	ldi	r18, 0x64	; 100
+ 3de:	30 e0       	ldi	r19, 0x00	; 0
+ 3e0:	40 e0       	ldi	r20, 0x00	; 0
+ 3e2:	50 e0       	ldi	r21, 0x00	; 0
+ 3e4:	42 d1       	rcall	.+644    	; 0x66a <__divmodsi4>
+ 3e6:	20 93 0d 01 	sts	0x010D, r18	; 0x80010d <msec_10>
+	msec_1 = (((t % 10000) % 1000) % 100) / 10;
+ 3ea:	2a e0       	ldi	r18, 0x0A	; 10
+ 3ec:	30 e0       	ldi	r19, 0x00	; 0
+ 3ee:	40 e0       	ldi	r20, 0x00	; 0
+ 3f0:	50 e0       	ldi	r21, 0x00	; 0
+ 3f2:	3b d1       	rcall	.+630    	; 0x66a <__divmodsi4>
+ 3f4:	20 93 0c 01 	sts	0x010C, r18	; 0x80010c <msec_1>
+	PORTG = 0b00000001;
+ 3f8:	a5 e6       	ldi	r26, 0x65	; 101
+ 3fa:	b0 e0       	ldi	r27, 0x00	; 0
+ 3fc:	81 e0       	ldi	r24, 0x01	; 1
+ 3fe:	8c 93       	st	X, r24
+	PORTD = ~segment2[msec_1];
+ 400:	e0 91 0c 01 	lds	r30, 0x010C	; 0x80010c <msec_1>
+ 404:	f0 e0       	ldi	r31, 0x00	; 0
+ 406:	e0 50       	subi	r30, 0x00	; 0
+ 408:	ff 4f       	sbci	r31, 0xFF	; 255
+ 40a:	80 81       	ld	r24, Z
+ 40c:	80 95       	com	r24
+ 40e:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 410:	8f e1       	ldi	r24, 0x1F	; 31
+ 412:	9e e4       	ldi	r25, 0x4E	; 78
+ 414:	01 97       	sbiw	r24, 0x01	; 1
+ 416:	f1 f7       	brne	.-4      	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+ 418:	00 c0       	rjmp	.+0      	; 0x41a <__LOCK_REGION_LENGTH__+0x1a>
+ 41a:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000010;
+ 41c:	82 e0       	ldi	r24, 0x02	; 2
+ 41e:	8c 93       	st	X, r24
+	PORTD = ~segment2[msec_10];
+ 420:	e0 91 0d 01 	lds	r30, 0x010D	; 0x80010d <msec_10>
+ 424:	f0 e0       	ldi	r31, 0x00	; 0
+ 426:	e0 50       	subi	r30, 0x00	; 0
+ 428:	ff 4f       	sbci	r31, 0xFF	; 255
+ 42a:	80 81       	ld	r24, Z
+ 42c:	80 95       	com	r24
+ 42e:	82 bb       	out	0x12, r24	; 18
+ 430:	8f e1       	ldi	r24, 0x1F	; 31
+ 432:	9e e4       	ldi	r25, 0x4E	; 78
+ 434:	01 97       	sbiw	r24, 0x01	; 1
+ 436:	f1 f7       	brne	.-4      	; 0x434 <__LOCK_REGION_LENGTH__+0x34>
+ 438:	00 c0       	rjmp	.+0      	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
+ 43a:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000100;
+ 43c:	84 e0       	ldi	r24, 0x04	; 4
+ 43e:	8c 93       	st	X, r24
+	PORTD = ~segment2[sec_1];
+ 440:	e0 91 0e 01 	lds	r30, 0x010E	; 0x80010e <sec_1>
+ 444:	f0 e0       	ldi	r31, 0x00	; 0
+ 446:	e0 50       	subi	r30, 0x00	; 0
+ 448:	ff 4f       	sbci	r31, 0xFF	; 255
+ 44a:	80 81       	ld	r24, Z
+ 44c:	80 95       	com	r24
+ 44e:	82 bb       	out	0x12, r24	; 18
+ 450:	8f e1       	ldi	r24, 0x1F	; 31
+ 452:	9e e4       	ldi	r25, 0x4E	; 78
+ 454:	01 97       	sbiw	r24, 0x01	; 1
+ 456:	f1 f7       	brne	.-4      	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 458:	00 c0       	rjmp	.+0      	; 0x45a <__LOCK_REGION_LENGTH__+0x5a>
+ 45a:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00001000;
+ 45c:	88 e0       	ldi	r24, 0x08	; 8
+ 45e:	8c 93       	st	X, r24
+	PORTD = ~segment2[sec_10];
+ 460:	e0 91 0f 01 	lds	r30, 0x010F	; 0x80010f <sec_10>
+ 464:	f0 e0       	ldi	r31, 0x00	; 0
+ 466:	e0 50       	subi	r30, 0x00	; 0
+ 468:	ff 4f       	sbci	r31, 0xFF	; 255
+ 46a:	80 81       	ld	r24, Z
+ 46c:	80 95       	com	r24
+ 46e:	82 bb       	out	0x12, r24	; 18
+ 470:	8f e1       	ldi	r24, 0x1F	; 31
+ 472:	9e e4       	ldi	r25, 0x4E	; 78
+ 474:	01 97       	sbiw	r24, 0x01	; 1
+ 476:	f1 f7       	brne	.-4      	; 0x474 <__LOCK_REGION_LENGTH__+0x74>
+ 478:	00 c0       	rjmp	.+0      	; 0x47a <__LOCK_REGION_LENGTH__+0x7a>
+ 47a:	00 00       	nop
+	_delay_ms(5);
+	if(phase == 0) PORTG = 0b00000001;
+ 47c:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 480:	81 11       	cpse	r24, r1
+ 482:	03 c0       	rjmp	.+6      	; 0x48a <__LOCK_REGION_LENGTH__+0x8a>
+ 484:	81 e0       	ldi	r24, 0x01	; 1
+ 486:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <__TEXT_REGION_LENGTH__+0x7e0065>
+	if(phase == 1) PORTG = 0b00000010;
+ 48a:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 48e:	81 30       	cpi	r24, 0x01	; 1
+ 490:	19 f4       	brne	.+6      	; 0x498 <__LOCK_REGION_LENGTH__+0x98>
+ 492:	82 e0       	ldi	r24, 0x02	; 2
+ 494:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <__TEXT_REGION_LENGTH__+0x7e0065>
+	if(phase == 2) PORTG = 0b00000100;
+ 498:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 49c:	82 30       	cpi	r24, 0x02	; 2
+ 49e:	19 f4       	brne	.+6      	; 0x4a6 <__LOCK_REGION_LENGTH__+0xa6>
+ 4a0:	84 e0       	ldi	r24, 0x04	; 4
+ 4a2:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <__TEXT_REGION_LENGTH__+0x7e0065>
+	if(phase == 3) PORTG = 0b00001000;
+ 4a6:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 4aa:	83 30       	cpi	r24, 0x03	; 3
+ 4ac:	19 f4       	brne	.+6      	; 0x4b4 <__LOCK_REGION_LENGTH__+0xb4>
+ 4ae:	88 e0       	ldi	r24, 0x08	; 8
+ 4b0:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <__TEXT_REGION_LENGTH__+0x7e0065>
+	PORTD = 0b01111111;
+ 4b4:	8f e7       	ldi	r24, 0x7F	; 127
+ 4b6:	82 bb       	out	0x12, r24	; 18
+ 4b8:	8f e1       	ldi	r24, 0x1F	; 31
+ 4ba:	9e e4       	ldi	r25, 0x4E	; 78
+ 4bc:	01 97       	sbiw	r24, 0x01	; 1
+ 4be:	f1 f7       	brne	.-4      	; 0x4bc <__LOCK_REGION_LENGTH__+0xbc>
+ 4c0:	00 c0       	rjmp	.+0      	; 0x4c2 <__LOCK_REGION_LENGTH__+0xc2>
+ 4c2:	00 00       	nop
+ 4c4:	08 95       	ret
+
+000004c6 <display1>:
+	_delay_ms(5);
+}
+
+void display1()	//초음파 센서 숫자표시 함수
+{
+	dist_100 = dist / 100;
+ 4c6:	90 91 2c 01 	lds	r25, 0x012C	; 0x80012c <dist>
+ 4ca:	89 e2       	ldi	r24, 0x29	; 41
+ 4cc:	98 9f       	mul	r25, r24
+ 4ce:	81 2d       	mov	r24, r1
+ 4d0:	11 24       	eor	r1, r1
+ 4d2:	82 95       	swap	r24
+ 4d4:	8f 70       	andi	r24, 0x0F	; 15
+ 4d6:	80 93 29 01 	sts	0x0129, r24	; 0x800129 <dist_100>
+	dist_10 = (dist % 100) / 10;
+ 4da:	24 e6       	ldi	r18, 0x64	; 100
+ 4dc:	82 9f       	mul	r24, r18
+ 4de:	90 19       	sub	r25, r0
+ 4e0:	11 24       	eor	r1, r1
+ 4e2:	8d ec       	ldi	r24, 0xCD	; 205
+ 4e4:	98 9f       	mul	r25, r24
+ 4e6:	81 2d       	mov	r24, r1
+ 4e8:	11 24       	eor	r1, r1
+ 4ea:	86 95       	lsr	r24
+ 4ec:	86 95       	lsr	r24
+ 4ee:	86 95       	lsr	r24
+ 4f0:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <dist_10>
+	dist_1 = (dist % 100) % 10;
+ 4f4:	88 0f       	add	r24, r24
+ 4f6:	28 2f       	mov	r18, r24
+ 4f8:	22 0f       	add	r18, r18
+ 4fa:	22 0f       	add	r18, r18
+ 4fc:	82 0f       	add	r24, r18
+ 4fe:	98 1b       	sub	r25, r24
+ 500:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <dist_1>
+
+
+	PORTG = 0b00000001;
+ 504:	a5 e6       	ldi	r26, 0x65	; 101
+ 506:	b0 e0       	ldi	r27, 0x00	; 0
+ 508:	81 e0       	ldi	r24, 0x01	; 1
+ 50a:	8c 93       	st	X, r24
+	PORTD = ~segment2[dist_1];
+ 50c:	e0 91 2b 01 	lds	r30, 0x012B	; 0x80012b <dist_1>
+ 510:	f0 e0       	ldi	r31, 0x00	; 0
+ 512:	e0 50       	subi	r30, 0x00	; 0
+ 514:	ff 4f       	sbci	r31, 0xFF	; 255
+ 516:	80 81       	ld	r24, Z
+ 518:	80 95       	com	r24
+ 51a:	82 bb       	out	0x12, r24	; 18
+ 51c:	8f e1       	ldi	r24, 0x1F	; 31
+ 51e:	9e e4       	ldi	r25, 0x4E	; 78
+ 520:	01 97       	sbiw	r24, 0x01	; 1
+ 522:	f1 f7       	brne	.-4      	; 0x520 <display1+0x5a>
+ 524:	00 c0       	rjmp	.+0      	; 0x526 <display1+0x60>
+ 526:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000010;
+ 528:	82 e0       	ldi	r24, 0x02	; 2
+ 52a:	8c 93       	st	X, r24
+	PORTD = ~segment2[dist_10];
+ 52c:	e0 91 2a 01 	lds	r30, 0x012A	; 0x80012a <dist_10>
+ 530:	f0 e0       	ldi	r31, 0x00	; 0
+ 532:	e0 50       	subi	r30, 0x00	; 0
+ 534:	ff 4f       	sbci	r31, 0xFF	; 255
+ 536:	80 81       	ld	r24, Z
+ 538:	80 95       	com	r24
+ 53a:	82 bb       	out	0x12, r24	; 18
+ 53c:	8f e1       	ldi	r24, 0x1F	; 31
+ 53e:	9e e4       	ldi	r25, 0x4E	; 78
+ 540:	01 97       	sbiw	r24, 0x01	; 1
+ 542:	f1 f7       	brne	.-4      	; 0x540 <display1+0x7a>
+ 544:	00 c0       	rjmp	.+0      	; 0x546 <display1+0x80>
+ 546:	00 00       	nop
+	_delay_ms(5);
+	PORTG = 0b00000100;
+ 548:	84 e0       	ldi	r24, 0x04	; 4
+ 54a:	8c 93       	st	X, r24
+	PORTD = ~segment2[dist_100];
+ 54c:	e0 91 29 01 	lds	r30, 0x0129	; 0x800129 <dist_100>
+ 550:	f0 e0       	ldi	r31, 0x00	; 0
+ 552:	e0 50       	subi	r30, 0x00	; 0
+ 554:	ff 4f       	sbci	r31, 0xFF	; 255
+ 556:	80 81       	ld	r24, Z
+ 558:	80 95       	com	r24
+ 55a:	82 bb       	out	0x12, r24	; 18
+ 55c:	8f e1       	ldi	r24, 0x1F	; 31
+ 55e:	9e e4       	ldi	r25, 0x4E	; 78
+ 560:	01 97       	sbiw	r24, 0x01	; 1
+ 562:	f1 f7       	brne	.-4      	; 0x560 <display1+0x9a>
+ 564:	00 c0       	rjmp	.+0      	; 0x566 <display1+0xa0>
+ 566:	00 00       	nop
+ 568:	08 95       	ret
+
+0000056a <main>:
+void display0(long int t);
+void display1();
+
+int main(void)
+{
+	DDRD = 0xFF;	//세그먼트 표현부분 출력
+ 56a:	8f ef       	ldi	r24, 0xFF	; 255
+ 56c:	81 bb       	out	0x11, r24	; 17
+	DDRG = 0xFF;	//세가먼트 전원부분 출력
+ 56e:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__TEXT_REGION_LENGTH__+0x7e0064>
+	DDRE = 0x0; //스위치 연결 부분 입력
+ 572:	12 b8       	out	0x02, r1	; 2
+	DDRB = 0x10;	//OCR0사용하기 위해
+ 574:	80 e1       	ldi	r24, 0x10	; 16
+ 576:	87 bb       	out	0x17, r24	; 23
+
+
+	EICRB = (2 << ISC40) | (2 << ISC50) | (2 << ISC70); //INT 4, 5, 7 하강에지
+ 578:	8a e8       	ldi	r24, 0x8A	; 138
+ 57a:	8a bf       	out	0x3a, r24	; 58
+	EIMSK = (1 << INT4) |  (1 << INT5) |  (1 << INT7);	//INT 4, 5 켜기
+ 57c:	80 eb       	ldi	r24, 0xB0	; 176
+ 57e:	89 bf       	out	0x39, r24	; 57
+
+	
+	TCCR0 = 0x07;	//노멀모드 오버플로우 인터럽트 1024분주
+ 580:	87 e0       	ldi	r24, 0x07	; 7
+ 582:	83 bf       	out	0x33, r24	; 51
+	TCNT0 = TC0;	//스톱워치 마이크로 초 설정위한 초기값
+ 584:	80 ef       	ldi	r24, 0xF0	; 240
+ 586:	82 bf       	out	0x32, r24	; 50
+	TIMSK = 0x01;	//타임 인터럽트 인에이블
+ 588:	81 e0       	ldi	r24, 0x01	; 1
+ 58a:	87 bf       	out	0x37, r24	; 55
+
+	sei();	//모든 INT 활성화
+ 58c:	78 94       	sei
+			else if(mode == 1) display0(stop);	//멈췄을 때 숫자표시
+			else display0(t);	//초 진행 중 표시
+		}
+		else if(version == 1)	//초음파 센서일때
+		{
+			dist = timer / ((10000 / 170) / ((256 - TC1) / 2)); //총이동에 걸린 시간을 1cm이동에 걸리는 시간으로 나누어 초음파 센서와 장애물 거리를 계산(이동거리가 2배라 2로 나누어준다)
+ 58e:	0d e2       	ldi	r16, 0x2D	; 45
+ 590:	11 e0       	ldi	r17, 0x01	; 1
+			if(dist >= 20) dist = 20;	//20이상일때 20한정
+			if(dist <= 2) dist = 2;	//2이하일때 2한정
+			display1();	//세그먼트 화면 출력
+			TCCR0 = 0b01100100;	//phase correct PWM,비교매치에서 OC0 클리어, 64분주
+ 592:	0f 2e       	mov	r0, r31
+ 594:	f4 e6       	ldi	r31, 0x64	; 100
+ 596:	ff 2e       	mov	r15, r31
+ 598:	f0 2d       	mov	r31, r0
+		}
+		else if(version == 1)	//초음파 센서일때
+		{
+			dist = timer / ((10000 / 170) / ((256 - TC1) / 2)); //총이동에 걸린 시간을 1cm이동에 걸리는 시간으로 나누어 초음파 센서와 장애물 거리를 계산(이동거리가 2배라 2로 나누어준다)
+			if(dist >= 20) dist = 20;	//20이상일때 20한정
+			if(dist <= 2) dist = 2;	//2이하일때 2한정
+ 59a:	68 94       	set
+ 59c:	dd 24       	eor	r13, r13
+ 59e:	d1 f8       	bld	r13, 1
+			else display0(t);	//초 진행 중 표시
+		}
+		else if(version == 1)	//초음파 센서일때
+		{
+			dist = timer / ((10000 / 170) / ((256 - TC1) / 2)); //총이동에 걸린 시간을 1cm이동에 걸리는 시간으로 나누어 초음파 센서와 장애물 거리를 계산(이동거리가 2배라 2로 나누어준다)
+			if(dist >= 20) dist = 20;	//20이상일때 20한정
+ 5a0:	0f 2e       	mov	r0, r31
+ 5a2:	f4 e1       	ldi	r31, 0x14	; 20
+ 5a4:	ef 2e       	mov	r14, r31
+ 5a6:	f0 2d       	mov	r31, r0
+
+	sei();	//모든 INT 활성화
+	
+	while(1)
+	{
+		if(version == 0)	//스톱워치일때
+ 5a8:	80 91 31 01 	lds	r24, 0x0131	; 0x800131 <version>
+ 5ac:	81 11       	cpse	r24, r1
+ 5ae:	44 c0       	rjmp	.+136    	; 0x638 <main+0xce>
+		{
+			if(phase == 3)	//저장된 3개의 초 표시
+ 5b0:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <phase>
+ 5b4:	83 30       	cpi	r24, 0x03	; 3
+ 5b6:	41 f5       	brne	.+80     	; 0x608 <main+0x9e>
+ 5b8:	c2 e3       	ldi	r28, 0x32	; 50
+ 5ba:	d0 e0       	ldi	r29, 0x00	; 0
+			{
+				for(int i = 0; i < 50; i++) display0(t_1);
+ 5bc:	60 91 1c 01 	lds	r22, 0x011C	; 0x80011c <t_1>
+ 5c0:	70 91 1d 01 	lds	r23, 0x011D	; 0x80011d <t_1+0x1>
+ 5c4:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <t_1+0x2>
+ 5c8:	90 91 1f 01 	lds	r25, 0x011F	; 0x80011f <t_1+0x3>
+ 5cc:	f9 de       	rcall	.-526    	; 0x3c0 <display0>
+ 5ce:	21 97       	sbiw	r28, 0x01	; 1
+ 5d0:	a9 f7       	brne	.-22     	; 0x5bc <main+0x52>
+ 5d2:	c2 e3       	ldi	r28, 0x32	; 50
+ 5d4:	d0 e0       	ldi	r29, 0x00	; 0
+				for(int i = 0; i < 50; i++) display0(t_2);
+ 5d6:	60 91 18 01 	lds	r22, 0x0118	; 0x800118 <t_2>
+ 5da:	70 91 19 01 	lds	r23, 0x0119	; 0x800119 <t_2+0x1>
+ 5de:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <t_2+0x2>
+ 5e2:	90 91 1b 01 	lds	r25, 0x011B	; 0x80011b <t_2+0x3>
+ 5e6:	ec de       	rcall	.-552    	; 0x3c0 <display0>
+ 5e8:	21 97       	sbiw	r28, 0x01	; 1
+ 5ea:	a9 f7       	brne	.-22     	; 0x5d6 <main+0x6c>
+ 5ec:	c2 e3       	ldi	r28, 0x32	; 50
+ 5ee:	d0 e0       	ldi	r29, 0x00	; 0
+				for(int i = 0; i < 50; i++) display0(t_3);
+ 5f0:	60 91 14 01 	lds	r22, 0x0114	; 0x800114 <t_3>
+ 5f4:	70 91 15 01 	lds	r23, 0x0115	; 0x800115 <t_3+0x1>
+ 5f8:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <t_3+0x2>
+ 5fc:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <t_3+0x3>
+ 600:	df de       	rcall	.-578    	; 0x3c0 <display0>
+ 602:	21 97       	sbiw	r28, 0x01	; 1
+ 604:	a9 f7       	brne	.-22     	; 0x5f0 <main+0x86>
+ 606:	d0 cf       	rjmp	.-96     	; 0x5a8 <main+0x3e>
+			}
+			else if(mode == 1) display0(stop);	//멈췄을 때 숫자표시
+ 608:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <__data_end>
+ 60c:	81 30       	cpi	r24, 0x01	; 1
+ 60e:	51 f4       	brne	.+20     	; 0x624 <main+0xba>
+ 610:	60 91 10 01 	lds	r22, 0x0110	; 0x800110 <stop>
+ 614:	70 91 11 01 	lds	r23, 0x0111	; 0x800111 <stop+0x1>
+ 618:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <stop+0x2>
+ 61c:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <stop+0x3>
+ 620:	cf de       	rcall	.-610    	; 0x3c0 <display0>
+ 622:	c2 cf       	rjmp	.-124    	; 0x5a8 <main+0x3e>
+			else display0(t);	//초 진행 중 표시
+ 624:	60 91 20 01 	lds	r22, 0x0120	; 0x800120 <t>
+ 628:	70 91 21 01 	lds	r23, 0x0121	; 0x800121 <t+0x1>
+ 62c:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <t+0x2>
+ 630:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <t+0x3>
+ 634:	c5 de       	rcall	.-630    	; 0x3c0 <display0>
+ 636:	b8 cf       	rjmp	.-144    	; 0x5a8 <main+0x3e>
+		}
+		else if(version == 1)	//초음파 센서일때
+ 638:	81 30       	cpi	r24, 0x01	; 1
+ 63a:	09 f0       	breq	.+2      	; 0x63e <main+0xd4>
+ 63c:	b5 cf       	rjmp	.-150    	; 0x5a8 <main+0x3e>
+		{
+			dist = timer / ((10000 / 170) / ((256 - TC1) / 2)); //총이동에 걸린 시간을 1cm이동에 걸리는 시간으로 나누어 초음파 센서와 장애물 거리를 계산(이동거리가 2배라 2로 나누어준다)
+ 63e:	f8 01       	movw	r30, r16
+ 640:	80 81       	ld	r24, Z
+ 642:	80 93 2c 01 	sts	0x012C, r24	; 0x80012c <dist>
+			if(dist >= 20) dist = 20;	//20이상일때 20한정
+ 646:	84 31       	cpi	r24, 0x14	; 20
+ 648:	18 f0       	brcs	.+6      	; 0x650 <main+0xe6>
+ 64a:	e0 92 2c 01 	sts	0x012C, r14	; 0x80012c <dist>
+			if(dist <= 2) dist = 2;	//2이하일때 2한정
+ 64e:	04 c0       	rjmp	.+8      	; 0x658 <main+0xee>
+ 650:	83 30       	cpi	r24, 0x03	; 3
+ 652:	10 f4       	brcc	.+4      	; 0x658 <main+0xee>
+ 654:	d0 92 2c 01 	sts	0x012C, r13	; 0x80012c <dist>
+			display1();	//세그먼트 화면 출력
+ 658:	36 df       	rcall	.-404    	; 0x4c6 <display1>
+			TCCR0 = 0b01100100;	//phase correct PWM,비교매치에서 OC0 클리어, 64분주
+ 65a:	f3 be       	out	0x33, r15	; 51
+			OCR0 = dist * 8;	//거리에 따라 OCR값 증가하여 high 비율 증가 시킨다.
+ 65c:	80 91 2c 01 	lds	r24, 0x012C	; 0x80012c <dist>
+ 660:	88 0f       	add	r24, r24
+ 662:	88 0f       	add	r24, r24
+ 664:	88 0f       	add	r24, r24
+ 666:	81 bf       	out	0x31, r24	; 49
+ 668:	9f cf       	rjmp	.-194    	; 0x5a8 <main+0x3e>
+
+0000066a <__divmodsi4>:
+ 66a:	05 2e       	mov	r0, r21
+ 66c:	97 fb       	bst	r25, 7
+ 66e:	16 f4       	brtc	.+4      	; 0x674 <__divmodsi4+0xa>
+ 670:	00 94       	com	r0
+ 672:	0f d0       	rcall	.+30     	; 0x692 <__negsi2>
+ 674:	57 fd       	sbrc	r21, 7
+ 676:	05 d0       	rcall	.+10     	; 0x682 <__divmodsi4_neg2>
+ 678:	14 d0       	rcall	.+40     	; 0x6a2 <__udivmodsi4>
+ 67a:	07 fc       	sbrc	r0, 7
+ 67c:	02 d0       	rcall	.+4      	; 0x682 <__divmodsi4_neg2>
+ 67e:	46 f4       	brtc	.+16     	; 0x690 <__divmodsi4_exit>
+ 680:	08 c0       	rjmp	.+16     	; 0x692 <__negsi2>
+
+00000682 <__divmodsi4_neg2>:
+ 682:	50 95       	com	r21
+ 684:	40 95       	com	r20
+ 686:	30 95       	com	r19
+ 688:	21 95       	neg	r18
+ 68a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 68c:	4f 4f       	sbci	r20, 0xFF	; 255
+ 68e:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000690 <__divmodsi4_exit>:
+ 690:	08 95       	ret
+
+00000692 <__negsi2>:
+ 692:	90 95       	com	r25
+ 694:	80 95       	com	r24
+ 696:	70 95       	com	r23
+ 698:	61 95       	neg	r22
+ 69a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 69c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 69e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6a0:	08 95       	ret
+
+000006a2 <__udivmodsi4>:
+ 6a2:	a1 e2       	ldi	r26, 0x21	; 33
+ 6a4:	1a 2e       	mov	r1, r26
+ 6a6:	aa 1b       	sub	r26, r26
+ 6a8:	bb 1b       	sub	r27, r27
+ 6aa:	fd 01       	movw	r30, r26
+ 6ac:	0d c0       	rjmp	.+26     	; 0x6c8 <__udivmodsi4_ep>
+
+000006ae <__udivmodsi4_loop>:
+ 6ae:	aa 1f       	adc	r26, r26
+ 6b0:	bb 1f       	adc	r27, r27
+ 6b2:	ee 1f       	adc	r30, r30
+ 6b4:	ff 1f       	adc	r31, r31
+ 6b6:	a2 17       	cp	r26, r18
+ 6b8:	b3 07       	cpc	r27, r19
+ 6ba:	e4 07       	cpc	r30, r20
+ 6bc:	f5 07       	cpc	r31, r21
+ 6be:	20 f0       	brcs	.+8      	; 0x6c8 <__udivmodsi4_ep>
+ 6c0:	a2 1b       	sub	r26, r18
+ 6c2:	b3 0b       	sbc	r27, r19
+ 6c4:	e4 0b       	sbc	r30, r20
+ 6c6:	f5 0b       	sbc	r31, r21
+
+000006c8 <__udivmodsi4_ep>:
+ 6c8:	66 1f       	adc	r22, r22
+ 6ca:	77 1f       	adc	r23, r23
+ 6cc:	88 1f       	adc	r24, r24
+ 6ce:	99 1f       	adc	r25, r25
+ 6d0:	1a 94       	dec	r1
+ 6d2:	69 f7       	brne	.-38     	; 0x6ae <__udivmodsi4_loop>
+ 6d4:	60 95       	com	r22
+ 6d6:	70 95       	com	r23
+ 6d8:	80 95       	com	r24
+ 6da:	90 95       	com	r25
+ 6dc:	9b 01       	movw	r18, r22
+ 6de:	ac 01       	movw	r20, r24
+ 6e0:	bd 01       	movw	r22, r26
+ 6e2:	cf 01       	movw	r24, r30
+ 6e4:	08 95       	ret
+
+000006e6 <_exit>:
+ 6e6:	f8 94       	cli
+
+000006e8 <__stop_program>:
+ 6e8:	ff cf       	rjmp	.-2      	; 0x6e8 <__stop_program>

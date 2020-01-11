@@ -1,0 +1,3663 @@
+
+Tetris2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000173a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000016c6  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000777  00800100  00800100  0000173a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000173a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000176c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000168  00000000  00000000  000017ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002756  00000000  00000000  00001914  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000cb2  00000000  00000000  0000406a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001640  00000000  00000000  00004d1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000760  00000000  00000000  0000635c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000885  00000000  00000000  00006abc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000238d  00000000  00000000  00007341  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000228  00000000  00000000  000096ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	25 c1       	rjmp	.+586    	; 0x24c <__ctors_end>
+       2:	00 00       	nop
+       4:	42 c1       	rjmp	.+644    	; 0x28a <__bad_interrupt>
+       6:	00 00       	nop
+       8:	40 c1       	rjmp	.+640    	; 0x28a <__bad_interrupt>
+       a:	00 00       	nop
+       c:	3e c1       	rjmp	.+636    	; 0x28a <__bad_interrupt>
+       e:	00 00       	nop
+      10:	2f c2       	rjmp	.+1118   	; 0x470 <__vector_4>
+      12:	00 00       	nop
+      14:	3c c5       	rjmp	.+2680   	; 0xa8e <__vector_5>
+      16:	00 00       	nop
+      18:	71 c6       	rjmp	.+3298   	; 0xcfc <__vector_6>
+      1a:	00 00       	nop
+      1c:	ac c7       	rjmp	.+3928   	; 0xf76 <__vector_7>
+      1e:	00 00       	nop
+      20:	0c 94 3b 08 	jmp	0x1076	; 0x1076 <__vector_8>
+      24:	32 c1       	rjmp	.+612    	; 0x28a <__bad_interrupt>
+      26:	00 00       	nop
+      28:	30 c1       	rjmp	.+608    	; 0x28a <__bad_interrupt>
+      2a:	00 00       	nop
+      2c:	2e c1       	rjmp	.+604    	; 0x28a <__bad_interrupt>
+      2e:	00 00       	nop
+      30:	0c 94 64 09 	jmp	0x12c8	; 0x12c8 <__vector_12>
+      34:	2a c1       	rjmp	.+596    	; 0x28a <__bad_interrupt>
+      36:	00 00       	nop
+      38:	28 c1       	rjmp	.+592    	; 0x28a <__bad_interrupt>
+      3a:	00 00       	nop
+      3c:	26 c1       	rjmp	.+588    	; 0x28a <__bad_interrupt>
+      3e:	00 00       	nop
+      40:	24 c1       	rjmp	.+584    	; 0x28a <__bad_interrupt>
+      42:	00 00       	nop
+      44:	22 c1       	rjmp	.+580    	; 0x28a <__bad_interrupt>
+      46:	00 00       	nop
+      48:	20 c1       	rjmp	.+576    	; 0x28a <__bad_interrupt>
+      4a:	00 00       	nop
+      4c:	1e c1       	rjmp	.+572    	; 0x28a <__bad_interrupt>
+      4e:	00 00       	nop
+      50:	1c c1       	rjmp	.+568    	; 0x28a <__bad_interrupt>
+      52:	00 00       	nop
+      54:	1a c1       	rjmp	.+564    	; 0x28a <__bad_interrupt>
+      56:	00 00       	nop
+      58:	18 c1       	rjmp	.+560    	; 0x28a <__bad_interrupt>
+      5a:	00 00       	nop
+      5c:	16 c1       	rjmp	.+556    	; 0x28a <__bad_interrupt>
+      5e:	00 00       	nop
+      60:	14 c1       	rjmp	.+552    	; 0x28a <__bad_interrupt>
+      62:	00 00       	nop
+      64:	12 c1       	rjmp	.+548    	; 0x28a <__bad_interrupt>
+      66:	00 00       	nop
+      68:	10 c1       	rjmp	.+544    	; 0x28a <__bad_interrupt>
+      6a:	00 00       	nop
+      6c:	0e c1       	rjmp	.+540    	; 0x28a <__bad_interrupt>
+      6e:	00 00       	nop
+      70:	0c c1       	rjmp	.+536    	; 0x28a <__bad_interrupt>
+      72:	00 00       	nop
+      74:	0a c1       	rjmp	.+532    	; 0x28a <__bad_interrupt>
+      76:	00 00       	nop
+      78:	08 c1       	rjmp	.+528    	; 0x28a <__bad_interrupt>
+      7a:	00 00       	nop
+      7c:	06 c1       	rjmp	.+524    	; 0x28a <__bad_interrupt>
+      7e:	00 00       	nop
+      80:	04 c1       	rjmp	.+520    	; 0x28a <__bad_interrupt>
+      82:	00 00       	nop
+      84:	02 c1       	rjmp	.+516    	; 0x28a <__bad_interrupt>
+      86:	00 00       	nop
+      88:	00 c1       	rjmp	.+512    	; 0x28a <__bad_interrupt>
+	...
+
+0000008c <__trampolines_end>:
+      8c:	00 01       	movw	r0, r0
+      8e:	01 00       	.word	0x0001	; ????
+      90:	00 01       	movw	r0, r0
+      92:	01 00       	.word	0x0001	; ????
+	...
+      9c:	00 01       	movw	r0, r0
+      9e:	01 00       	.word	0x0001	; ????
+      a0:	00 01       	movw	r0, r0
+      a2:	01 00       	.word	0x0001	; ????
+	...
+      ac:	00 01       	movw	r0, r0
+      ae:	01 00       	.word	0x0001	; ????
+      b0:	00 01       	movw	r0, r0
+      b2:	01 00       	.word	0x0001	; ????
+	...
+      bc:	00 01       	movw	r0, r0
+      be:	01 00       	.word	0x0001	; ????
+      c0:	00 01       	movw	r0, r0
+      c2:	01 00       	.word	0x0001	; ????
+	...
+      cc:	00 01       	movw	r0, r0
+      ce:	00 00       	nop
+      d0:	01 01       	movw	r0, r2
+      d2:	01 00       	.word	0x0001	; ????
+	...
+      dc:	00 01       	movw	r0, r0
+      de:	00 00       	nop
+      e0:	00 01       	movw	r0, r0
+      e2:	01 00       	.word	0x0001	; ????
+      e4:	00 01       	movw	r0, r0
+	...
+      ee:	00 00       	nop
+      f0:	01 01       	movw	r0, r2
+      f2:	01 00       	.word	0x0001	; ????
+      f4:	00 01       	movw	r0, r0
+      f6:	00 00       	nop
+      f8:	00 00       	nop
+      fa:	00 00       	nop
+      fc:	00 01       	movw	r0, r0
+      fe:	00 00       	nop
+     100:	01 01       	movw	r0, r2
+     102:	00 00       	nop
+     104:	00 01       	movw	r0, r0
+     106:	00 00       	nop
+     108:	00 00       	nop
+     10a:	00 00       	nop
+     10c:	01 00       	.word	0x0001	; ????
+     10e:	00 00       	nop
+     110:	01 01       	movw	r0, r2
+     112:	01 00       	.word	0x0001	; ????
+	...
+     11c:	01 01       	movw	r0, r2
+     11e:	00 00       	nop
+     120:	01 00       	.word	0x0001	; ????
+     122:	00 00       	nop
+     124:	01 00       	.word	0x0001	; ????
+     126:	00 00       	nop
+     128:	00 00       	nop
+     12a:	00 00       	nop
+     12c:	01 01       	movw	r0, r2
+     12e:	01 00       	.word	0x0001	; ????
+     130:	00 00       	nop
+     132:	01 00       	.word	0x0001	; ????
+	...
+     13c:	00 01       	movw	r0, r0
+     13e:	00 00       	nop
+     140:	00 01       	movw	r0, r0
+     142:	00 00       	nop
+     144:	01 01       	movw	r0, r2
+	...
+     14e:	01 00       	.word	0x0001	; ????
+     150:	01 01       	movw	r0, r2
+     152:	01 00       	.word	0x0001	; ????
+	...
+     15c:	01 00       	.word	0x0001	; ????
+     15e:	00 00       	nop
+     160:	01 00       	.word	0x0001	; ????
+     162:	00 00       	nop
+     164:	01 01       	movw	r0, r2
+     166:	00 00       	nop
+     168:	00 00       	nop
+     16a:	00 00       	nop
+     16c:	01 01       	movw	r0, r2
+     16e:	01 00       	.word	0x0001	; ????
+     170:	01 00       	.word	0x0001	; ????
+	...
+     17a:	00 00       	nop
+     17c:	01 01       	movw	r0, r2
+     17e:	00 00       	nop
+     180:	00 01       	movw	r0, r0
+     182:	00 00       	nop
+     184:	00 01       	movw	r0, r0
+     186:	00 00       	nop
+     188:	00 00       	nop
+     18a:	00 00       	nop
+     18c:	01 01       	movw	r0, r2
+     18e:	00 00       	nop
+     190:	00 01       	movw	r0, r0
+     192:	01 00       	.word	0x0001	; ????
+	...
+     19c:	00 01       	movw	r0, r0
+     19e:	00 00       	nop
+     1a0:	01 01       	movw	r0, r2
+     1a2:	00 00       	nop
+     1a4:	01 00       	.word	0x0001	; ????
+     1a6:	00 00       	nop
+     1a8:	00 00       	nop
+     1aa:	00 00       	nop
+     1ac:	01 01       	movw	r0, r2
+     1ae:	00 00       	nop
+     1b0:	00 01       	movw	r0, r0
+     1b2:	01 00       	.word	0x0001	; ????
+	...
+     1bc:	00 01       	movw	r0, r0
+     1be:	00 00       	nop
+     1c0:	01 01       	movw	r0, r2
+     1c2:	00 00       	nop
+     1c4:	01 00       	.word	0x0001	; ????
+     1c6:	00 00       	nop
+     1c8:	00 00       	nop
+     1ca:	00 00       	nop
+     1cc:	00 01       	movw	r0, r0
+     1ce:	01 00       	.word	0x0001	; ????
+     1d0:	01 01       	movw	r0, r2
+	...
+     1da:	00 00       	nop
+     1dc:	01 00       	.word	0x0001	; ????
+     1de:	00 00       	nop
+     1e0:	01 01       	movw	r0, r2
+     1e2:	00 00       	nop
+     1e4:	00 01       	movw	r0, r0
+     1e6:	00 00       	nop
+     1e8:	00 00       	nop
+     1ea:	00 00       	nop
+     1ec:	00 01       	movw	r0, r0
+     1ee:	01 00       	.word	0x0001	; ????
+     1f0:	01 01       	movw	r0, r2
+	...
+     1fa:	00 00       	nop
+     1fc:	01 00       	.word	0x0001	; ????
+     1fe:	00 00       	nop
+     200:	01 01       	movw	r0, r2
+     202:	00 00       	nop
+     204:	00 01       	movw	r0, r0
+     206:	00 00       	nop
+     208:	00 00       	nop
+     20a:	00 00       	nop
+     20c:	01 01       	movw	r0, r2
+     20e:	01 01       	movw	r0, r2
+	...
+     21c:	00 01       	movw	r0, r0
+     21e:	00 00       	nop
+     220:	00 01       	movw	r0, r0
+     222:	00 00       	nop
+     224:	00 01       	movw	r0, r0
+     226:	00 00       	nop
+     228:	00 01       	movw	r0, r0
+     22a:	00 00       	nop
+     22c:	01 01       	movw	r0, r2
+     22e:	01 01       	movw	r0, r2
+	...
+     23c:	00 01       	movw	r0, r0
+     23e:	00 00       	nop
+     240:	00 01       	movw	r0, r0
+     242:	00 00       	nop
+     244:	00 01       	movw	r0, r0
+     246:	00 00       	nop
+     248:	00 01       	movw	r0, r0
+	...
+
+0000024c <__ctors_end>:
+     24c:	11 24       	eor	r1, r1
+     24e:	1f be       	out	0x3f, r1	; 63
+     250:	cf ef       	ldi	r28, 0xFF	; 255
+     252:	d0 e1       	ldi	r29, 0x10	; 16
+     254:	de bf       	out	0x3e, r29	; 62
+     256:	cd bf       	out	0x3d, r28	; 61
+
+00000258 <__do_copy_data>:
+     258:	11 e0       	ldi	r17, 0x01	; 1
+     25a:	a0 e0       	ldi	r26, 0x00	; 0
+     25c:	b1 e0       	ldi	r27, 0x01	; 1
+     25e:	e6 ec       	ldi	r30, 0xC6	; 198
+     260:	f6 e1       	ldi	r31, 0x16	; 22
+     262:	00 e0       	ldi	r16, 0x00	; 0
+     264:	0b bf       	out	0x3b, r16	; 59
+     266:	02 c0       	rjmp	.+4      	; 0x26c <__do_copy_data+0x14>
+     268:	07 90       	elpm	r0, Z+
+     26a:	0d 92       	st	X+, r0
+     26c:	a0 30       	cpi	r26, 0x00	; 0
+     26e:	b1 07       	cpc	r27, r17
+     270:	d9 f7       	brne	.-10     	; 0x268 <__do_copy_data+0x10>
+
+00000272 <__do_clear_bss>:
+     272:	28 e0       	ldi	r18, 0x08	; 8
+     274:	a0 e0       	ldi	r26, 0x00	; 0
+     276:	b1 e0       	ldi	r27, 0x01	; 1
+     278:	01 c0       	rjmp	.+2      	; 0x27c <.do_clear_bss_start>
+
+0000027a <.do_clear_bss_loop>:
+     27a:	1d 92       	st	X+, r1
+
+0000027c <.do_clear_bss_start>:
+     27c:	a7 37       	cpi	r26, 0x77	; 119
+     27e:	b2 07       	cpc	r27, r18
+     280:	e1 f7       	brne	.-8      	; 0x27a <.do_clear_bss_loop>
+     282:	0e 94 78 0a 	call	0x14f0	; 0x14f0 <main>
+     286:	0c 94 61 0b 	jmp	0x16c2	; 0x16c2 <_exit>
+
+0000028a <__bad_interrupt>:
+     28a:	ba ce       	rjmp	.-652    	; 0x0 <__vectors>
+
+0000028c <twi_start>:
+        return -1;
+
+    twi_stop();
+
+    return 0;
+}
+     28c:	84 ea       	ldi	r24, 0xA4	; 164
+     28e:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+     292:	e0 e7       	ldi	r30, 0x70	; 112
+     294:	f0 e0       	ldi	r31, 0x00	; 0
+     296:	84 81       	ldd	r24, Z+4	; 0x04
+     298:	88 23       	and	r24, r24
+     29a:	ec f7       	brge	.-6      	; 0x296 <twi_start+0xa>
+     29c:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+     2a0:	98 7f       	andi	r25, 0xF8	; 248
+     2a2:	21 e0       	ldi	r18, 0x01	; 1
+     2a4:	30 e0       	ldi	r19, 0x00	; 0
+     2a6:	98 30       	cpi	r25, 0x08	; 8
+     2a8:	11 f4       	brne	.+4      	; 0x2ae <twi_start+0x22>
+     2aa:	20 e0       	ldi	r18, 0x00	; 0
+     2ac:	30 e0       	ldi	r19, 0x00	; 0
+     2ae:	88 27       	eor	r24, r24
+     2b0:	99 27       	eor	r25, r25
+     2b2:	82 1b       	sub	r24, r18
+     2b4:	93 0b       	sbc	r25, r19
+     2b6:	08 95       	ret
+
+000002b8 <twi_send_dev_addr>:
+     2b8:	80 fd       	sbrc	r24, 0
+     2ba:	02 c0       	rjmp	.+4      	; 0x2c0 <twi_send_dev_addr+0x8>
+     2bc:	48 e1       	ldi	r20, 0x18	; 24
+     2be:	01 c0       	rjmp	.+2      	; 0x2c2 <twi_send_dev_addr+0xa>
+     2c0:	40 e4       	ldi	r20, 0x40	; 64
+     2c2:	e0 e7       	ldi	r30, 0x70	; 112
+     2c4:	f0 e0       	ldi	r31, 0x00	; 0
+     2c6:	83 83       	std	Z+3, r24	; 0x03
+     2c8:	84 e8       	ldi	r24, 0x84	; 132
+     2ca:	84 83       	std	Z+4, r24	; 0x04
+     2cc:	84 81       	ldd	r24, Z+4	; 0x04
+     2ce:	88 23       	and	r24, r24
+     2d0:	ec f7       	brge	.-6      	; 0x2cc <twi_send_dev_addr+0x14>
+     2d2:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+     2d6:	98 7f       	andi	r25, 0xF8	; 248
+     2d8:	21 e0       	ldi	r18, 0x01	; 1
+     2da:	30 e0       	ldi	r19, 0x00	; 0
+     2dc:	94 13       	cpse	r25, r20
+     2de:	02 c0       	rjmp	.+4      	; 0x2e4 <twi_send_dev_addr+0x2c>
+     2e0:	20 e0       	ldi	r18, 0x00	; 0
+     2e2:	30 e0       	ldi	r19, 0x00	; 0
+     2e4:	88 27       	eor	r24, r24
+     2e6:	99 27       	eor	r25, r25
+     2e8:	82 1b       	sub	r24, r18
+     2ea:	93 0b       	sbc	r25, r19
+     2ec:	08 95       	ret
+
+000002ee <twi_send_data>:
+     2ee:	e0 e7       	ldi	r30, 0x70	; 112
+     2f0:	f0 e0       	ldi	r31, 0x00	; 0
+     2f2:	83 83       	std	Z+3, r24	; 0x03
+     2f4:	84 e8       	ldi	r24, 0x84	; 132
+     2f6:	84 83       	std	Z+4, r24	; 0x04
+     2f8:	84 81       	ldd	r24, Z+4	; 0x04
+     2fa:	88 23       	and	r24, r24
+     2fc:	ec f7       	brge	.-6      	; 0x2f8 <twi_send_data+0xa>
+     2fe:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+     302:	98 7f       	andi	r25, 0xF8	; 248
+     304:	21 e0       	ldi	r18, 0x01	; 1
+     306:	30 e0       	ldi	r19, 0x00	; 0
+     308:	98 32       	cpi	r25, 0x28	; 40
+     30a:	11 f4       	brne	.+4      	; 0x310 <twi_send_data+0x22>
+     30c:	20 e0       	ldi	r18, 0x00	; 0
+     30e:	30 e0       	ldi	r19, 0x00	; 0
+     310:	88 27       	eor	r24, r24
+     312:	99 27       	eor	r25, r25
+     314:	82 1b       	sub	r24, r18
+     316:	93 0b       	sbc	r25, r19
+     318:	08 95       	ret
+
+0000031a <twi_write>:
+     31a:	cf 92       	push	r12
+     31c:	df 92       	push	r13
+     31e:	ef 92       	push	r14
+     320:	ff 92       	push	r15
+     322:	0f 93       	push	r16
+     324:	1f 93       	push	r17
+     326:	cf 93       	push	r28
+     328:	df 93       	push	r29
+     32a:	c8 2f       	mov	r28, r24
+     32c:	d6 2f       	mov	r29, r22
+     32e:	6a 01       	movw	r12, r20
+     330:	89 01       	movw	r16, r18
+     332:	ac df       	rcall	.-168    	; 0x28c <twi_start>
+     334:	89 2b       	or	r24, r25
+     336:	d9 f4       	brne	.+54     	; 0x36e <twi_write+0x54>
+     338:	8c 2f       	mov	r24, r28
+     33a:	88 0f       	add	r24, r24
+     33c:	bd df       	rcall	.-134    	; 0x2b8 <twi_send_dev_addr>
+     33e:	89 2b       	or	r24, r25
+     340:	d1 f4       	brne	.+52     	; 0x376 <twi_write+0x5c>
+     342:	8d 2f       	mov	r24, r29
+     344:	d4 df       	rcall	.-88     	; 0x2ee <twi_send_data>
+     346:	7c 01       	movw	r14, r24
+     348:	89 2b       	or	r24, r25
+     34a:	c9 f4       	brne	.+50     	; 0x37e <twi_write+0x64>
+     34c:	10 16       	cp	r1, r16
+     34e:	11 06       	cpc	r1, r17
+     350:	54 f4       	brge	.+20     	; 0x366 <twi_write+0x4c>
+     352:	e6 01       	movw	r28, r12
+     354:	0c 0d       	add	r16, r12
+     356:	1d 1d       	adc	r17, r13
+     358:	89 91       	ld	r24, Y+
+     35a:	c9 df       	rcall	.-110    	; 0x2ee <twi_send_data>
+     35c:	89 2b       	or	r24, r25
+     35e:	99 f4       	brne	.+38     	; 0x386 <twi_write+0x6c>
+     360:	0c 17       	cp	r16, r28
+     362:	1d 07       	cpc	r17, r29
+     364:	c9 f7       	brne	.-14     	; 0x358 <twi_write+0x3e>
+     366:	84 e9       	ldi	r24, 0x94	; 148
+     368:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+     36c:	0f c0       	rjmp	.+30     	; 0x38c <twi_write+0x72>
+     36e:	ee 24       	eor	r14, r14
+     370:	ea 94       	dec	r14
+     372:	fe 2c       	mov	r15, r14
+     374:	0b c0       	rjmp	.+22     	; 0x38c <twi_write+0x72>
+     376:	ee 24       	eor	r14, r14
+     378:	ea 94       	dec	r14
+     37a:	fe 2c       	mov	r15, r14
+     37c:	07 c0       	rjmp	.+14     	; 0x38c <twi_write+0x72>
+     37e:	ee 24       	eor	r14, r14
+     380:	ea 94       	dec	r14
+     382:	fe 2c       	mov	r15, r14
+     384:	03 c0       	rjmp	.+6      	; 0x38c <twi_write+0x72>
+     386:	ee 24       	eor	r14, r14
+     388:	ea 94       	dec	r14
+     38a:	fe 2c       	mov	r15, r14
+     38c:	c7 01       	movw	r24, r14
+     38e:	df 91       	pop	r29
+     390:	cf 91       	pop	r28
+     392:	1f 91       	pop	r17
+     394:	0f 91       	pop	r16
+     396:	ff 90       	pop	r15
+     398:	ef 90       	pop	r14
+     39a:	df 90       	pop	r13
+     39c:	cf 90       	pop	r12
+     39e:	08 95       	ret
+
+000003a0 <twi_init>:
+
+void twi_init(void)
+{
+    twi->twbr = 5;
+     3a0:	e0 e7       	ldi	r30, 0x70	; 112
+     3a2:	f0 e0       	ldi	r31, 0x00	; 0
+     3a4:	85 e0       	ldi	r24, 0x05	; 5
+     3a6:	80 83       	st	Z, r24
+    twi->twsr = 0;
+     3a8:	11 82       	std	Z+1, r1	; 0x01
+     3aa:	08 95       	ret
+
+000003ac <UART_Init>:
+		}
+		for(int i = 0; i < 12; i++)
+		{
+			game_board[i][31] = 1;
+		}
+	}
+     3ac:	88 e1       	ldi	r24, 0x18	; 24
+     3ae:	8a b9       	out	0x0a, r24	; 10
+     3b0:	86 e0       	ldi	r24, 0x06	; 6
+     3b2:	80 93 95 00 	sts	0x0095, r24	; 0x800095 <__TEXT_REGION_LENGTH__+0x7e0095>
+     3b6:	87 e6       	ldi	r24, 0x67	; 103
+     3b8:	89 b9       	out	0x09, r24	; 9
+     3ba:	08 95       	ret
+
+000003bc <ssd1306_cmd>:
+     3bc:	26 2f       	mov	r18, r22
+     3be:	30 e0       	ldi	r19, 0x00	; 0
+     3c0:	ac 01       	movw	r20, r24
+     3c2:	60 e0       	ldi	r22, 0x00	; 0
+     3c4:	8c e3       	ldi	r24, 0x3C	; 60
+     3c6:	a9 cf       	rjmp	.-174    	; 0x31a <twi_write>
+     3c8:	08 95       	ret
+
+000003ca <ssd1306_set_page_start>:
+     3ca:	cf 93       	push	r28
+     3cc:	df 93       	push	r29
+     3ce:	1f 92       	push	r1
+     3d0:	cd b7       	in	r28, 0x3d	; 61
+     3d2:	de b7       	in	r29, 0x3e	; 62
+     3d4:	80 6b       	ori	r24, 0xB0	; 176
+     3d6:	89 83       	std	Y+1, r24	; 0x01
+     3d8:	61 e0       	ldi	r22, 0x01	; 1
+     3da:	ce 01       	movw	r24, r28
+     3dc:	01 96       	adiw	r24, 0x01	; 1
+     3de:	ee df       	rcall	.-36     	; 0x3bc <ssd1306_cmd>
+     3e0:	0f 90       	pop	r0
+     3e2:	df 91       	pop	r29
+     3e4:	cf 91       	pop	r28
+     3e6:	08 95       	ret
+
+000003e8 <ssd1306_set_column_addr>:
+     3e8:	1f 93       	push	r17
+     3ea:	cf 93       	push	r28
+     3ec:	df 93       	push	r29
+     3ee:	1f 92       	push	r1
+     3f0:	cd b7       	in	r28, 0x3d	; 61
+     3f2:	de b7       	in	r29, 0x3e	; 62
+     3f4:	18 2f       	mov	r17, r24
+     3f6:	8f 70       	andi	r24, 0x0F	; 15
+     3f8:	89 83       	std	Y+1, r24	; 0x01
+     3fa:	61 e0       	ldi	r22, 0x01	; 1
+     3fc:	ce 01       	movw	r24, r28
+     3fe:	01 96       	adiw	r24, 0x01	; 1
+     400:	dd df       	rcall	.-70     	; 0x3bc <ssd1306_cmd>
+     402:	12 95       	swap	r17
+     404:	1f 70       	andi	r17, 0x0F	; 15
+     406:	10 61       	ori	r17, 0x10	; 16
+     408:	19 83       	std	Y+1, r17	; 0x01
+     40a:	61 e0       	ldi	r22, 0x01	; 1
+     40c:	ce 01       	movw	r24, r28
+     40e:	01 96       	adiw	r24, 0x01	; 1
+     410:	d5 df       	rcall	.-86     	; 0x3bc <ssd1306_cmd>
+     412:	0f 90       	pop	r0
+     414:	df 91       	pop	r29
+     416:	cf 91       	pop	r28
+     418:	1f 91       	pop	r17
+     41a:	08 95       	ret
+
+0000041c <ssd1306_data>:
+     41c:	9b 01       	movw	r18, r22
+     41e:	ac 01       	movw	r20, r24
+     420:	60 e4       	ldi	r22, 0x40	; 64
+     422:	8c e3       	ldi	r24, 0x3C	; 60
+     424:	7a cf       	rjmp	.-268    	; 0x31a <twi_write>
+     426:	08 95       	ret
+
+00000428 <ssd1306_init>:
+     428:	cf 93       	push	r28
+     42a:	df 93       	push	r29
+     42c:	00 d0       	rcall	.+0      	; 0x42e <ssd1306_init+0x6>
+     42e:	cd b7       	in	r28, 0x3d	; 61
+     430:	de b7       	in	r29, 0x3e	; 62
+     432:	8f e9       	ldi	r24, 0x9F	; 159
+     434:	9f e0       	ldi	r25, 0x0F	; 15
+     436:	01 97       	sbiw	r24, 0x01	; 1
+     438:	f1 f7       	brne	.-4      	; 0x436 <ssd1306_init+0xe>
+     43a:	00 c0       	rjmp	.+0      	; 0x43c <ssd1306_init+0x14>
+     43c:	00 00       	nop
+     43e:	8d e8       	ldi	r24, 0x8D	; 141
+     440:	89 83       	std	Y+1, r24	; 0x01
+     442:	84 e1       	ldi	r24, 0x14	; 20
+     444:	8a 83       	std	Y+2, r24	; 0x02
+     446:	62 e0       	ldi	r22, 0x02	; 2
+     448:	ce 01       	movw	r24, r28
+     44a:	01 96       	adiw	r24, 0x01	; 1
+     44c:	b7 df       	rcall	.-146    	; 0x3bc <ssd1306_cmd>
+     44e:	84 ea       	ldi	r24, 0xA4	; 164
+     450:	89 83       	std	Y+1, r24	; 0x01
+     452:	61 e0       	ldi	r22, 0x01	; 1
+     454:	ce 01       	movw	r24, r28
+     456:	01 96       	adiw	r24, 0x01	; 1
+     458:	b1 df       	rcall	.-158    	; 0x3bc <ssd1306_cmd>
+     45a:	8f ea       	ldi	r24, 0xAF	; 175
+     45c:	89 83       	std	Y+1, r24	; 0x01
+     45e:	61 e0       	ldi	r22, 0x01	; 1
+     460:	ce 01       	movw	r24, r28
+     462:	01 96       	adiw	r24, 0x01	; 1
+     464:	ab df       	rcall	.-170    	; 0x3bc <ssd1306_cmd>
+     466:	0f 90       	pop	r0
+     468:	0f 90       	pop	r0
+     46a:	df 91       	pop	r29
+     46c:	cf 91       	pop	r28
+     46e:	08 95       	ret
+
+00000470 <__vector_4>:
+     470:	1f 92       	push	r1
+     472:	0f 92       	push	r0
+     474:	0f b6       	in	r0, 0x3f	; 63
+     476:	0f 92       	push	r0
+     478:	11 24       	eor	r1, r1
+     47a:	0f 90       	pop	r0
+     47c:	0f be       	out	0x3f, r0	; 63
+     47e:	0f 90       	pop	r0
+     480:	1f 90       	pop	r1
+     482:	18 95       	reti
+
+00000484 <clear_screen>:
+     484:	0f 93       	push	r16
+     486:	1f 93       	push	r17
+     488:	cf 93       	push	r28
+     48a:	03 e7       	ldi	r16, 0x73	; 115
+     48c:	14 e0       	ldi	r17, 0x04	; 4
+     48e:	83 e7       	ldi	r24, 0x73	; 115
+     490:	98 e0       	ldi	r25, 0x08	; 8
+     492:	f8 01       	movw	r30, r16
+     494:	11 92       	st	Z+, r1
+     496:	8e 17       	cp	r24, r30
+     498:	9f 07       	cpc	r25, r31
+     49a:	e1 f7       	brne	.-8      	; 0x494 <clear_screen+0x10>
+     49c:	c0 e0       	ldi	r28, 0x00	; 0
+     49e:	8c 2f       	mov	r24, r28
+     4a0:	94 df       	rcall	.-216    	; 0x3ca <ssd1306_set_page_start>
+     4a2:	60 e8       	ldi	r22, 0x80	; 128
+     4a4:	70 e0       	ldi	r23, 0x00	; 0
+     4a6:	c8 01       	movw	r24, r16
+     4a8:	b9 df       	rcall	.-142    	; 0x41c <ssd1306_data>
+     4aa:	cf 5f       	subi	r28, 0xFF	; 255
+     4ac:	00 58       	subi	r16, 0x80	; 128
+     4ae:	1f 4f       	sbci	r17, 0xFF	; 255
+     4b0:	c8 30       	cpi	r28, 0x08	; 8
+     4b2:	a9 f7       	brne	.-22     	; 0x49e <clear_screen+0x1a>
+     4b4:	80 e0       	ldi	r24, 0x00	; 0
+     4b6:	98 df       	rcall	.-208    	; 0x3e8 <ssd1306_set_column_addr>
+     4b8:	cf 91       	pop	r28
+     4ba:	1f 91       	pop	r17
+     4bc:	0f 91       	pop	r16
+     4be:	08 95       	ret
+
+000004c0 <setup>:
+     4c0:	cf 93       	push	r28
+     4c2:	df 93       	push	r29
+     4c4:	00 d0       	rcall	.+0      	; 0x4c6 <setup+0x6>
+     4c6:	cd b7       	in	r28, 0x3d	; 61
+     4c8:	de b7       	in	r29, 0x3e	; 62
+     4ca:	6a df       	rcall	.-300    	; 0x3a0 <twi_init>
+     4cc:	ad df       	rcall	.-166    	; 0x428 <ssd1306_init>
+     4ce:	80 e2       	ldi	r24, 0x20	; 32
+     4d0:	89 83       	std	Y+1, r24	; 0x01
+     4d2:	82 e0       	ldi	r24, 0x02	; 2
+     4d4:	8a 83       	std	Y+2, r24	; 0x02
+     4d6:	62 e0       	ldi	r22, 0x02	; 2
+     4d8:	ce 01       	movw	r24, r28
+     4da:	01 96       	adiw	r24, 0x01	; 1
+     4dc:	6f df       	rcall	.-290    	; 0x3bc <ssd1306_cmd>
+     4de:	d2 df       	rcall	.-92     	; 0x484 <clear_screen>
+     4e0:	88 ec       	ldi	r24, 0xC8	; 200
+     4e2:	89 83       	std	Y+1, r24	; 0x01
+     4e4:	61 e0       	ldi	r22, 0x01	; 1
+     4e6:	ce 01       	movw	r24, r28
+     4e8:	01 96       	adiw	r24, 0x01	; 1
+     4ea:	68 df       	rcall	.-304    	; 0x3bc <ssd1306_cmd>
+     4ec:	81 ea       	ldi	r24, 0xA1	; 161
+     4ee:	89 83       	std	Y+1, r24	; 0x01
+     4f0:	61 e0       	ldi	r22, 0x01	; 1
+     4f2:	ce 01       	movw	r24, r28
+     4f4:	01 96       	adiw	r24, 0x01	; 1
+     4f6:	62 df       	rcall	.-316    	; 0x3bc <ssd1306_cmd>
+     4f8:	86 ea       	ldi	r24, 0xA6	; 166
+     4fa:	89 83       	std	Y+1, r24	; 0x01
+     4fc:	61 e0       	ldi	r22, 0x01	; 1
+     4fe:	ce 01       	movw	r24, r28
+     500:	01 96       	adiw	r24, 0x01	; 1
+     502:	5c df       	rcall	.-328    	; 0x3bc <ssd1306_cmd>
+     504:	0f 90       	pop	r0
+     506:	0f 90       	pop	r0
+     508:	df 91       	pop	r29
+     50a:	cf 91       	pop	r28
+     50c:	08 95       	ret
+
+0000050e <draw_map>:
+     50e:	cf 92       	push	r12
+     510:	df 92       	push	r13
+     512:	ef 92       	push	r14
+     514:	ff 92       	push	r15
+     516:	0f 93       	push	r16
+     518:	1f 93       	push	r17
+     51a:	cf 93       	push	r28
+     51c:	df 93       	push	r29
+     51e:	cd b7       	in	r28, 0x3d	; 61
+     520:	de b7       	in	r29, 0x3e	; 62
+     522:	d3 50       	subi	r29, 0x03	; 3
+     524:	0f b6       	in	r0, 0x3f	; 63
+     526:	f8 94       	cli
+     528:	de bf       	out	0x3e, r29	; 62
+     52a:	0f be       	out	0x3f, r0	; 63
+     52c:	cd bf       	out	0x3d, r28	; 61
+     52e:	fe 01       	movw	r30, r28
+     530:	31 96       	adiw	r30, 0x01	; 1
+     532:	80 e0       	ldi	r24, 0x00	; 0
+     534:	93 e0       	ldi	r25, 0x03	; 3
+     536:	df 01       	movw	r26, r30
+     538:	9c 01       	movw	r18, r24
+     53a:	1d 92       	st	X+, r1
+     53c:	21 50       	subi	r18, 0x01	; 1
+     53e:	30 40       	sbci	r19, 0x00	; 0
+     540:	e1 f7       	brne	.-8      	; 0x53a <draw_map+0x2c>
+     542:	0f 2e       	mov	r0, r31
+     544:	f3 e4       	ldi	r31, 0x43	; 67
+     546:	ef 2e       	mov	r14, r31
+     548:	f1 e0       	ldi	r31, 0x01	; 1
+     54a:	ff 2e       	mov	r15, r31
+     54c:	f0 2d       	mov	r31, r0
+     54e:	00 e0       	ldi	r16, 0x00	; 0
+     550:	10 e0       	ldi	r17, 0x00	; 0
+     552:	3c c0       	rjmp	.+120    	; 0x5cc <draw_map+0xbe>
+     554:	dc 01       	movw	r26, r24
+     556:	2d 91       	ld	r18, X+
+     558:	cd 01       	movw	r24, r26
+     55a:	21 30       	cpi	r18, 0x01	; 1
+     55c:	41 f5       	brne	.+80     	; 0x5ae <draw_map+0xa0>
+     55e:	61 15       	cp	r22, r1
+     560:	71 05       	cpc	r23, r1
+     562:	69 f4       	brne	.+26     	; 0x57e <draw_map+0x70>
+     564:	20 81       	ld	r18, Z
+     566:	2f 60       	ori	r18, 0x0F	; 15
+     568:	20 83       	st	Z, r18
+     56a:	21 81       	ldd	r18, Z+1	; 0x01
+     56c:	2f 60       	ori	r18, 0x0F	; 15
+     56e:	21 83       	std	Z+1, r18	; 0x01
+     570:	22 81       	ldd	r18, Z+2	; 0x02
+     572:	2f 60       	ori	r18, 0x0F	; 15
+     574:	22 83       	std	Z+2, r18	; 0x02
+     576:	23 81       	ldd	r18, Z+3	; 0x03
+     578:	2f 60       	ori	r18, 0x0F	; 15
+     57a:	23 83       	std	Z+3, r18	; 0x03
+     57c:	18 c0       	rjmp	.+48     	; 0x5ae <draw_map+0xa0>
+     57e:	d6 01       	movw	r26, r12
+     580:	2c 91       	ld	r18, X
+     582:	20 6f       	ori	r18, 0xF0	; 240
+     584:	2c 93       	st	X, r18
+     586:	11 96       	adiw	r26, 0x01	; 1
+     588:	2c 91       	ld	r18, X
+     58a:	11 97       	sbiw	r26, 0x01	; 1
+     58c:	20 6f       	ori	r18, 0xF0	; 240
+     58e:	11 96       	adiw	r26, 0x01	; 1
+     590:	2c 93       	st	X, r18
+     592:	11 97       	sbiw	r26, 0x01	; 1
+     594:	12 96       	adiw	r26, 0x02	; 2
+     596:	2c 91       	ld	r18, X
+     598:	12 97       	sbiw	r26, 0x02	; 2
+     59a:	20 6f       	ori	r18, 0xF0	; 240
+     59c:	12 96       	adiw	r26, 0x02	; 2
+     59e:	2c 93       	st	X, r18
+     5a0:	12 97       	sbiw	r26, 0x02	; 2
+     5a2:	13 96       	adiw	r26, 0x03	; 3
+     5a4:	2c 91       	ld	r18, X
+     5a6:	13 97       	sbiw	r26, 0x03	; 3
+     5a8:	20 6f       	ori	r18, 0xF0	; 240
+     5aa:	13 96       	adiw	r26, 0x03	; 3
+     5ac:	2c 93       	st	X, r18
+     5ae:	34 96       	adiw	r30, 0x04	; 4
+     5b0:	b4 e0       	ldi	r27, 0x04	; 4
+     5b2:	cb 0e       	add	r12, r27
+     5b4:	d1 1c       	adc	r13, r1
+     5b6:	e4 17       	cp	r30, r20
+     5b8:	f5 07       	cpc	r31, r21
+     5ba:	61 f6       	brne	.-104    	; 0x554 <draw_map+0x46>
+     5bc:	0f 5f       	subi	r16, 0xFF	; 255
+     5be:	1f 4f       	sbci	r17, 0xFF	; 255
+     5c0:	20 e2       	ldi	r18, 0x20	; 32
+     5c2:	e2 0e       	add	r14, r18
+     5c4:	f1 1c       	adc	r15, r1
+     5c6:	0c 30       	cpi	r16, 0x0C	; 12
+     5c8:	11 05       	cpc	r17, r1
+     5ca:	01 f1       	breq	.+64     	; 0x60c <draw_map+0xfe>
+     5cc:	a8 01       	movw	r20, r16
+     5ce:	11 23       	and	r17, r17
+     5d0:	14 f4       	brge	.+4      	; 0x5d6 <draw_map+0xc8>
+     5d2:	4f 5f       	subi	r20, 0xFF	; 255
+     5d4:	5f 4f       	sbci	r21, 0xFF	; 255
+     5d6:	55 95       	asr	r21
+     5d8:	47 95       	ror	r20
+     5da:	56 95       	lsr	r21
+     5dc:	54 2f       	mov	r21, r20
+     5de:	44 27       	eor	r20, r20
+     5e0:	57 95       	ror	r21
+     5e2:	47 95       	ror	r20
+     5e4:	e1 e0       	ldi	r30, 0x01	; 1
+     5e6:	f0 e0       	ldi	r31, 0x00	; 0
+     5e8:	ec 0f       	add	r30, r28
+     5ea:	fd 1f       	adc	r31, r29
+     5ec:	e4 0f       	add	r30, r20
+     5ee:	f5 1f       	adc	r31, r21
+     5f0:	40 58       	subi	r20, 0x80	; 128
+     5f2:	5f 4f       	sbci	r21, 0xFF	; 255
+     5f4:	81 e0       	ldi	r24, 0x01	; 1
+     5f6:	90 e0       	ldi	r25, 0x00	; 0
+     5f8:	8c 0f       	add	r24, r28
+     5fa:	9d 1f       	adc	r25, r29
+     5fc:	48 0f       	add	r20, r24
+     5fe:	59 1f       	adc	r21, r25
+     600:	6f 01       	movw	r12, r30
+     602:	c7 01       	movw	r24, r14
+     604:	b8 01       	movw	r22, r16
+     606:	61 70       	andi	r22, 0x01	; 1
+     608:	77 27       	eor	r23, r23
+     60a:	a4 cf       	rjmp	.-184    	; 0x554 <draw_map+0x46>
+     60c:	de 01       	movw	r26, r28
+     60e:	11 96       	adiw	r26, 0x01	; 1
+     610:	7d 01       	movw	r14, r26
+     612:	12 e0       	ldi	r17, 0x02	; 2
+     614:	81 2f       	mov	r24, r17
+     616:	d9 de       	rcall	.-590    	; 0x3ca <ssd1306_set_page_start>
+     618:	60 e8       	ldi	r22, 0x80	; 128
+     61a:	70 e0       	ldi	r23, 0x00	; 0
+     61c:	c7 01       	movw	r24, r14
+     61e:	fe de       	rcall	.-516    	; 0x41c <ssd1306_data>
+     620:	1f 5f       	subi	r17, 0xFF	; 255
+     622:	b0 e8       	ldi	r27, 0x80	; 128
+     624:	eb 0e       	add	r14, r27
+     626:	f1 1c       	adc	r15, r1
+     628:	18 30       	cpi	r17, 0x08	; 8
+     62a:	a1 f7       	brne	.-24     	; 0x614 <draw_map+0x106>
+     62c:	dd 5f       	subi	r29, 0xFD	; 253
+     62e:	0f b6       	in	r0, 0x3f	; 63
+     630:	f8 94       	cli
+     632:	de bf       	out	0x3e, r29	; 62
+     634:	0f be       	out	0x3f, r0	; 63
+     636:	cd bf       	out	0x3d, r28	; 61
+     638:	df 91       	pop	r29
+     63a:	cf 91       	pop	r28
+     63c:	1f 91       	pop	r17
+     63e:	0f 91       	pop	r16
+     640:	ff 90       	pop	r15
+     642:	ef 90       	pop	r14
+     644:	df 90       	pop	r13
+     646:	cf 90       	pop	r12
+     648:	08 95       	ret
+
+0000064a <NewTetriminos>:
+     64a:	ef 92       	push	r14
+     64c:	ff 92       	push	r15
+     64e:	1f 93       	push	r17
+     650:	cf 93       	push	r28
+     652:	df 93       	push	r29
+     654:	10 92 42 01 	sts	0x0142, r1	; 0x800142 <new_block>
+     658:	80 91 40 01 	lds	r24, 0x0140	; 0x800140 <next_block>
+     65c:	80 93 76 08 	sts	0x0876, r24	; 0x800876 <shape>
+     660:	22 b7       	in	r18, 0x32	; 50
+     662:	95 e2       	ldi	r25, 0x25	; 37
+     664:	29 9f       	mul	r18, r25
+     666:	31 2d       	mov	r19, r1
+     668:	11 24       	eor	r1, r1
+     66a:	92 2f       	mov	r25, r18
+     66c:	93 1b       	sub	r25, r19
+     66e:	96 95       	lsr	r25
+     670:	93 0f       	add	r25, r19
+     672:	96 95       	lsr	r25
+     674:	96 95       	lsr	r25
+     676:	39 2f       	mov	r19, r25
+     678:	33 0f       	add	r19, r19
+     67a:	33 0f       	add	r19, r19
+     67c:	33 0f       	add	r19, r19
+     67e:	39 1b       	sub	r19, r25
+     680:	23 1b       	sub	r18, r19
+     682:	20 93 40 01 	sts	0x0140, r18	; 0x800140 <next_block>
+     686:	10 92 75 08 	sts	0x0875, r1	; 0x800875 <pattern>
+     68a:	10 92 73 08 	sts	0x0873, r1	; 0x800873 <cur_line>
+     68e:	97 e0       	ldi	r25, 0x07	; 7
+     690:	90 93 74 08 	sts	0x0874, r25	; 0x800874 <cur_col>
+     694:	0f 2e       	mov	r0, r31
+     696:	f3 e4       	ldi	r31, 0x43	; 67
+     698:	ef 2e       	mov	r14, r31
+     69a:	f4 e0       	ldi	r31, 0x04	; 4
+     69c:	ff 2e       	mov	r15, r31
+     69e:	f0 2d       	mov	r31, r0
+     6a0:	23 e7       	ldi	r18, 0x73	; 115
+     6a2:	34 e0       	ldi	r19, 0x04	; 4
+     6a4:	f7 01       	movw	r30, r14
+     6a6:	10 82       	st	Z, r1
+     6a8:	11 82       	std	Z+1, r1	; 0x01
+     6aa:	12 82       	std	Z+2, r1	; 0x02
+     6ac:	13 82       	std	Z+3, r1	; 0x03
+     6ae:	34 96       	adiw	r30, 0x04	; 4
+     6b0:	e2 17       	cp	r30, r18
+     6b2:	f3 07       	cpc	r31, r19
+     6b4:	c1 f7       	brne	.-16     	; 0x6a6 <NewTetriminos+0x5c>
+     6b6:	20 e4       	ldi	r18, 0x40	; 64
+     6b8:	82 9f       	mul	r24, r18
+     6ba:	c0 01       	movw	r24, r0
+     6bc:	11 24       	eor	r1, r1
+     6be:	84 57       	subi	r24, 0x74	; 116
+     6c0:	9f 4f       	sbci	r25, 0xFF	; 255
+     6c2:	63 e3       	ldi	r22, 0x33	; 51
+     6c4:	74 e0       	ldi	r23, 0x04	; 4
+     6c6:	a3 e4       	ldi	r26, 0x43	; 67
+     6c8:	b4 e0       	ldi	r27, 0x04	; 4
+     6ca:	fc 01       	movw	r30, r24
+     6cc:	01 96       	adiw	r24, 0x01	; 1
+     6ce:	25 91       	lpm	r18, Z+
+     6d0:	5c 96       	adiw	r26, 0x1c	; 28
+     6d2:	2c 93       	st	X, r18
+     6d4:	5c 97       	sbiw	r26, 0x1c	; 28
+     6d6:	9c 01       	movw	r18, r24
+     6d8:	2d 5f       	subi	r18, 0xFD	; 253
+     6da:	3f 4f       	sbci	r19, 0xFF	; 255
+     6dc:	f9 01       	movw	r30, r18
+     6de:	24 91       	lpm	r18, Z
+     6e0:	5d 96       	adiw	r26, 0x1d	; 29
+     6e2:	2c 93       	st	X, r18
+     6e4:	5d 97       	sbiw	r26, 0x1d	; 29
+     6e6:	9c 01       	movw	r18, r24
+     6e8:	29 5f       	subi	r18, 0xF9	; 249
+     6ea:	3f 4f       	sbci	r19, 0xFF	; 255
+     6ec:	f9 01       	movw	r30, r18
+     6ee:	24 91       	lpm	r18, Z
+     6f0:	5e 96       	adiw	r26, 0x1e	; 30
+     6f2:	2c 93       	st	X, r18
+     6f4:	5e 97       	sbiw	r26, 0x1e	; 30
+     6f6:	9c 01       	movw	r18, r24
+     6f8:	25 5f       	subi	r18, 0xF5	; 245
+     6fa:	3f 4f       	sbci	r19, 0xFF	; 255
+     6fc:	f9 01       	movw	r30, r18
+     6fe:	24 91       	lpm	r18, Z
+     700:	5f 96       	adiw	r26, 0x1f	; 31
+     702:	2c 93       	st	X, r18
+     704:	5f 97       	sbiw	r26, 0x1f	; 31
+     706:	14 97       	sbiw	r26, 0x04	; 4
+     708:	a6 17       	cp	r26, r22
+     70a:	b7 07       	cpc	r27, r23
+     70c:	f1 f6       	brne	.-68     	; 0x6ca <NewTetriminos+0x80>
+     70e:	10 91 41 01 	lds	r17, 0x0141	; 0x800141 <game_over>
+     712:	e3 e2       	ldi	r30, 0x23	; 35
+     714:	f2 e0       	ldi	r31, 0x02	; 2
+     716:	a3 e4       	ldi	r26, 0x43	; 67
+     718:	b4 e0       	ldi	r27, 0x04	; 4
+     71a:	cf 01       	movw	r24, r30
+     71c:	ec 01       	movw	r28, r24
+     71e:	48 81       	ld	r20, Y
+     720:	5c 96       	adiw	r26, 0x1c	; 28
+     722:	2c 91       	ld	r18, X
+     724:	5c 97       	sbiw	r26, 0x1c	; 28
+     726:	42 23       	and	r20, r18
+     728:	59 81       	ldd	r21, Y+1	; 0x01
+     72a:	5d 96       	adiw	r26, 0x1d	; 29
+     72c:	3c 91       	ld	r19, X
+     72e:	5d 97       	sbiw	r26, 0x1d	; 29
+     730:	25 2f       	mov	r18, r21
+     732:	23 23       	and	r18, r19
+     734:	54 2f       	mov	r21, r20
+     736:	52 2b       	or	r21, r18
+     738:	2a 81       	ldd	r18, Y+2	; 0x02
+     73a:	5e 96       	adiw	r26, 0x1e	; 30
+     73c:	3c 91       	ld	r19, X
+     73e:	5e 97       	sbiw	r26, 0x1e	; 30
+     740:	23 23       	and	r18, r19
+     742:	45 2f       	mov	r20, r21
+     744:	42 2b       	or	r20, r18
+     746:	2b 81       	ldd	r18, Y+3	; 0x03
+     748:	5f 96       	adiw	r26, 0x1f	; 31
+     74a:	3c 91       	ld	r19, X
+     74c:	5f 97       	sbiw	r26, 0x1f	; 31
+     74e:	23 23       	and	r18, r19
+     750:	24 2b       	or	r18, r20
+     752:	12 2b       	or	r17, r18
+     754:	80 97       	sbiw	r24, 0x20	; 32
+     756:	14 97       	sbiw	r26, 0x04	; 4
+     758:	a6 17       	cp	r26, r22
+     75a:	b7 07       	cpc	r27, r23
+     75c:	f9 f6       	brne	.-66     	; 0x71c <NewTetriminos+0xd2>
+     75e:	10 93 41 01 	sts	0x0141, r17	; 0x800141 <game_over>
+     762:	23 ea       	ldi	r18, 0xA3	; 163
+     764:	31 e0       	ldi	r19, 0x01	; 1
+     766:	90 81       	ld	r25, Z
+     768:	d7 01       	movw	r26, r14
+     76a:	5c 96       	adiw	r26, 0x1c	; 28
+     76c:	8c 91       	ld	r24, X
+     76e:	5c 97       	sbiw	r26, 0x1c	; 28
+     770:	89 2b       	or	r24, r25
+     772:	80 83       	st	Z, r24
+     774:	91 81       	ldd	r25, Z+1	; 0x01
+     776:	5d 96       	adiw	r26, 0x1d	; 29
+     778:	8c 91       	ld	r24, X
+     77a:	5d 97       	sbiw	r26, 0x1d	; 29
+     77c:	89 2b       	or	r24, r25
+     77e:	81 83       	std	Z+1, r24	; 0x01
+     780:	92 81       	ldd	r25, Z+2	; 0x02
+     782:	5e 96       	adiw	r26, 0x1e	; 30
+     784:	8c 91       	ld	r24, X
+     786:	5e 97       	sbiw	r26, 0x1e	; 30
+     788:	89 2b       	or	r24, r25
+     78a:	82 83       	std	Z+2, r24	; 0x02
+     78c:	93 81       	ldd	r25, Z+3	; 0x03
+     78e:	5f 96       	adiw	r26, 0x1f	; 31
+     790:	8c 91       	ld	r24, X
+     792:	89 2b       	or	r24, r25
+     794:	83 83       	std	Z+3, r24	; 0x03
+     796:	b0 97       	sbiw	r30, 0x20	; 32
+     798:	b4 e0       	ldi	r27, 0x04	; 4
+     79a:	eb 1a       	sub	r14, r27
+     79c:	f1 08       	sbc	r15, r1
+     79e:	e2 17       	cp	r30, r18
+     7a0:	f3 07       	cpc	r31, r19
+     7a2:	09 f7       	brne	.-62     	; 0x766 <NewTetriminos+0x11c>
+     7a4:	df 91       	pop	r29
+     7a6:	cf 91       	pop	r28
+     7a8:	1f 91       	pop	r17
+     7aa:	ff 90       	pop	r15
+     7ac:	ef 90       	pop	r14
+     7ae:	08 95       	ret
+
+000007b0 <NextTetriminos>:
+     7b0:	8f 92       	push	r8
+     7b2:	9f 92       	push	r9
+     7b4:	bf 92       	push	r11
+     7b6:	cf 92       	push	r12
+     7b8:	df 92       	push	r13
+     7ba:	ef 92       	push	r14
+     7bc:	ff 92       	push	r15
+     7be:	0f 93       	push	r16
+     7c0:	1f 93       	push	r17
+     7c2:	cf 93       	push	r28
+     7c4:	df 93       	push	r29
+     7c6:	cd b7       	in	r28, 0x3d	; 61
+     7c8:	de b7       	in	r29, 0x3e	; 62
+     7ca:	da 95       	dec	r29
+     7cc:	0f b6       	in	r0, 0x3f	; 63
+     7ce:	f8 94       	cli
+     7d0:	de bf       	out	0x3e, r29	; 62
+     7d2:	0f be       	out	0x3f, r0	; 63
+     7d4:	cd bf       	out	0x3d, r28	; 61
+     7d6:	60 e0       	ldi	r22, 0x00	; 0
+     7d8:	71 e0       	ldi	r23, 0x01	; 1
+     7da:	20 e4       	ldi	r18, 0x40	; 64
+     7dc:	31 e0       	ldi	r19, 0x01	; 1
+     7de:	fb 01       	movw	r30, r22
+     7e0:	08 c0       	rjmp	.+16     	; 0x7f2 <NextTetriminos+0x42>
+     7e2:	11 92       	st	Z+, r1
+     7e4:	e8 17       	cp	r30, r24
+     7e6:	f9 07       	cpc	r31, r25
+     7e8:	e1 f7       	brne	.-8      	; 0x7e2 <NextTetriminos+0x32>
+     7ea:	fc 01       	movw	r30, r24
+     7ec:	28 17       	cp	r18, r24
+     7ee:	39 07       	cpc	r19, r25
+     7f0:	19 f0       	breq	.+6      	; 0x7f8 <NextTetriminos+0x48>
+     7f2:	cf 01       	movw	r24, r30
+     7f4:	08 96       	adiw	r24, 0x08	; 8
+     7f6:	f5 cf       	rjmp	.-22     	; 0x7e2 <NextTetriminos+0x32>
+     7f8:	e0 91 40 01 	lds	r30, 0x0140	; 0x800140 <next_block>
+     7fc:	20 e4       	ldi	r18, 0x40	; 64
+     7fe:	e2 9f       	mul	r30, r18
+     800:	f0 01       	movw	r30, r0
+     802:	11 24       	eor	r1, r1
+     804:	af 01       	movw	r20, r30
+     806:	44 57       	subi	r20, 0x74	; 116
+     808:	5f 4f       	sbci	r21, 0xFF	; 255
+     80a:	a0 e0       	ldi	r26, 0x00	; 0
+     80c:	b1 e0       	ldi	r27, 0x01	; 1
+     80e:	80 e0       	ldi	r24, 0x00	; 0
+     810:	90 e0       	ldi	r25, 0x00	; 0
+     812:	fa 01       	movw	r30, r20
+     814:	24 91       	lpm	r18, Z
+     816:	52 96       	adiw	r26, 0x12	; 18
+     818:	2c 93       	st	X, r18
+     81a:	52 97       	sbiw	r26, 0x12	; 18
+     81c:	9a 01       	movw	r18, r20
+     81e:	2c 5f       	subi	r18, 0xFC	; 252
+     820:	3f 4f       	sbci	r19, 0xFF	; 255
+     822:	f9 01       	movw	r30, r18
+     824:	24 91       	lpm	r18, Z
+     826:	5a 96       	adiw	r26, 0x1a	; 26
+     828:	2c 93       	st	X, r18
+     82a:	5a 97       	sbiw	r26, 0x1a	; 26
+     82c:	9a 01       	movw	r18, r20
+     82e:	28 5f       	subi	r18, 0xF8	; 248
+     830:	3f 4f       	sbci	r19, 0xFF	; 255
+     832:	f9 01       	movw	r30, r18
+     834:	24 91       	lpm	r18, Z
+     836:	92 96       	adiw	r26, 0x22	; 34
+     838:	2c 93       	st	X, r18
+     83a:	92 97       	sbiw	r26, 0x22	; 34
+     83c:	9a 01       	movw	r18, r20
+     83e:	24 5f       	subi	r18, 0xF4	; 244
+     840:	3f 4f       	sbci	r19, 0xFF	; 255
+     842:	f9 01       	movw	r30, r18
+     844:	24 91       	lpm	r18, Z
+     846:	9a 96       	adiw	r26, 0x2a	; 42
+     848:	2c 93       	st	X, r18
+     84a:	9a 97       	sbiw	r26, 0x2a	; 42
+     84c:	01 96       	adiw	r24, 0x01	; 1
+     84e:	4f 5f       	subi	r20, 0xFF	; 255
+     850:	5f 4f       	sbci	r21, 0xFF	; 255
+     852:	11 96       	adiw	r26, 0x01	; 1
+     854:	84 30       	cpi	r24, 0x04	; 4
+     856:	91 05       	cpc	r25, r1
+     858:	e1 f6       	brne	.-72     	; 0x812 <NextTetriminos+0x62>
+     85a:	fe 01       	movw	r30, r28
+     85c:	31 96       	adiw	r30, 0x01	; 1
+     85e:	80 e0       	ldi	r24, 0x00	; 0
+     860:	91 e0       	ldi	r25, 0x01	; 1
+     862:	df 01       	movw	r26, r30
+     864:	9c 01       	movw	r18, r24
+     866:	1d 92       	st	X+, r1
+     868:	21 50       	subi	r18, 0x01	; 1
+     86a:	30 40       	sbci	r19, 0x00	; 0
+     86c:	e1 f7       	brne	.-8      	; 0x866 <NextTetriminos+0xb6>
+     86e:	8f ef       	ldi	r24, 0xFF	; 255
+     870:	8b 83       	std	Y+3, r24	; 0x03
+     872:	cd 57       	subi	r28, 0x7D	; 125
+     874:	df 4f       	sbci	r29, 0xFF	; 255
+     876:	88 83       	st	Y, r24
+     878:	c3 58       	subi	r28, 0x83	; 131
+     87a:	d0 40       	sbci	r29, 0x00	; 0
+     87c:	8a 8b       	std	Y+18, r24	; 0x12
+     87e:	ce 56       	subi	r28, 0x6E	; 110
+     880:	df 4f       	sbci	r29, 0xFF	; 255
+     882:	88 83       	st	Y, r24
+     884:	c2 59       	subi	r28, 0x92	; 146
+     886:	d0 40       	sbci	r29, 0x00	; 0
+     888:	32 96       	adiw	r30, 0x02	; 2
+     88a:	ce 01       	movw	r24, r28
+     88c:	8d 57       	subi	r24, 0x7D	; 125
+     88e:	9f 4f       	sbci	r25, 0xFF	; 255
+     890:	4c 01       	movw	r8, r24
+     892:	ae 01       	movw	r20, r28
+     894:	4d 5e       	subi	r20, 0xED	; 237
+     896:	5f 4f       	sbci	r21, 0xFF	; 255
+     898:	9c 01       	movw	r18, r24
+     89a:	80 81       	ld	r24, Z
+     89c:	81 60       	ori	r24, 0x01	; 1
+     89e:	81 93       	st	Z+, r24
+     8a0:	d9 01       	movw	r26, r18
+     8a2:	8c 91       	ld	r24, X
+     8a4:	80 68       	ori	r24, 0x80	; 128
+     8a6:	8d 93       	st	X+, r24
+     8a8:	9d 01       	movw	r18, r26
+     8aa:	4e 17       	cp	r20, r30
+     8ac:	5f 07       	cpc	r21, r31
+     8ae:	a9 f7       	brne	.-22     	; 0x89a <NextTetriminos+0xea>
+     8b0:	8e 01       	movw	r16, r28
+     8b2:	0f 5f       	subi	r16, 0xFF	; 255
+     8b4:	1f 4f       	sbci	r17, 0xFF	; 255
+     8b6:	6e 01       	movw	r12, r28
+     8b8:	b1 e1       	ldi	r27, 0x11	; 17
+     8ba:	cb 0e       	add	r12, r27
+     8bc:	d1 1c       	adc	r13, r1
+     8be:	0f 2e       	mov	r0, r31
+     8c0:	f3 e0       	ldi	r31, 0x03	; 3
+     8c2:	ef 2e       	mov	r14, r31
+     8c4:	f1 2c       	mov	r15, r1
+     8c6:	f0 2d       	mov	r31, r0
+     8c8:	41 c0       	rjmp	.+130    	; 0x94c <NextTetriminos+0x19c>
+     8ca:	41 91       	ld	r20, Z+
+     8cc:	41 30       	cpi	r20, 0x01	; 1
+     8ce:	71 f5       	brne	.+92     	; 0x92c <NextTetriminos+0x17c>
+     8d0:	84 30       	cpi	r24, 0x04	; 4
+     8d2:	91 05       	cpc	r25, r1
+     8d4:	9c f4       	brge	.+38     	; 0x8fc <NextTetriminos+0x14c>
+     8d6:	d4 01       	movw	r26, r8
+     8d8:	bc 90       	ld	r11, X
+     8da:	a7 01       	movw	r20, r14
+     8dc:	02 2e       	mov	r0, r18
+     8de:	02 c0       	rjmp	.+4      	; 0x8e4 <NextTetriminos+0x134>
+     8e0:	44 0f       	add	r20, r20
+     8e2:	55 1f       	adc	r21, r21
+     8e4:	0a 94       	dec	r0
+     8e6:	e2 f7       	brpl	.-8      	; 0x8e0 <NextTetriminos+0x130>
+     8e8:	5b 2d       	mov	r21, r11
+     8ea:	54 2b       	or	r21, r20
+     8ec:	5c 93       	st	X, r21
+     8ee:	11 96       	adiw	r26, 0x01	; 1
+     8f0:	5c 91       	ld	r21, X
+     8f2:	11 97       	sbiw	r26, 0x01	; 1
+     8f4:	45 2b       	or	r20, r21
+     8f6:	11 96       	adiw	r26, 0x01	; 1
+     8f8:	4c 93       	st	X, r20
+     8fa:	18 c0       	rjmp	.+48     	; 0x92c <NextTetriminos+0x17c>
+     8fc:	a9 01       	movw	r20, r18
+     8fe:	48 5f       	subi	r20, 0xF8	; 248
+     900:	5f 4f       	sbci	r21, 0xFF	; 255
+     902:	d7 01       	movw	r26, r14
+     904:	02 c0       	rjmp	.+4      	; 0x90a <NextTetriminos+0x15a>
+     906:	aa 0f       	add	r26, r26
+     908:	bb 1f       	adc	r27, r27
+     90a:	4a 95       	dec	r20
+     90c:	e2 f7       	brpl	.-8      	; 0x906 <NextTetriminos+0x156>
+     90e:	ad 01       	movw	r20, r26
+     910:	d8 01       	movw	r26, r16
+     912:	12 96       	adiw	r26, 0x02	; 2
+     914:	5c 91       	ld	r21, X
+     916:	12 97       	sbiw	r26, 0x02	; 2
+     918:	54 2b       	or	r21, r20
+     91a:	12 96       	adiw	r26, 0x02	; 2
+     91c:	5c 93       	st	X, r21
+     91e:	12 97       	sbiw	r26, 0x02	; 2
+     920:	13 96       	adiw	r26, 0x03	; 3
+     922:	5c 91       	ld	r21, X
+     924:	13 97       	sbiw	r26, 0x03	; 3
+     926:	45 2b       	or	r20, r21
+     928:	13 96       	adiw	r26, 0x03	; 3
+     92a:	4c 93       	st	X, r20
+     92c:	01 96       	adiw	r24, 0x01	; 1
+     92e:	22 50       	subi	r18, 0x02	; 2
+     930:	31 09       	sbc	r19, r1
+     932:	88 30       	cpi	r24, 0x08	; 8
+     934:	91 05       	cpc	r25, r1
+     936:	49 f6       	brne	.-110    	; 0x8ca <NextTetriminos+0x11a>
+     938:	68 5f       	subi	r22, 0xF8	; 248
+     93a:	7f 4f       	sbci	r23, 0xFF	; 255
+     93c:	b2 e0       	ldi	r27, 0x02	; 2
+     93e:	8b 0e       	add	r8, r27
+     940:	91 1c       	adc	r9, r1
+     942:	0e 5f       	subi	r16, 0xFE	; 254
+     944:	1f 4f       	sbci	r17, 0xFF	; 255
+     946:	c0 16       	cp	r12, r16
+     948:	d1 06       	cpc	r13, r17
+     94a:	31 f0       	breq	.+12     	; 0x958 <NextTetriminos+0x1a8>
+     94c:	fb 01       	movw	r30, r22
+     94e:	26 e0       	ldi	r18, 0x06	; 6
+     950:	30 e0       	ldi	r19, 0x00	; 0
+     952:	80 e0       	ldi	r24, 0x00	; 0
+     954:	90 e0       	ldi	r25, 0x00	; 0
+     956:	b9 cf       	rjmp	.-142    	; 0x8ca <NextTetriminos+0x11a>
+     958:	80 e0       	ldi	r24, 0x00	; 0
+     95a:	37 dd       	rcall	.-1426   	; 0x3ca <ssd1306_set_page_start>
+     95c:	60 e8       	ldi	r22, 0x80	; 128
+     95e:	70 e0       	ldi	r23, 0x00	; 0
+     960:	ce 01       	movw	r24, r28
+     962:	01 96       	adiw	r24, 0x01	; 1
+     964:	5b dd       	rcall	.-1354   	; 0x41c <ssd1306_data>
+     966:	81 e0       	ldi	r24, 0x01	; 1
+     968:	30 dd       	rcall	.-1440   	; 0x3ca <ssd1306_set_page_start>
+     96a:	60 e8       	ldi	r22, 0x80	; 128
+     96c:	70 e0       	ldi	r23, 0x00	; 0
+     96e:	ce 01       	movw	r24, r28
+     970:	8f 57       	subi	r24, 0x7F	; 127
+     972:	9f 4f       	sbci	r25, 0xFF	; 255
+     974:	53 dd       	rcall	.-1370   	; 0x41c <ssd1306_data>
+     976:	d3 95       	inc	r29
+     978:	0f b6       	in	r0, 0x3f	; 63
+     97a:	f8 94       	cli
+     97c:	de bf       	out	0x3e, r29	; 62
+     97e:	0f be       	out	0x3f, r0	; 63
+     980:	cd bf       	out	0x3d, r28	; 61
+     982:	df 91       	pop	r29
+     984:	cf 91       	pop	r28
+     986:	1f 91       	pop	r17
+     988:	0f 91       	pop	r16
+     98a:	ff 90       	pop	r15
+     98c:	ef 90       	pop	r14
+     98e:	df 90       	pop	r13
+     990:	cf 90       	pop	r12
+     992:	bf 90       	pop	r11
+     994:	9f 90       	pop	r9
+     996:	8f 90       	pop	r8
+     998:	08 95       	ret
+
+0000099a <Collision>:
+
+	unsigned char Collision()	//충돌 여부 확인
+	{
+     99a:	6f 92       	push	r6
+     99c:	7f 92       	push	r7
+     99e:	9f 92       	push	r9
+     9a0:	af 92       	push	r10
+     9a2:	bf 92       	push	r11
+     9a4:	cf 92       	push	r12
+     9a6:	df 92       	push	r13
+     9a8:	ef 92       	push	r14
+     9aa:	ff 92       	push	r15
+     9ac:	0f 93       	push	r16
+     9ae:	1f 93       	push	r17
+     9b0:	cf 93       	push	r28
+     9b2:	df 93       	push	r29
+		unsigned char collison2 = 0;	//두번째
+		unsigned char collison3 = 0;	//세번째
+		unsigned char collison4 = 0;	//네번째
+		for(int i = 0; i < 4; i++)
+		{
+			collison1 |= main_board[cur_col-i][cur_line] & temp_line[cur_col-i][0];	//게임보드에 있는 벽이나 테트리미노스와 임시저장소에 생긴 테트리미노스가 겹치는지 확인하고 겹치면 충돌여부 플레그 켜짐
+     9b4:	a0 91 73 08 	lds	r26, 0x0873	; 0x800873 <cur_line>
+     9b8:	b0 e0       	ldi	r27, 0x00	; 0
+			collison2 |= main_board[cur_col-i][cur_line + 1] & temp_line[cur_col-i][1];
+     9ba:	7d 01       	movw	r14, r26
+     9bc:	8f ef       	ldi	r24, 0xFF	; 255
+     9be:	e8 1a       	sub	r14, r24
+     9c0:	f8 0a       	sbc	r15, r24
+			collison3 |= main_board[cur_col-i][cur_line + 2] & temp_line[cur_col-i][2];
+     9c2:	8d 01       	movw	r16, r26
+     9c4:	0e 5f       	subi	r16, 0xFE	; 254
+     9c6:	1f 4f       	sbci	r17, 0xFF	; 255
+			collison4 |= main_board[cur_col-i][cur_line + 3] & temp_line[cur_col-i][3];
+     9c8:	3d 01       	movw	r6, r26
+     9ca:	93 e0       	ldi	r25, 0x03	; 3
+     9cc:	69 0e       	add	r6, r25
+     9ce:	71 1c       	adc	r7, r1
+     9d0:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+     9d4:	bd 01       	movw	r22, r26
+     9d6:	48 2f       	mov	r20, r24
+     9d8:	50 e0       	ldi	r21, 0x00	; 0
+     9da:	c0 e2       	ldi	r28, 0x20	; 32
+     9dc:	8c 9f       	mul	r24, r28
+     9de:	a0 0d       	add	r26, r0
+     9e0:	b1 1d       	adc	r27, r1
+     9e2:	11 24       	eor	r1, r1
+     9e4:	ad 53       	subi	r26, 0x3D	; 61
+     9e6:	bd 4f       	sbci	r27, 0xFD	; 253
+     9e8:	fa 01       	movw	r30, r20
+     9ea:	ee 0f       	add	r30, r30
+     9ec:	ff 1f       	adc	r31, r31
+     9ee:	ee 0f       	add	r30, r30
+     9f0:	ff 1f       	adc	r31, r31
+     9f2:	ed 5b       	subi	r30, 0xBD	; 189
+     9f4:	fb 4f       	sbci	r31, 0xFB	; 251
+     9f6:	44 0f       	add	r20, r20
+     9f8:	55 1f       	adc	r21, r21
+     9fa:	44 0f       	add	r20, r20
+     9fc:	55 1f       	adc	r21, r21
+     9fe:	4d 5c       	subi	r20, 0xCD	; 205
+     a00:	5b 4f       	sbci	r21, 0xFB	; 251
+	unsigned char Collision()	//충돌 여부 확인
+	{
+		unsigned char collison1 = 0;	//첫번째 라인 충돌 여부
+		unsigned char collison2 = 0;	//두번째
+		unsigned char collison3 = 0;	//세번째
+		unsigned char collison4 = 0;	//네번째
+     a02:	91 2c       	mov	r9, r1
+
+	unsigned char Collision()	//충돌 여부 확인
+	{
+		unsigned char collison1 = 0;	//첫번째 라인 충돌 여부
+		unsigned char collison2 = 0;	//두번째
+		unsigned char collison3 = 0;	//세번째
+     a04:	c1 2c       	mov	r12, r1
+	}
+
+	unsigned char Collision()	//충돌 여부 확인
+	{
+		unsigned char collison1 = 0;	//첫번째 라인 충돌 여부
+		unsigned char collison2 = 0;	//두번째
+     a06:	d1 2c       	mov	r13, r1
+		}
+	}
+
+	unsigned char Collision()	//충돌 여부 확인
+	{
+		unsigned char collison1 = 0;	//첫번째 라인 충돌 여부
+     a08:	30 e0       	ldi	r19, 0x00	; 0
+		unsigned char collison2 = 0;	//두번째
+		unsigned char collison3 = 0;	//세번째
+		unsigned char collison4 = 0;	//네번째
+		for(int i = 0; i < 4; i++)
+		{
+			collison1 |= main_board[cur_col-i][cur_line] & temp_line[cur_col-i][0];	//게임보드에 있는 벽이나 테트리미노스와 임시저장소에 생긴 테트리미노스가 겹치는지 확인하고 겹치면 충돌여부 플레그 켜짐
+     a0a:	9c 91       	ld	r25, X
+     a0c:	80 81       	ld	r24, Z
+     a0e:	89 23       	and	r24, r25
+     a10:	38 2b       	or	r19, r24
+     a12:	cd 01       	movw	r24, r26
+     a14:	86 1b       	sub	r24, r22
+     a16:	97 0b       	sbc	r25, r23
+			collison2 |= main_board[cur_col-i][cur_line + 1] & temp_line[cur_col-i][1];
+     a18:	5c 01       	movw	r10, r24
+     a1a:	ae 0c       	add	r10, r14
+     a1c:	bf 1c       	adc	r11, r15
+     a1e:	e5 01       	movw	r28, r10
+     a20:	b8 80       	ld	r11, Y
+     a22:	21 81       	ldd	r18, Z+1	; 0x01
+     a24:	2b 21       	and	r18, r11
+     a26:	d2 2a       	or	r13, r18
+			collison3 |= main_board[cur_col-i][cur_line + 2] & temp_line[cur_col-i][2];
+     a28:	5c 01       	movw	r10, r24
+     a2a:	a0 0e       	add	r10, r16
+     a2c:	b1 1e       	adc	r11, r17
+     a2e:	e5 01       	movw	r28, r10
+     a30:	b8 80       	ld	r11, Y
+     a32:	22 81       	ldd	r18, Z+2	; 0x02
+     a34:	2b 21       	and	r18, r11
+     a36:	c2 2a       	or	r12, r18
+			collison4 |= main_board[cur_col-i][cur_line + 3] & temp_line[cur_col-i][3];
+     a38:	86 0d       	add	r24, r6
+     a3a:	97 1d       	adc	r25, r7
+     a3c:	ec 01       	movw	r28, r24
+     a3e:	98 81       	ld	r25, Y
+     a40:	83 81       	ldd	r24, Z+3	; 0x03
+     a42:	89 23       	and	r24, r25
+     a44:	98 2a       	or	r9, r24
+     a46:	90 97       	sbiw	r26, 0x20	; 32
+     a48:	34 97       	sbiw	r30, 0x04	; 4
+	{
+		unsigned char collison1 = 0;	//첫번째 라인 충돌 여부
+		unsigned char collison2 = 0;	//두번째
+		unsigned char collison3 = 0;	//세번째
+		unsigned char collison4 = 0;	//네번째
+		for(int i = 0; i < 4; i++)
+     a4a:	e4 17       	cp	r30, r20
+     a4c:	f5 07       	cpc	r31, r21
+     a4e:	e9 f6       	brne	.-70     	; 0xa0a <Collision+0x70>
+			collison1 |= main_board[cur_col-i][cur_line] & temp_line[cur_col-i][0];	//게임보드에 있는 벽이나 테트리미노스와 임시저장소에 생긴 테트리미노스가 겹치는지 확인하고 겹치면 충돌여부 플레그 켜짐
+			collison2 |= main_board[cur_col-i][cur_line + 1] & temp_line[cur_col-i][1];
+			collison3 |= main_board[cur_col-i][cur_line + 2] & temp_line[cur_col-i][2];
+			collison4 |= main_board[cur_col-i][cur_line + 3] & temp_line[cur_col-i][3];
+		}
+		if(collison1 == 1 || collison2 == 1 || collison3 == 1 || collison4 == 1)	//어느라인이든 충돌며부 플레그가 켜지는지 확인
+     a50:	31 30       	cpi	r19, 0x01	; 1
+     a52:	51 f0       	breq	.+20     	; 0xa68 <Collision+0xce>
+     a54:	d1 e0       	ldi	r29, 0x01	; 1
+     a56:	dd 16       	cp	r13, r29
+     a58:	49 f0       	breq	.+18     	; 0xa6c <Collision+0xd2>
+     a5a:	cd 16       	cp	r12, r29
+     a5c:	49 f0       	breq	.+18     	; 0xa70 <Collision+0xd6>
+		return 1;         // 충돌 1 리턴
+     a5e:	81 e0       	ldi	r24, 0x01	; 1
+     a60:	98 16       	cp	r9, r24
+     a62:	39 f0       	breq	.+14     	; 0xa72 <Collision+0xd8>
+     a64:	80 e0       	ldi	r24, 0x00	; 0
+     a66:	05 c0       	rjmp	.+10     	; 0xa72 <Collision+0xd8>
+     a68:	81 e0       	ldi	r24, 0x01	; 1
+     a6a:	03 c0       	rjmp	.+6      	; 0xa72 <Collision+0xd8>
+     a6c:	81 e0       	ldi	r24, 0x01	; 1
+     a6e:	01 c0       	rjmp	.+2      	; 0xa72 <Collision+0xd8>
+     a70:	81 e0       	ldi	r24, 0x01	; 1
+		else
+		return 0;  // 충돌 없음 0 리턴
+	}
+     a72:	df 91       	pop	r29
+     a74:	cf 91       	pop	r28
+     a76:	1f 91       	pop	r17
+     a78:	0f 91       	pop	r16
+     a7a:	ff 90       	pop	r15
+     a7c:	ef 90       	pop	r14
+     a7e:	df 90       	pop	r13
+     a80:	cf 90       	pop	r12
+     a82:	bf 90       	pop	r11
+     a84:	af 90       	pop	r10
+     a86:	9f 90       	pop	r9
+     a88:	7f 90       	pop	r7
+     a8a:	6f 90       	pop	r6
+     a8c:	08 95       	ret
+
+00000a8e <__vector_5>:
+static uint8_t blank[1] = {0};
+
+unsigned char Collision();
+
+ISR(INT4_vect)
+{
+     a8e:	1f 92       	push	r1
+     a90:	0f 92       	push	r0
+     a92:	0f b6       	in	r0, 0x3f	; 63
+     a94:	0f 92       	push	r0
+     a96:	11 24       	eor	r1, r1
+     a98:	0b b6       	in	r0, 0x3b	; 59
+     a9a:	0f 92       	push	r0
+     a9c:	df 92       	push	r13
+     a9e:	ef 92       	push	r14
+     aa0:	ff 92       	push	r15
+     aa2:	0f 93       	push	r16
+     aa4:	1f 93       	push	r17
+     aa6:	2f 93       	push	r18
+     aa8:	3f 93       	push	r19
+     aaa:	4f 93       	push	r20
+     aac:	5f 93       	push	r21
+     aae:	6f 93       	push	r22
+     ab0:	7f 93       	push	r23
+     ab2:	8f 93       	push	r24
+     ab4:	9f 93       	push	r25
+     ab6:	af 93       	push	r26
+     ab8:	bf 93       	push	r27
+     aba:	cf 93       	push	r28
+     abc:	df 93       	push	r29
+     abe:	ef 93       	push	r30
+     ac0:	ff 93       	push	r31
+     ac2:	e3 ec       	ldi	r30, 0xC3	; 195
+     ac4:	f2 e0       	ldi	r31, 0x02	; 2
+     ac6:	43 e4       	ldi	r20, 0x43	; 67
+     ac8:	51 e0       	ldi	r21, 0x01	; 1
+     aca:	63 e4       	ldi	r22, 0x43	; 67
+     acc:	74 e0       	ldi	r23, 0x04	; 4
+     ace:	0b c0       	rjmp	.+22     	; 0xae6 <__vector_5+0x58>
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+		{
+			game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+     ad0:	81 91       	ld	r24, Z+
+     ad2:	8d 93       	st	X+, r24
+
+ISR(INT4_vect)
+{
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+     ad4:	e2 17       	cp	r30, r18
+     ad6:	f3 07       	cpc	r31, r19
+     ad8:	d9 f7       	brne	.-10     	; 0xad0 <__vector_5+0x42>
+     ada:	40 5e       	subi	r20, 0xE0	; 224
+     adc:	5f 4f       	sbci	r21, 0xFF	; 255
+     ade:	f9 01       	movw	r30, r18
+
+unsigned char Collision();
+
+ISR(INT4_vect)
+{
+	for(int i = 0; i < 12; i++)
+     ae0:	62 17       	cp	r22, r18
+     ae2:	73 07       	cpc	r23, r19
+     ae4:	29 f0       	breq	.+10     	; 0xaf0 <__vector_5+0x62>
+     ae6:	9f 01       	movw	r18, r30
+     ae8:	20 5e       	subi	r18, 0xE0	; 224
+     aea:	3f 4f       	sbci	r19, 0xFF	; 255
+static uint8_t blank[1] = {0};
+
+unsigned char Collision();
+
+ISR(INT4_vect)
+{
+     aec:	da 01       	movw	r26, r20
+     aee:	f0 cf       	rjmp	.-32     	; 0xad0 <__vector_5+0x42>
+		{
+			game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+		}
+	}
+
+	if(cur_col > 3) cur_col--;	//테트리미노스 현재칸 오른쪽으로 이동(3보다 클 시)
+     af0:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+     af4:	84 30       	cpi	r24, 0x04	; 4
+     af6:	20 f0       	brcs	.+8      	; 0xb00 <__vector_5+0x72>
+     af8:	81 50       	subi	r24, 0x01	; 1
+     afa:	80 93 74 08 	sts	0x0874, r24	; 0x800874 <cur_col>
+     afe:	da c0       	rjmp	.+436    	; 0xcb4 <__vector_5+0x226>
+	else if(cur_col == 3 && pattern == 1 || pattern == 3) cur_col--;
+     b00:	83 30       	cpi	r24, 0x03	; 3
+     b02:	21 f4       	brne	.+8      	; 0xb0c <__vector_5+0x7e>
+     b04:	90 91 75 08 	lds	r25, 0x0875	; 0x800875 <pattern>
+     b08:	91 30       	cpi	r25, 0x01	; 1
+     b0a:	29 f0       	breq	.+10     	; 0xb16 <__vector_5+0x88>
+     b0c:	90 91 75 08 	lds	r25, 0x0875	; 0x800875 <pattern>
+     b10:	93 30       	cpi	r25, 0x03	; 3
+     b12:	09 f0       	breq	.+2      	; 0xb16 <__vector_5+0x88>
+     b14:	cf c0       	rjmp	.+414    	; 0xcb4 <__vector_5+0x226>
+     b16:	81 50       	subi	r24, 0x01	; 1
+     b18:	80 93 74 08 	sts	0x0874, r24	; 0x800874 <cur_col>
+     b1c:	cb c0       	rjmp	.+406    	; 0xcb4 <__vector_5+0x226>
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+     b1e:	10 82       	st	Z, r1
+     b20:	11 82       	std	Z+1, r1	; 0x01
+     b22:	12 82       	std	Z+2, r1	; 0x02
+     b24:	13 82       	std	Z+3, r1	; 0x03
+     b26:	34 96       	adiw	r30, 0x04	; 4
+	}
+
+	if(cur_col > 3) cur_col--;	//테트리미노스 현재칸 오른쪽으로 이동(3보다 클 시)
+	else if(cur_col == 3 && pattern == 1 || pattern == 3) cur_col--;
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+     b28:	ee 15       	cp	r30, r14
+     b2a:	ff 05       	cpc	r31, r15
+     b2c:	c1 f7       	brne	.-16     	; 0xb1e <__vector_5+0x90>
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+     b2e:	d0 90 74 08 	lds	r13, 0x0874	; 0x800874 <cur_col>
+     b32:	80 91 76 08 	lds	r24, 0x0876	; 0x800876 <shape>
+     b36:	00 91 75 08 	lds	r16, 0x0875	; 0x800875 <pattern>
+     b3a:	10 e0       	ldi	r17, 0x00	; 0
+     b3c:	24 e0       	ldi	r18, 0x04	; 4
+     b3e:	82 9f       	mul	r24, r18
+     b40:	00 0d       	add	r16, r0
+     b42:	11 1d       	adc	r17, r1
+     b44:	11 24       	eor	r1, r1
+     b46:	02 95       	swap	r16
+     b48:	12 95       	swap	r17
+     b4a:	10 7f       	andi	r17, 0xF0	; 240
+     b4c:	10 27       	eor	r17, r16
+     b4e:	00 7f       	andi	r16, 0xF0	; 240
+     b50:	10 27       	eor	r17, r16
+     b52:	04 57       	subi	r16, 0x74	; 116
+     b54:	1f 4f       	sbci	r17, 0xFF	; 255
+     b56:	2d 2d       	mov	r18, r13
+     b58:	30 e0       	ldi	r19, 0x00	; 0
+     b5a:	f9 01       	movw	r30, r18
+     b5c:	ee 0f       	add	r30, r30
+     b5e:	ff 1f       	adc	r31, r31
+     b60:	ee 0f       	add	r30, r30
+     b62:	ff 1f       	adc	r31, r31
+     b64:	df 01       	movw	r26, r30
+     b66:	ad 5b       	subi	r26, 0xBD	; 189
+     b68:	bb 4f       	sbci	r27, 0xFB	; 251
+     b6a:	9f 01       	movw	r18, r30
+     b6c:	2d 5c       	subi	r18, 0xCD	; 205
+     b6e:	3b 4f       	sbci	r19, 0xFB	; 251
+     b70:	c8 01       	movw	r24, r16
+     b72:	fc 01       	movw	r30, r24
+     b74:	01 96       	adiw	r24, 0x01	; 1
+     b76:	45 91       	lpm	r20, Z+
+     b78:	4c 93       	st	X, r20
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+     b7a:	ac 01       	movw	r20, r24
+     b7c:	4d 5f       	subi	r20, 0xFD	; 253
+     b7e:	5f 4f       	sbci	r21, 0xFF	; 255
+     b80:	fa 01       	movw	r30, r20
+     b82:	44 91       	lpm	r20, Z
+     b84:	11 96       	adiw	r26, 0x01	; 1
+     b86:	4c 93       	st	X, r20
+     b88:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+     b8a:	ac 01       	movw	r20, r24
+     b8c:	49 5f       	subi	r20, 0xF9	; 249
+     b8e:	5f 4f       	sbci	r21, 0xFF	; 255
+     b90:	fa 01       	movw	r30, r20
+     b92:	44 91       	lpm	r20, Z
+     b94:	12 96       	adiw	r26, 0x02	; 2
+     b96:	4c 93       	st	X, r20
+     b98:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+     b9a:	ac 01       	movw	r20, r24
+     b9c:	45 5f       	subi	r20, 0xF5	; 245
+     b9e:	5f 4f       	sbci	r21, 0xFF	; 255
+     ba0:	fa 01       	movw	r30, r20
+     ba2:	44 91       	lpm	r20, Z
+     ba4:	13 96       	adiw	r26, 0x03	; 3
+     ba6:	4c 93       	st	X, r20
+     ba8:	13 97       	sbiw	r26, 0x03	; 3
+     baa:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+     bac:	a2 17       	cp	r26, r18
+     bae:	b3 07       	cpc	r27, r19
+     bb0:	01 f7       	brne	.-64     	; 0xb72 <__vector_5+0xe4>
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+	
+	if(Collision() == 1) cur_col++;
+     bb2:	f3 de       	rcall	.-538    	; 0x99a <Collision>
+     bb4:	81 30       	cpi	r24, 0x01	; 1
+     bb6:	19 f4       	brne	.+6      	; 0xbbe <__vector_5+0x130>
+     bb8:	d3 94       	inc	r13
+     bba:	d0 92 74 08 	sts	0x0874, r13	; 0x800874 <cur_col>
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+     bbe:	18 82       	st	Y, r1
+     bc0:	19 82       	std	Y+1, r1	; 0x01
+     bc2:	1a 82       	std	Y+2, r1	; 0x02
+     bc4:	1b 82       	std	Y+3, r1	; 0x03
+     bc6:	24 96       	adiw	r28, 0x04	; 4
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+	
+	if(Collision() == 1) cur_col++;
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+     bc8:	ce 15       	cp	r28, r14
+     bca:	df 05       	cpc	r29, r15
+     bcc:	c1 f7       	brne	.-16     	; 0xbbe <__vector_5+0x130>
+     bce:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+     bd2:	90 e0       	ldi	r25, 0x00	; 0
+     bd4:	fc 01       	movw	r30, r24
+     bd6:	ee 0f       	add	r30, r30
+     bd8:	ff 1f       	adc	r31, r31
+     bda:	ee 0f       	add	r30, r30
+     bdc:	ff 1f       	adc	r31, r31
+     bde:	9f 01       	movw	r18, r30
+     be0:	2d 5b       	subi	r18, 0xBD	; 189
+     be2:	3b 4f       	sbci	r19, 0xFB	; 251
+     be4:	79 01       	movw	r14, r18
+     be6:	bf 01       	movw	r22, r30
+     be8:	6d 5c       	subi	r22, 0xCD	; 205
+     bea:	7b 4f       	sbci	r23, 0xFB	; 251
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+     bec:	d9 01       	movw	r26, r18
+     bee:	f8 01       	movw	r30, r16
+     bf0:	0f 5f       	subi	r16, 0xFF	; 255
+     bf2:	1f 4f       	sbci	r17, 0xFF	; 255
+     bf4:	25 91       	lpm	r18, Z+
+     bf6:	2c 93       	st	X, r18
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+     bf8:	98 01       	movw	r18, r16
+     bfa:	2d 5f       	subi	r18, 0xFD	; 253
+     bfc:	3f 4f       	sbci	r19, 0xFF	; 255
+     bfe:	f9 01       	movw	r30, r18
+     c00:	24 91       	lpm	r18, Z
+     c02:	11 96       	adiw	r26, 0x01	; 1
+     c04:	2c 93       	st	X, r18
+     c06:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+     c08:	98 01       	movw	r18, r16
+     c0a:	29 5f       	subi	r18, 0xF9	; 249
+     c0c:	3f 4f       	sbci	r19, 0xFF	; 255
+     c0e:	f9 01       	movw	r30, r18
+     c10:	24 91       	lpm	r18, Z
+     c12:	12 96       	adiw	r26, 0x02	; 2
+     c14:	2c 93       	st	X, r18
+     c16:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+     c18:	98 01       	movw	r18, r16
+     c1a:	25 5f       	subi	r18, 0xF5	; 245
+     c1c:	3f 4f       	sbci	r19, 0xFF	; 255
+     c1e:	f9 01       	movw	r30, r18
+     c20:	24 91       	lpm	r18, Z
+     c22:	13 96       	adiw	r26, 0x03	; 3
+     c24:	2c 93       	st	X, r18
+     c26:	13 97       	sbiw	r26, 0x03	; 3
+     c28:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+     c2a:	a6 17       	cp	r26, r22
+     c2c:	b7 07       	cpc	r27, r23
+     c2e:	f9 f6       	brne	.-66     	; 0xbee <__vector_5+0x160>
+	}
+
+	
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	{
+		game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+     c30:	40 91 73 08 	lds	r20, 0x0873	; 0x800873 <cur_line>
+     c34:	50 e0       	ldi	r21, 0x00	; 0
+     c36:	dc 01       	movw	r26, r24
+     c38:	aa 0f       	add	r26, r26
+     c3a:	bb 1f       	adc	r27, r27
+     c3c:	a2 95       	swap	r26
+     c3e:	b2 95       	swap	r27
+     c40:	b0 7f       	andi	r27, 0xF0	; 240
+     c42:	ba 27       	eor	r27, r26
+     c44:	a0 7f       	andi	r26, 0xF0	; 240
+     c46:	ba 27       	eor	r27, r26
+     c48:	9a 01       	movw	r18, r20
+     c4a:	2a 0f       	add	r18, r26
+     c4c:	3b 1f       	adc	r19, r27
+     c4e:	2d 5b       	subi	r18, 0xBD	; 189
+     c50:	3e 4f       	sbci	r19, 0xFE	; 254
+     c52:	cd 01       	movw	r24, r26
+     c54:	84 0f       	add	r24, r20
+     c56:	95 1f       	adc	r25, r21
+     c58:	8c 5b       	subi	r24, 0xBC	; 188
+     c5a:	9e 4f       	sbci	r25, 0xFE	; 254
+     c5c:	ed 01       	movw	r28, r26
+     c5e:	c4 0f       	add	r28, r20
+     c60:	d5 1f       	adc	r29, r21
+     c62:	cb 5b       	subi	r28, 0xBB	; 187
+     c64:	de 4f       	sbci	r29, 0xFE	; 254
+     c66:	a4 0f       	add	r26, r20
+     c68:	b5 1f       	adc	r27, r21
+     c6a:	aa 5b       	subi	r26, 0xBA	; 186
+     c6c:	be 4f       	sbci	r27, 0xFE	; 254
+     c6e:	f9 01       	movw	r30, r18
+     c70:	50 81       	ld	r21, Z
+     c72:	f7 01       	movw	r30, r14
+     c74:	40 81       	ld	r20, Z
+     c76:	45 2b       	or	r20, r21
+     c78:	f9 01       	movw	r30, r18
+     c7a:	40 83       	st	Z, r20
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+     c7c:	fc 01       	movw	r30, r24
+     c7e:	50 81       	ld	r21, Z
+     c80:	f7 01       	movw	r30, r14
+     c82:	41 81       	ldd	r20, Z+1	; 0x01
+     c84:	45 2b       	or	r20, r21
+     c86:	fc 01       	movw	r30, r24
+     c88:	40 83       	st	Z, r20
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+     c8a:	58 81       	ld	r21, Y
+     c8c:	f7 01       	movw	r30, r14
+     c8e:	42 81       	ldd	r20, Z+2	; 0x02
+     c90:	45 2b       	or	r20, r21
+     c92:	48 83       	st	Y, r20
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+     c94:	5c 91       	ld	r21, X
+     c96:	43 81       	ldd	r20, Z+3	; 0x03
+     c98:	45 2b       	or	r20, r21
+     c9a:	4c 93       	st	X, r20
+     c9c:	20 52       	subi	r18, 0x20	; 32
+     c9e:	31 09       	sbc	r19, r1
+     ca0:	f4 e0       	ldi	r31, 0x04	; 4
+     ca2:	ef 1a       	sub	r14, r31
+     ca4:	f1 08       	sbc	r15, r1
+     ca6:	80 97       	sbiw	r24, 0x20	; 32
+     ca8:	a0 97       	sbiw	r28, 0x20	; 32
+     caa:	90 97       	sbiw	r26, 0x20	; 32
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+     cac:	e6 16       	cp	r14, r22
+     cae:	f7 06       	cpc	r15, r23
+     cb0:	f1 f6       	brne	.-68     	; 0xc6e <__vector_5+0x1e0>
+     cb2:	0a c0       	rjmp	.+20     	; 0xcc8 <__vector_5+0x23a>
+     cb4:	c3 e4       	ldi	r28, 0x43	; 67
+     cb6:	d4 e0       	ldi	r29, 0x04	; 4
+     cb8:	0f 2e       	mov	r0, r31
+     cba:	f3 e7       	ldi	r31, 0x73	; 115
+     cbc:	ef 2e       	mov	r14, r31
+     cbe:	f4 e0       	ldi	r31, 0x04	; 4
+     cc0:	ff 2e       	mov	r15, r31
+     cc2:	f0 2d       	mov	r31, r0
+static uint8_t blank[1] = {0};
+
+unsigned char Collision();
+
+ISR(INT4_vect)
+{
+     cc4:	fe 01       	movw	r30, r28
+     cc6:	2b cf       	rjmp	.-426    	; 0xb1e <__vector_5+0x90>
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+	}
+	
+}
+     cc8:	ff 91       	pop	r31
+     cca:	ef 91       	pop	r30
+     ccc:	df 91       	pop	r29
+     cce:	cf 91       	pop	r28
+     cd0:	bf 91       	pop	r27
+     cd2:	af 91       	pop	r26
+     cd4:	9f 91       	pop	r25
+     cd6:	8f 91       	pop	r24
+     cd8:	7f 91       	pop	r23
+     cda:	6f 91       	pop	r22
+     cdc:	5f 91       	pop	r21
+     cde:	4f 91       	pop	r20
+     ce0:	3f 91       	pop	r19
+     ce2:	2f 91       	pop	r18
+     ce4:	1f 91       	pop	r17
+     ce6:	0f 91       	pop	r16
+     ce8:	ff 90       	pop	r15
+     cea:	ef 90       	pop	r14
+     cec:	df 90       	pop	r13
+     cee:	0f 90       	pop	r0
+     cf0:	0b be       	out	0x3b, r0	; 59
+     cf2:	0f 90       	pop	r0
+     cf4:	0f be       	out	0x3f, r0	; 63
+     cf6:	0f 90       	pop	r0
+     cf8:	1f 90       	pop	r1
+     cfa:	18 95       	reti
+
+00000cfc <__vector_6>:
+
+ISR(INT5_vect)
+{
+     cfc:	1f 92       	push	r1
+     cfe:	0f 92       	push	r0
+     d00:	0f b6       	in	r0, 0x3f	; 63
+     d02:	0f 92       	push	r0
+     d04:	11 24       	eor	r1, r1
+     d06:	0b b6       	in	r0, 0x3b	; 59
+     d08:	0f 92       	push	r0
+     d0a:	7f 92       	push	r7
+     d0c:	8f 92       	push	r8
+     d0e:	9f 92       	push	r9
+     d10:	af 92       	push	r10
+     d12:	bf 92       	push	r11
+     d14:	cf 92       	push	r12
+     d16:	df 92       	push	r13
+     d18:	ef 92       	push	r14
+     d1a:	ff 92       	push	r15
+     d1c:	0f 93       	push	r16
+     d1e:	1f 93       	push	r17
+     d20:	2f 93       	push	r18
+     d22:	3f 93       	push	r19
+     d24:	4f 93       	push	r20
+     d26:	5f 93       	push	r21
+     d28:	6f 93       	push	r22
+     d2a:	7f 93       	push	r23
+     d2c:	8f 93       	push	r24
+     d2e:	9f 93       	push	r25
+     d30:	af 93       	push	r26
+     d32:	bf 93       	push	r27
+     d34:	cf 93       	push	r28
+     d36:	df 93       	push	r29
+     d38:	ef 93       	push	r30
+     d3a:	ff 93       	push	r31
+     d3c:	e3 ec       	ldi	r30, 0xC3	; 195
+     d3e:	f2 e0       	ldi	r31, 0x02	; 2
+     d40:	43 e4       	ldi	r20, 0x43	; 67
+     d42:	51 e0       	ldi	r21, 0x01	; 1
+     d44:	63 e4       	ldi	r22, 0x43	; 67
+     d46:	74 e0       	ldi	r23, 0x04	; 4
+     d48:	0b c0       	rjmp	.+22     	; 0xd60 <__vector_6+0x64>
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+		{
+			game_board[i][j] = main_board[i][j];
+     d4a:	81 91       	ld	r24, Z+
+     d4c:	8d 93       	st	X+, r24
+
+ISR(INT5_vect)
+{
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+     d4e:	e2 17       	cp	r30, r18
+     d50:	f3 07       	cpc	r31, r19
+     d52:	d9 f7       	brne	.-10     	; 0xd4a <__vector_6+0x4e>
+     d54:	40 5e       	subi	r20, 0xE0	; 224
+     d56:	5f 4f       	sbci	r21, 0xFF	; 255
+     d58:	f9 01       	movw	r30, r18
+	
+}
+
+ISR(INT5_vect)
+{
+	for(int i = 0; i < 12; i++)
+     d5a:	62 17       	cp	r22, r18
+     d5c:	73 07       	cpc	r23, r19
+     d5e:	29 f0       	breq	.+10     	; 0xd6a <__vector_6+0x6e>
+     d60:	9f 01       	movw	r18, r30
+     d62:	20 5e       	subi	r18, 0xE0	; 224
+     d64:	3f 4f       	sbci	r19, 0xFF	; 255
+	}
+	
+}
+
+ISR(INT5_vect)
+{
+     d66:	da 01       	movw	r26, r20
+     d68:	f0 cf       	rjmp	.-32     	; 0xd4a <__vector_6+0x4e>
+		{
+			game_board[i][j] = main_board[i][j];
+		}
+	}
+
+	pattern++;	//회전으로 상태 변화
+     d6a:	80 91 75 08 	lds	r24, 0x0875	; 0x800875 <pattern>
+     d6e:	8f 5f       	subi	r24, 0xFF	; 255
+	if(pattern == 4) pattern = 0; //마지막에서 처음으로
+     d70:	84 30       	cpi	r24, 0x04	; 4
+     d72:	09 f0       	breq	.+2      	; 0xd76 <__vector_6+0x7a>
+     d74:	d4 c0       	rjmp	.+424    	; 0xf1e <__vector_6+0x222>
+     d76:	10 92 75 08 	sts	0x0875, r1	; 0x800875 <pattern>
+     d7a:	d3 c0       	rjmp	.+422    	; 0xf22 <__vector_6+0x226>
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+     d7c:	10 82       	st	Z, r1
+     d7e:	11 82       	std	Z+1, r1	; 0x01
+     d80:	12 82       	std	Z+2, r1	; 0x02
+     d82:	13 82       	std	Z+3, r1	; 0x03
+     d84:	34 96       	adiw	r30, 0x04	; 4
+	}
+
+	pattern++;	//회전으로 상태 변화
+	if(pattern == 4) pattern = 0; //마지막에서 처음으로
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+     d86:	ec 15       	cp	r30, r12
+     d88:	fd 05       	cpc	r31, r13
+     d8a:	c1 f7       	brne	.-16     	; 0xd7c <__vector_6+0x80>
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+     d8c:	e0 90 76 08 	lds	r14, 0x0876	; 0x800876 <shape>
+     d90:	70 90 75 08 	lds	r7, 0x0875	; 0x800875 <pattern>
+     d94:	f1 2c       	mov	r15, r1
+     d96:	ee 0c       	add	r14, r14
+     d98:	ff 1c       	adc	r15, r15
+     d9a:	ee 0c       	add	r14, r14
+     d9c:	ff 1c       	adc	r15, r15
+     d9e:	c7 01       	movw	r24, r14
+     da0:	87 0d       	add	r24, r7
+     da2:	91 1d       	adc	r25, r1
+     da4:	82 95       	swap	r24
+     da6:	92 95       	swap	r25
+     da8:	90 7f       	andi	r25, 0xF0	; 240
+     daa:	98 27       	eor	r25, r24
+     dac:	80 7f       	andi	r24, 0xF0	; 240
+     dae:	98 27       	eor	r25, r24
+     db0:	84 57       	subi	r24, 0x74	; 116
+     db2:	9f 4f       	sbci	r25, 0xFF	; 255
+     db4:	80 90 74 08 	lds	r8, 0x0874	; 0x800874 <cur_col>
+     db8:	91 2c       	mov	r9, r1
+     dba:	84 01       	movw	r16, r8
+     dbc:	00 0f       	add	r16, r16
+     dbe:	11 1f       	adc	r17, r17
+     dc0:	00 0f       	add	r16, r16
+     dc2:	11 1f       	adc	r17, r17
+     dc4:	0d 5b       	subi	r16, 0xBD	; 189
+     dc6:	1b 4f       	sbci	r17, 0xFB	; 251
+     dc8:	94 01       	movw	r18, r8
+     dca:	22 0f       	add	r18, r18
+     dcc:	33 1f       	adc	r19, r19
+     dce:	22 0f       	add	r18, r18
+     dd0:	33 1f       	adc	r19, r19
+     dd2:	a9 01       	movw	r20, r18
+     dd4:	4d 5c       	subi	r20, 0xCD	; 205
+     dd6:	5b 4f       	sbci	r21, 0xFB	; 251
+     dd8:	5a 01       	movw	r10, r20
+     dda:	d8 01       	movw	r26, r16
+     ddc:	fc 01       	movw	r30, r24
+     dde:	01 96       	adiw	r24, 0x01	; 1
+     de0:	25 91       	lpm	r18, Z+
+     de2:	2c 93       	st	X, r18
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+     de4:	9c 01       	movw	r18, r24
+     de6:	2d 5f       	subi	r18, 0xFD	; 253
+     de8:	3f 4f       	sbci	r19, 0xFF	; 255
+     dea:	f9 01       	movw	r30, r18
+     dec:	24 91       	lpm	r18, Z
+     dee:	11 96       	adiw	r26, 0x01	; 1
+     df0:	2c 93       	st	X, r18
+     df2:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+     df4:	9c 01       	movw	r18, r24
+     df6:	29 5f       	subi	r18, 0xF9	; 249
+     df8:	3f 4f       	sbci	r19, 0xFF	; 255
+     dfa:	f9 01       	movw	r30, r18
+     dfc:	24 91       	lpm	r18, Z
+     dfe:	12 96       	adiw	r26, 0x02	; 2
+     e00:	2c 93       	st	X, r18
+     e02:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+     e04:	9c 01       	movw	r18, r24
+     e06:	25 5f       	subi	r18, 0xF5	; 245
+     e08:	3f 4f       	sbci	r19, 0xFF	; 255
+     e0a:	f9 01       	movw	r30, r18
+     e0c:	24 91       	lpm	r18, Z
+     e0e:	13 96       	adiw	r26, 0x03	; 3
+     e10:	2c 93       	st	X, r18
+     e12:	13 97       	sbiw	r26, 0x03	; 3
+     e14:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+     e16:	aa 15       	cp	r26, r10
+     e18:	bb 05       	cpc	r27, r11
+     e1a:	01 f7       	brne	.-64     	; 0xddc <__vector_6+0xe0>
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	if(Collision() == 1) pattern--;
+     e1c:	be dd       	rcall	.-1156   	; 0x99a <Collision>
+     e1e:	81 30       	cpi	r24, 0x01	; 1
+     e20:	19 f4       	brne	.+6      	; 0xe28 <__vector_6+0x12c>
+     e22:	7a 94       	dec	r7
+     e24:	70 92 75 08 	sts	0x0875, r7	; 0x800875 <pattern>
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+     e28:	18 82       	st	Y, r1
+     e2a:	19 82       	std	Y+1, r1	; 0x01
+     e2c:	1a 82       	std	Y+2, r1	; 0x02
+     e2e:	1b 82       	std	Y+3, r1	; 0x03
+     e30:	24 96       	adiw	r28, 0x04	; 4
+	}
+
+	if(Collision() == 1) pattern--;
+
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+     e32:	cc 15       	cp	r28, r12
+     e34:	dd 05       	cpc	r29, r13
+     e36:	c1 f7       	brne	.-16     	; 0xe28 <__vector_6+0x12c>
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+     e38:	80 91 75 08 	lds	r24, 0x0875	; 0x800875 <pattern>
+     e3c:	97 01       	movw	r18, r14
+     e3e:	28 0f       	add	r18, r24
+     e40:	31 1d       	adc	r19, r1
+     e42:	c9 01       	movw	r24, r18
+     e44:	82 95       	swap	r24
+     e46:	92 95       	swap	r25
+     e48:	90 7f       	andi	r25, 0xF0	; 240
+     e4a:	98 27       	eor	r25, r24
+     e4c:	80 7f       	andi	r24, 0xF0	; 240
+     e4e:	98 27       	eor	r25, r24
+     e50:	84 57       	subi	r24, 0x74	; 116
+     e52:	9f 4f       	sbci	r25, 0xFF	; 255
+     e54:	d8 01       	movw	r26, r16
+     e56:	fc 01       	movw	r30, r24
+     e58:	01 96       	adiw	r24, 0x01	; 1
+     e5a:	25 91       	lpm	r18, Z+
+     e5c:	2c 93       	st	X, r18
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+     e5e:	9c 01       	movw	r18, r24
+     e60:	2d 5f       	subi	r18, 0xFD	; 253
+     e62:	3f 4f       	sbci	r19, 0xFF	; 255
+     e64:	f9 01       	movw	r30, r18
+     e66:	24 91       	lpm	r18, Z
+     e68:	11 96       	adiw	r26, 0x01	; 1
+     e6a:	2c 93       	st	X, r18
+     e6c:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+     e6e:	9c 01       	movw	r18, r24
+     e70:	29 5f       	subi	r18, 0xF9	; 249
+     e72:	3f 4f       	sbci	r19, 0xFF	; 255
+     e74:	f9 01       	movw	r30, r18
+     e76:	24 91       	lpm	r18, Z
+     e78:	12 96       	adiw	r26, 0x02	; 2
+     e7a:	2c 93       	st	X, r18
+     e7c:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+     e7e:	9c 01       	movw	r18, r24
+     e80:	25 5f       	subi	r18, 0xF5	; 245
+     e82:	3f 4f       	sbci	r19, 0xFF	; 255
+     e84:	f9 01       	movw	r30, r18
+     e86:	24 91       	lpm	r18, Z
+     e88:	13 96       	adiw	r26, 0x03	; 3
+     e8a:	2c 93       	st	X, r18
+     e8c:	13 97       	sbiw	r26, 0x03	; 3
+     e8e:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+     e90:	aa 15       	cp	r26, r10
+     e92:	bb 05       	cpc	r27, r11
+     e94:	01 f7       	brne	.-64     	; 0xe56 <__vector_6+0x15a>
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	{
+		game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+     e96:	20 91 73 08 	lds	r18, 0x0873	; 0x800873 <cur_line>
+     e9a:	30 e0       	ldi	r19, 0x00	; 0
+     e9c:	88 0c       	add	r8, r8
+     e9e:	99 1c       	adc	r9, r9
+     ea0:	88 0c       	add	r8, r8
+     ea2:	99 1c       	adc	r9, r9
+     ea4:	88 0c       	add	r8, r8
+     ea6:	99 1c       	adc	r9, r9
+     ea8:	88 0c       	add	r8, r8
+     eaa:	99 1c       	adc	r9, r9
+     eac:	88 0c       	add	r8, r8
+     eae:	99 1c       	adc	r9, r9
+     eb0:	c9 01       	movw	r24, r18
+     eb2:	88 0d       	add	r24, r8
+     eb4:	99 1d       	adc	r25, r9
+     eb6:	8d 5b       	subi	r24, 0xBD	; 189
+     eb8:	9e 4f       	sbci	r25, 0xFE	; 254
+     eba:	e4 01       	movw	r28, r8
+     ebc:	c2 0f       	add	r28, r18
+     ebe:	d3 1f       	adc	r29, r19
+     ec0:	cc 5b       	subi	r28, 0xBC	; 188
+     ec2:	de 4f       	sbci	r29, 0xFE	; 254
+     ec4:	d4 01       	movw	r26, r8
+     ec6:	a2 0f       	add	r26, r18
+     ec8:	b3 1f       	adc	r27, r19
+     eca:	ab 5b       	subi	r26, 0xBB	; 187
+     ecc:	be 4f       	sbci	r27, 0xFE	; 254
+     ece:	f4 01       	movw	r30, r8
+     ed0:	e2 0f       	add	r30, r18
+     ed2:	f3 1f       	adc	r31, r19
+     ed4:	af 01       	movw	r20, r30
+     ed6:	4a 5b       	subi	r20, 0xBA	; 186
+     ed8:	5e 4f       	sbci	r21, 0xFE	; 254
+     eda:	fc 01       	movw	r30, r24
+     edc:	30 81       	ld	r19, Z
+     ede:	f8 01       	movw	r30, r16
+     ee0:	20 81       	ld	r18, Z
+     ee2:	23 2b       	or	r18, r19
+     ee4:	fc 01       	movw	r30, r24
+     ee6:	20 83       	st	Z, r18
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+     ee8:	38 81       	ld	r19, Y
+     eea:	f8 01       	movw	r30, r16
+     eec:	21 81       	ldd	r18, Z+1	; 0x01
+     eee:	23 2b       	or	r18, r19
+     ef0:	28 83       	st	Y, r18
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+     ef2:	3c 91       	ld	r19, X
+     ef4:	22 81       	ldd	r18, Z+2	; 0x02
+     ef6:	23 2b       	or	r18, r19
+     ef8:	2c 93       	st	X, r18
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+     efa:	fa 01       	movw	r30, r20
+     efc:	30 81       	ld	r19, Z
+     efe:	f8 01       	movw	r30, r16
+     f00:	23 81       	ldd	r18, Z+3	; 0x03
+     f02:	23 2b       	or	r18, r19
+     f04:	fa 01       	movw	r30, r20
+     f06:	20 83       	st	Z, r18
+     f08:	80 97       	sbiw	r24, 0x20	; 32
+     f0a:	04 50       	subi	r16, 0x04	; 4
+     f0c:	11 09       	sbc	r17, r1
+     f0e:	a0 97       	sbiw	r28, 0x20	; 32
+     f10:	90 97       	sbiw	r26, 0x20	; 32
+     f12:	40 52       	subi	r20, 0x20	; 32
+     f14:	51 09       	sbc	r21, r1
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+     f16:	0a 15       	cp	r16, r10
+     f18:	1b 05       	cpc	r17, r11
+     f1a:	f9 f6       	brne	.-66     	; 0xeda <__vector_6+0x1de>
+     f1c:	0c c0       	rjmp	.+24     	; 0xf36 <__vector_6+0x23a>
+		{
+			game_board[i][j] = main_board[i][j];
+		}
+	}
+
+	pattern++;	//회전으로 상태 변화
+     f1e:	80 93 75 08 	sts	0x0875, r24	; 0x800875 <pattern>
+     f22:	c3 e4       	ldi	r28, 0x43	; 67
+     f24:	d4 e0       	ldi	r29, 0x04	; 4
+     f26:	0f 2e       	mov	r0, r31
+     f28:	f3 e7       	ldi	r31, 0x73	; 115
+     f2a:	cf 2e       	mov	r12, r31
+     f2c:	f4 e0       	ldi	r31, 0x04	; 4
+     f2e:	df 2e       	mov	r13, r31
+     f30:	f0 2d       	mov	r31, r0
+	}
+	
+}
+
+ISR(INT5_vect)
+{
+     f32:	fe 01       	movw	r30, r28
+     f34:	23 cf       	rjmp	.-442    	; 0xd7c <__vector_6+0x80>
+		game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+	}
+}
+     f36:	ff 91       	pop	r31
+     f38:	ef 91       	pop	r30
+     f3a:	df 91       	pop	r29
+     f3c:	cf 91       	pop	r28
+     f3e:	bf 91       	pop	r27
+     f40:	af 91       	pop	r26
+     f42:	9f 91       	pop	r25
+     f44:	8f 91       	pop	r24
+     f46:	7f 91       	pop	r23
+     f48:	6f 91       	pop	r22
+     f4a:	5f 91       	pop	r21
+     f4c:	4f 91       	pop	r20
+     f4e:	3f 91       	pop	r19
+     f50:	2f 91       	pop	r18
+     f52:	1f 91       	pop	r17
+     f54:	0f 91       	pop	r16
+     f56:	ff 90       	pop	r15
+     f58:	ef 90       	pop	r14
+     f5a:	df 90       	pop	r13
+     f5c:	cf 90       	pop	r12
+     f5e:	bf 90       	pop	r11
+     f60:	af 90       	pop	r10
+     f62:	9f 90       	pop	r9
+     f64:	8f 90       	pop	r8
+     f66:	7f 90       	pop	r7
+     f68:	0f 90       	pop	r0
+     f6a:	0b be       	out	0x3b, r0	; 59
+     f6c:	0f 90       	pop	r0
+     f6e:	0f be       	out	0x3f, r0	; 63
+     f70:	0f 90       	pop	r0
+     f72:	1f 90       	pop	r1
+     f74:	18 95       	reti
+
+00000f76 <__vector_7>:
+
+ISR(INT6_vect)
+{
+     f76:	1f 92       	push	r1
+     f78:	0f 92       	push	r0
+     f7a:	0f b6       	in	r0, 0x3f	; 63
+     f7c:	0f 92       	push	r0
+     f7e:	11 24       	eor	r1, r1
+     f80:	0b b6       	in	r0, 0x3b	; 59
+     f82:	0f 92       	push	r0
+     f84:	2f 93       	push	r18
+     f86:	3f 93       	push	r19
+     f88:	4f 93       	push	r20
+     f8a:	5f 93       	push	r21
+     f8c:	6f 93       	push	r22
+     f8e:	7f 93       	push	r23
+     f90:	8f 93       	push	r24
+     f92:	9f 93       	push	r25
+     f94:	af 93       	push	r26
+     f96:	bf 93       	push	r27
+     f98:	ef 93       	push	r30
+     f9a:	ff 93       	push	r31
+     f9c:	e3 e4       	ldi	r30, 0x43	; 67
+     f9e:	f4 e0       	ldi	r31, 0x04	; 4
+     fa0:	83 e7       	ldi	r24, 0x73	; 115
+     fa2:	94 e0       	ldi	r25, 0x04	; 4
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+     fa4:	10 82       	st	Z, r1
+     fa6:	11 82       	std	Z+1, r1	; 0x01
+     fa8:	12 82       	std	Z+2, r1	; 0x02
+     faa:	13 82       	std	Z+3, r1	; 0x03
+     fac:	34 96       	adiw	r30, 0x04	; 4
+	}
+}
+
+ISR(INT6_vect)
+{
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+     fae:	e8 17       	cp	r30, r24
+     fb0:	f9 07       	cpc	r31, r25
+     fb2:	c1 f7       	brne	.-16     	; 0xfa4 <__vector_7+0x2e>
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+     fb4:	20 91 76 08 	lds	r18, 0x0876	; 0x800876 <shape>
+     fb8:	80 91 75 08 	lds	r24, 0x0875	; 0x800875 <pattern>
+     fbc:	90 e0       	ldi	r25, 0x00	; 0
+     fbe:	34 e0       	ldi	r19, 0x04	; 4
+     fc0:	23 9f       	mul	r18, r19
+     fc2:	80 0d       	add	r24, r0
+     fc4:	91 1d       	adc	r25, r1
+     fc6:	11 24       	eor	r1, r1
+     fc8:	82 95       	swap	r24
+     fca:	92 95       	swap	r25
+     fcc:	90 7f       	andi	r25, 0xF0	; 240
+     fce:	98 27       	eor	r25, r24
+     fd0:	80 7f       	andi	r24, 0xF0	; 240
+     fd2:	98 27       	eor	r25, r24
+     fd4:	84 57       	subi	r24, 0x74	; 116
+     fd6:	9f 4f       	sbci	r25, 0xFF	; 255
+     fd8:	20 91 74 08 	lds	r18, 0x0874	; 0x800874 <cur_col>
+     fdc:	30 e0       	ldi	r19, 0x00	; 0
+     fde:	f9 01       	movw	r30, r18
+     fe0:	ee 0f       	add	r30, r30
+     fe2:	ff 1f       	adc	r31, r31
+     fe4:	ee 0f       	add	r30, r30
+     fe6:	ff 1f       	adc	r31, r31
+     fe8:	df 01       	movw	r26, r30
+     fea:	ad 5b       	subi	r26, 0xBD	; 189
+     fec:	bb 4f       	sbci	r27, 0xFB	; 251
+     fee:	9f 01       	movw	r18, r30
+     ff0:	2d 5c       	subi	r18, 0xCD	; 205
+     ff2:	3b 4f       	sbci	r19, 0xFB	; 251
+     ff4:	fc 01       	movw	r30, r24
+     ff6:	01 96       	adiw	r24, 0x01	; 1
+     ff8:	45 91       	lpm	r20, Z+
+     ffa:	4c 93       	st	X, r20
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+     ffc:	ac 01       	movw	r20, r24
+     ffe:	4d 5f       	subi	r20, 0xFD	; 253
+    1000:	5f 4f       	sbci	r21, 0xFF	; 255
+    1002:	fa 01       	movw	r30, r20
+    1004:	44 91       	lpm	r20, Z
+    1006:	11 96       	adiw	r26, 0x01	; 1
+    1008:	4c 93       	st	X, r20
+    100a:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+    100c:	ac 01       	movw	r20, r24
+    100e:	49 5f       	subi	r20, 0xF9	; 249
+    1010:	5f 4f       	sbci	r21, 0xFF	; 255
+    1012:	fa 01       	movw	r30, r20
+    1014:	44 91       	lpm	r20, Z
+    1016:	12 96       	adiw	r26, 0x02	; 2
+    1018:	4c 93       	st	X, r20
+    101a:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+    101c:	ac 01       	movw	r20, r24
+    101e:	45 5f       	subi	r20, 0xF5	; 245
+    1020:	5f 4f       	sbci	r21, 0xFF	; 255
+    1022:	fa 01       	movw	r30, r20
+    1024:	44 91       	lpm	r20, Z
+    1026:	13 96       	adiw	r26, 0x03	; 3
+    1028:	4c 93       	st	X, r20
+    102a:	13 97       	sbiw	r26, 0x03	; 3
+    102c:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+    102e:	a2 17       	cp	r26, r18
+    1030:	b3 07       	cpc	r27, r19
+    1032:	01 f7       	brne	.-64     	; 0xff4 <__vector_7+0x7e>
+    1034:	05 c0       	rjmp	.+10     	; 0x1040 <__vector_7+0xca>
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	while(Collision() == 0) cur_line++;
+    1036:	80 91 73 08 	lds	r24, 0x0873	; 0x800873 <cur_line>
+    103a:	8f 5f       	subi	r24, 0xFF	; 255
+    103c:	80 93 73 08 	sts	0x0873, r24	; 0x800873 <cur_line>
+    1040:	ac dc       	rcall	.-1704   	; 0x99a <Collision>
+    1042:	88 23       	and	r24, r24
+    1044:	c1 f3       	breq	.-16     	; 0x1036 <__vector_7+0xc0>
+
+	cur_line--;
+    1046:	80 91 73 08 	lds	r24, 0x0873	; 0x800873 <cur_line>
+    104a:	81 50       	subi	r24, 0x01	; 1
+    104c:	80 93 73 08 	sts	0x0873, r24	; 0x800873 <cur_line>
+}
+    1050:	ff 91       	pop	r31
+    1052:	ef 91       	pop	r30
+    1054:	bf 91       	pop	r27
+    1056:	af 91       	pop	r26
+    1058:	9f 91       	pop	r25
+    105a:	8f 91       	pop	r24
+    105c:	7f 91       	pop	r23
+    105e:	6f 91       	pop	r22
+    1060:	5f 91       	pop	r21
+    1062:	4f 91       	pop	r20
+    1064:	3f 91       	pop	r19
+    1066:	2f 91       	pop	r18
+    1068:	0f 90       	pop	r0
+    106a:	0b be       	out	0x3b, r0	; 59
+    106c:	0f 90       	pop	r0
+    106e:	0f be       	out	0x3f, r0	; 63
+    1070:	0f 90       	pop	r0
+    1072:	1f 90       	pop	r1
+    1074:	18 95       	reti
+
+00001076 <__vector_8>:
+
+ISR(INT7_vect)
+{	
+    1076:	1f 92       	push	r1
+    1078:	0f 92       	push	r0
+    107a:	0f b6       	in	r0, 0x3f	; 63
+    107c:	0f 92       	push	r0
+    107e:	11 24       	eor	r1, r1
+    1080:	0b b6       	in	r0, 0x3b	; 59
+    1082:	0f 92       	push	r0
+    1084:	df 92       	push	r13
+    1086:	ef 92       	push	r14
+    1088:	ff 92       	push	r15
+    108a:	0f 93       	push	r16
+    108c:	1f 93       	push	r17
+    108e:	2f 93       	push	r18
+    1090:	3f 93       	push	r19
+    1092:	4f 93       	push	r20
+    1094:	5f 93       	push	r21
+    1096:	6f 93       	push	r22
+    1098:	7f 93       	push	r23
+    109a:	8f 93       	push	r24
+    109c:	9f 93       	push	r25
+    109e:	af 93       	push	r26
+    10a0:	bf 93       	push	r27
+    10a2:	cf 93       	push	r28
+    10a4:	df 93       	push	r29
+    10a6:	ef 93       	push	r30
+    10a8:	ff 93       	push	r31
+    10aa:	e3 ec       	ldi	r30, 0xC3	; 195
+    10ac:	f2 e0       	ldi	r31, 0x02	; 2
+    10ae:	43 e4       	ldi	r20, 0x43	; 67
+    10b0:	51 e0       	ldi	r21, 0x01	; 1
+    10b2:	63 e4       	ldi	r22, 0x43	; 67
+    10b4:	74 e0       	ldi	r23, 0x04	; 4
+    10b6:	0b c0       	rjmp	.+22     	; 0x10ce <__vector_8+0x58>
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+		{
+			game_board[i][j] = main_board[i][j];
+    10b8:	81 91       	ld	r24, Z+
+    10ba:	8d 93       	st	X+, r24
+
+ISR(INT7_vect)
+{	
+	for(int i = 0; i < 12; i++)
+	{
+		for(int j = 0; j< 32; j++)
+    10bc:	e2 17       	cp	r30, r18
+    10be:	f3 07       	cpc	r31, r19
+    10c0:	d9 f7       	brne	.-10     	; 0x10b8 <__vector_8+0x42>
+    10c2:	40 5e       	subi	r20, 0xE0	; 224
+    10c4:	5f 4f       	sbci	r21, 0xFF	; 255
+    10c6:	f9 01       	movw	r30, r18
+	cur_line--;
+}
+
+ISR(INT7_vect)
+{	
+	for(int i = 0; i < 12; i++)
+    10c8:	62 17       	cp	r22, r18
+    10ca:	73 07       	cpc	r23, r19
+    10cc:	29 f0       	breq	.+10     	; 0x10d8 <__vector_8+0x62>
+    10ce:	9f 01       	movw	r18, r30
+    10d0:	20 5e       	subi	r18, 0xE0	; 224
+    10d2:	3f 4f       	sbci	r19, 0xFF	; 255
+
+	cur_line--;
+}
+
+ISR(INT7_vect)
+{	
+    10d4:	da 01       	movw	r26, r20
+    10d6:	f0 cf       	rjmp	.-32     	; 0x10b8 <__vector_8+0x42>
+		{
+			game_board[i][j] = main_board[i][j];
+		}
+	}
+
+	if(cur_col < 11) cur_col++;
+    10d8:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+    10dc:	8b 30       	cpi	r24, 0x0B	; 11
+    10de:	08 f0       	brcs	.+2      	; 0x10e2 <__vector_8+0x6c>
+    10e0:	cf c0       	rjmp	.+414    	; 0x1280 <__stack+0x181>
+    10e2:	8f 5f       	subi	r24, 0xFF	; 255
+    10e4:	80 93 74 08 	sts	0x0874, r24	; 0x800874 <cur_col>
+    10e8:	cb c0       	rjmp	.+406    	; 0x1280 <__stack+0x181>
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+    10ea:	10 82       	st	Z, r1
+    10ec:	11 82       	std	Z+1, r1	; 0x01
+    10ee:	12 82       	std	Z+2, r1	; 0x02
+    10f0:	13 82       	std	Z+3, r1	; 0x03
+    10f2:	34 96       	adiw	r30, 0x04	; 4
+		}
+	}
+
+	if(cur_col < 11) cur_col++;
+
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+    10f4:	ee 15       	cp	r30, r14
+    10f6:	ff 05       	cpc	r31, r15
+    10f8:	c1 f7       	brne	.-16     	; 0x10ea <__vector_8+0x74>
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+    10fa:	d0 90 74 08 	lds	r13, 0x0874	; 0x800874 <cur_col>
+    10fe:	80 91 76 08 	lds	r24, 0x0876	; 0x800876 <shape>
+    1102:	00 91 75 08 	lds	r16, 0x0875	; 0x800875 <pattern>
+    1106:	10 e0       	ldi	r17, 0x00	; 0
+    1108:	24 e0       	ldi	r18, 0x04	; 4
+    110a:	82 9f       	mul	r24, r18
+    110c:	00 0d       	add	r16, r0
+    110e:	11 1d       	adc	r17, r1
+    1110:	11 24       	eor	r1, r1
+    1112:	02 95       	swap	r16
+    1114:	12 95       	swap	r17
+    1116:	10 7f       	andi	r17, 0xF0	; 240
+    1118:	10 27       	eor	r17, r16
+    111a:	00 7f       	andi	r16, 0xF0	; 240
+    111c:	10 27       	eor	r17, r16
+    111e:	04 57       	subi	r16, 0x74	; 116
+    1120:	1f 4f       	sbci	r17, 0xFF	; 255
+    1122:	2d 2d       	mov	r18, r13
+    1124:	30 e0       	ldi	r19, 0x00	; 0
+    1126:	f9 01       	movw	r30, r18
+    1128:	ee 0f       	add	r30, r30
+    112a:	ff 1f       	adc	r31, r31
+    112c:	ee 0f       	add	r30, r30
+    112e:	ff 1f       	adc	r31, r31
+    1130:	df 01       	movw	r26, r30
+    1132:	ad 5b       	subi	r26, 0xBD	; 189
+    1134:	bb 4f       	sbci	r27, 0xFB	; 251
+    1136:	9f 01       	movw	r18, r30
+    1138:	2d 5c       	subi	r18, 0xCD	; 205
+    113a:	3b 4f       	sbci	r19, 0xFB	; 251
+    113c:	c8 01       	movw	r24, r16
+    113e:	fc 01       	movw	r30, r24
+    1140:	01 96       	adiw	r24, 0x01	; 1
+    1142:	45 91       	lpm	r20, Z+
+    1144:	4c 93       	st	X, r20
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+    1146:	ac 01       	movw	r20, r24
+    1148:	4d 5f       	subi	r20, 0xFD	; 253
+    114a:	5f 4f       	sbci	r21, 0xFF	; 255
+    114c:	fa 01       	movw	r30, r20
+    114e:	44 91       	lpm	r20, Z
+    1150:	11 96       	adiw	r26, 0x01	; 1
+    1152:	4c 93       	st	X, r20
+    1154:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+    1156:	ac 01       	movw	r20, r24
+    1158:	49 5f       	subi	r20, 0xF9	; 249
+    115a:	5f 4f       	sbci	r21, 0xFF	; 255
+    115c:	fa 01       	movw	r30, r20
+    115e:	44 91       	lpm	r20, Z
+    1160:	12 96       	adiw	r26, 0x02	; 2
+    1162:	4c 93       	st	X, r20
+    1164:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+    1166:	ac 01       	movw	r20, r24
+    1168:	45 5f       	subi	r20, 0xF5	; 245
+    116a:	5f 4f       	sbci	r21, 0xFF	; 255
+    116c:	fa 01       	movw	r30, r20
+    116e:	44 91       	lpm	r20, Z
+    1170:	13 96       	adiw	r26, 0x03	; 3
+    1172:	4c 93       	st	X, r20
+    1174:	13 97       	sbiw	r26, 0x03	; 3
+    1176:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)	//이 과정이 필요 없고 뒤에서 한번에 충돌감지 이후 넣어줘도 상관없어 보이지만 충돌 여부 판별하는 함수가 temp_line와 메인보드가 겹치는지 파악하기때문에 temp_line에 변화된 사항을 반영해야 한다.
+    1178:	a2 17       	cp	r26, r18
+    117a:	b3 07       	cpc	r27, r19
+    117c:	01 f7       	brne	.-64     	; 0x113e <__stack+0x3f>
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	if(Collision() == 1) cur_col--;
+    117e:	0d dc       	rcall	.-2022   	; 0x99a <Collision>
+    1180:	81 30       	cpi	r24, 0x01	; 1
+    1182:	19 f4       	brne	.+6      	; 0x118a <__stack+0x8b>
+    1184:	da 94       	dec	r13
+    1186:	d0 92 74 08 	sts	0x0874, r13	; 0x800874 <cur_col>
+	
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+	{
+		for(int j = 0; j < 4; j++)
+		{
+			temp_line[i][j] = 0;
+    118a:	18 82       	st	Y, r1
+    118c:	19 82       	std	Y+1, r1	; 0x01
+    118e:	1a 82       	std	Y+2, r1	; 0x02
+    1190:	1b 82       	std	Y+3, r1	; 0x03
+    1192:	24 96       	adiw	r28, 0x04	; 4
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	if(Collision() == 1) cur_col--;
+	
+	for(int i = 0; i < 12; i++)	//테트리미노스 라인 임시 저장소 초기화
+    1194:	ce 15       	cp	r28, r14
+    1196:	df 05       	cpc	r29, r15
+    1198:	c1 f7       	brne	.-16     	; 0x118a <__stack+0x8b>
+    119a:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+    119e:	90 e0       	ldi	r25, 0x00	; 0
+    11a0:	fc 01       	movw	r30, r24
+    11a2:	ee 0f       	add	r30, r30
+    11a4:	ff 1f       	adc	r31, r31
+    11a6:	ee 0f       	add	r30, r30
+    11a8:	ff 1f       	adc	r31, r31
+    11aa:	9f 01       	movw	r18, r30
+    11ac:	2d 5b       	subi	r18, 0xBD	; 189
+    11ae:	3b 4f       	sbci	r19, 0xFB	; 251
+    11b0:	79 01       	movw	r14, r18
+    11b2:	bf 01       	movw	r22, r30
+    11b4:	6d 5c       	subi	r22, 0xCD	; 205
+    11b6:	7b 4f       	sbci	r23, 0xFB	; 251
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+	{
+		temp_line[cur_col-i][0] = tetriminos[shape][pattern][i];	//임시저장소에 테트리미노스 '왼쪽부터'(그래서 -i 로 역순이 된다) 지정된 칸에 넣기
+    11b8:	d9 01       	movw	r26, r18
+    11ba:	f8 01       	movw	r30, r16
+    11bc:	0f 5f       	subi	r16, 0xFF	; 255
+    11be:	1f 4f       	sbci	r17, 0xFF	; 255
+    11c0:	25 91       	lpm	r18, Z+
+    11c2:	2c 93       	st	X, r18
+		temp_line[cur_col-i][1] = tetriminos[shape][pattern][i + 4];
+    11c4:	98 01       	movw	r18, r16
+    11c6:	2d 5f       	subi	r18, 0xFD	; 253
+    11c8:	3f 4f       	sbci	r19, 0xFF	; 255
+    11ca:	f9 01       	movw	r30, r18
+    11cc:	24 91       	lpm	r18, Z
+    11ce:	11 96       	adiw	r26, 0x01	; 1
+    11d0:	2c 93       	st	X, r18
+    11d2:	11 97       	sbiw	r26, 0x01	; 1
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+    11d4:	98 01       	movw	r18, r16
+    11d6:	29 5f       	subi	r18, 0xF9	; 249
+    11d8:	3f 4f       	sbci	r19, 0xFF	; 255
+    11da:	f9 01       	movw	r30, r18
+    11dc:	24 91       	lpm	r18, Z
+    11de:	12 96       	adiw	r26, 0x02	; 2
+    11e0:	2c 93       	st	X, r18
+    11e2:	12 97       	sbiw	r26, 0x02	; 2
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+    11e4:	98 01       	movw	r18, r16
+    11e6:	25 5f       	subi	r18, 0xF5	; 245
+    11e8:	3f 4f       	sbci	r19, 0xFF	; 255
+    11ea:	f9 01       	movw	r30, r18
+    11ec:	24 91       	lpm	r18, Z
+    11ee:	13 96       	adiw	r26, 0x03	; 3
+    11f0:	2c 93       	st	X, r18
+    11f2:	13 97       	sbiw	r26, 0x03	; 3
+    11f4:	14 97       	sbiw	r26, 0x04	; 4
+		{
+			temp_line[i][j] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++)
+    11f6:	a6 17       	cp	r26, r22
+    11f8:	b7 07       	cpc	r27, r23
+    11fa:	f9 f6       	brne	.-66     	; 0x11ba <__stack+0xbb>
+	}
+
+	
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+	{
+		game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+    11fc:	40 91 73 08 	lds	r20, 0x0873	; 0x800873 <cur_line>
+    1200:	50 e0       	ldi	r21, 0x00	; 0
+    1202:	dc 01       	movw	r26, r24
+    1204:	aa 0f       	add	r26, r26
+    1206:	bb 1f       	adc	r27, r27
+    1208:	a2 95       	swap	r26
+    120a:	b2 95       	swap	r27
+    120c:	b0 7f       	andi	r27, 0xF0	; 240
+    120e:	ba 27       	eor	r27, r26
+    1210:	a0 7f       	andi	r26, 0xF0	; 240
+    1212:	ba 27       	eor	r27, r26
+    1214:	9a 01       	movw	r18, r20
+    1216:	2a 0f       	add	r18, r26
+    1218:	3b 1f       	adc	r19, r27
+    121a:	2d 5b       	subi	r18, 0xBD	; 189
+    121c:	3e 4f       	sbci	r19, 0xFE	; 254
+    121e:	cd 01       	movw	r24, r26
+    1220:	84 0f       	add	r24, r20
+    1222:	95 1f       	adc	r25, r21
+    1224:	8c 5b       	subi	r24, 0xBC	; 188
+    1226:	9e 4f       	sbci	r25, 0xFE	; 254
+    1228:	ed 01       	movw	r28, r26
+    122a:	c4 0f       	add	r28, r20
+    122c:	d5 1f       	adc	r29, r21
+    122e:	cb 5b       	subi	r28, 0xBB	; 187
+    1230:	de 4f       	sbci	r29, 0xFE	; 254
+    1232:	a4 0f       	add	r26, r20
+    1234:	b5 1f       	adc	r27, r21
+    1236:	aa 5b       	subi	r26, 0xBA	; 186
+    1238:	be 4f       	sbci	r27, 0xFE	; 254
+    123a:	f9 01       	movw	r30, r18
+    123c:	50 81       	ld	r21, Z
+    123e:	f7 01       	movw	r30, r14
+    1240:	40 81       	ld	r20, Z
+    1242:	45 2b       	or	r20, r21
+    1244:	f9 01       	movw	r30, r18
+    1246:	40 83       	st	Z, r20
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+    1248:	fc 01       	movw	r30, r24
+    124a:	50 81       	ld	r21, Z
+    124c:	f7 01       	movw	r30, r14
+    124e:	41 81       	ldd	r20, Z+1	; 0x01
+    1250:	45 2b       	or	r20, r21
+    1252:	fc 01       	movw	r30, r24
+    1254:	40 83       	st	Z, r20
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+    1256:	58 81       	ld	r21, Y
+    1258:	f7 01       	movw	r30, r14
+    125a:	42 81       	ldd	r20, Z+2	; 0x02
+    125c:	45 2b       	or	r20, r21
+    125e:	48 83       	st	Y, r20
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+    1260:	5c 91       	ld	r21, X
+    1262:	43 81       	ldd	r20, Z+3	; 0x03
+    1264:	45 2b       	or	r20, r21
+    1266:	4c 93       	st	X, r20
+    1268:	20 52       	subi	r18, 0x20	; 32
+    126a:	31 09       	sbc	r19, r1
+    126c:	f4 e0       	ldi	r31, 0x04	; 4
+    126e:	ef 1a       	sub	r14, r31
+    1270:	f1 08       	sbc	r15, r1
+    1272:	80 97       	sbiw	r24, 0x20	; 32
+    1274:	a0 97       	sbiw	r28, 0x20	; 32
+    1276:	90 97       	sbiw	r26, 0x20	; 32
+		temp_line[cur_col-i][2] = tetriminos[shape][pattern][i + 8];
+		temp_line[cur_col-i][3] = tetriminos[shape][pattern][i + 12];
+	}
+
+	
+	for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+    1278:	e6 16       	cp	r14, r22
+    127a:	f7 06       	cpc	r15, r23
+    127c:	f1 f6       	brne	.-68     	; 0x123a <__stack+0x13b>
+    127e:	0a c0       	rjmp	.+20     	; 0x1294 <__stack+0x195>
+    1280:	c3 e4       	ldi	r28, 0x43	; 67
+    1282:	d4 e0       	ldi	r29, 0x04	; 4
+    1284:	0f 2e       	mov	r0, r31
+    1286:	f3 e7       	ldi	r31, 0x73	; 115
+    1288:	ef 2e       	mov	r14, r31
+    128a:	f4 e0       	ldi	r31, 0x04	; 4
+    128c:	ff 2e       	mov	r15, r31
+    128e:	f0 2d       	mov	r31, r0
+
+	cur_line--;
+}
+
+ISR(INT7_vect)
+{	
+    1290:	fe 01       	movw	r30, r28
+    1292:	2b cf       	rjmp	.-426    	; 0x10ea <__vector_8+0x74>
+		game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+		game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+		game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+		game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+	}
+}
+    1294:	ff 91       	pop	r31
+    1296:	ef 91       	pop	r30
+    1298:	df 91       	pop	r29
+    129a:	cf 91       	pop	r28
+    129c:	bf 91       	pop	r27
+    129e:	af 91       	pop	r26
+    12a0:	9f 91       	pop	r25
+    12a2:	8f 91       	pop	r24
+    12a4:	7f 91       	pop	r23
+    12a6:	6f 91       	pop	r22
+    12a8:	5f 91       	pop	r21
+    12aa:	4f 91       	pop	r20
+    12ac:	3f 91       	pop	r19
+    12ae:	2f 91       	pop	r18
+    12b0:	1f 91       	pop	r17
+    12b2:	0f 91       	pop	r16
+    12b4:	ff 90       	pop	r15
+    12b6:	ef 90       	pop	r14
+    12b8:	df 90       	pop	r13
+    12ba:	0f 90       	pop	r0
+    12bc:	0b be       	out	0x3b, r0	; 59
+    12be:	0f 90       	pop	r0
+    12c0:	0f be       	out	0x3f, r0	; 63
+    12c2:	0f 90       	pop	r0
+    12c4:	1f 90       	pop	r1
+    12c6:	18 95       	reti
+
+000012c8 <__vector_12>:
+	
+}
+
+
+ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+{
+    12c8:	1f 92       	push	r1
+    12ca:	0f 92       	push	r0
+    12cc:	0f b6       	in	r0, 0x3f	; 63
+    12ce:	0f 92       	push	r0
+    12d0:	11 24       	eor	r1, r1
+    12d2:	0b b6       	in	r0, 0x3b	; 59
+    12d4:	0f 92       	push	r0
+    12d6:	df 92       	push	r13
+    12d8:	ef 92       	push	r14
+    12da:	ff 92       	push	r15
+    12dc:	0f 93       	push	r16
+    12de:	1f 93       	push	r17
+    12e0:	2f 93       	push	r18
+    12e2:	3f 93       	push	r19
+    12e4:	4f 93       	push	r20
+    12e6:	5f 93       	push	r21
+    12e8:	6f 93       	push	r22
+    12ea:	7f 93       	push	r23
+    12ec:	8f 93       	push	r24
+    12ee:	9f 93       	push	r25
+    12f0:	af 93       	push	r26
+    12f2:	bf 93       	push	r27
+    12f4:	cf 93       	push	r28
+    12f6:	df 93       	push	r29
+    12f8:	ef 93       	push	r30
+    12fa:	ff 93       	push	r31
+	if(new_block == 0)
+    12fc:	80 91 42 01 	lds	r24, 0x0142	; 0x800142 <new_block>
+    1300:	81 11       	cpse	r24, r1
+    1302:	dc c0       	rjmp	.+440    	; 0x14bc <__vector_12+0x1f4>
+    1304:	c3 ec       	ldi	r28, 0xC3	; 195
+    1306:	d2 e0       	ldi	r29, 0x02	; 2
+    1308:	03 e4       	ldi	r16, 0x43	; 67
+    130a:	11 e0       	ldi	r17, 0x01	; 1
+    130c:	0f 2e       	mov	r0, r31
+    130e:	f3 e4       	ldi	r31, 0x43	; 67
+    1310:	ef 2e       	mov	r14, r31
+    1312:	f4 e0       	ldi	r31, 0x04	; 4
+    1314:	ff 2e       	mov	r15, r31
+    1316:	f0 2d       	mov	r31, r0
+    1318:	a8 01       	movw	r20, r16
+    131a:	fe 01       	movw	r30, r28
+    131c:	0b c0       	rjmp	.+22     	; 0x1334 <__vector_12+0x6c>
+	{
+		for(int i = 0; i < 12; i++)
+		{
+			for(int j = 0; j< 32; j++)
+			{
+				game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+    131e:	81 91       	ld	r24, Z+
+    1320:	8d 93       	st	X+, r24
+{
+	if(new_block == 0)
+	{
+		for(int i = 0; i < 12; i++)
+		{
+			for(int j = 0; j< 32; j++)
+    1322:	e2 17       	cp	r30, r18
+    1324:	f3 07       	cpc	r31, r19
+    1326:	d9 f7       	brne	.-10     	; 0x131e <__vector_12+0x56>
+    1328:	40 5e       	subi	r20, 0xE0	; 224
+    132a:	5f 4f       	sbci	r21, 0xFF	; 255
+    132c:	f9 01       	movw	r30, r18
+
+ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+{
+	if(new_block == 0)
+	{
+		for(int i = 0; i < 12; i++)
+    132e:	e2 16       	cp	r14, r18
+    1330:	f3 06       	cpc	r15, r19
+    1332:	29 f0       	breq	.+10     	; 0x133e <__vector_12+0x76>
+    1334:	9f 01       	movw	r18, r30
+    1336:	20 5e       	subi	r18, 0xE0	; 224
+    1338:	3f 4f       	sbci	r19, 0xFF	; 255
+	
+}
+
+
+ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+{
+    133a:	da 01       	movw	r26, r20
+    133c:	f0 cf       	rjmp	.-32     	; 0x131e <__vector_12+0x56>
+			{
+				game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+			}
+		}
+
+		cur_line++;	//현재라인 아래로 이동
+    133e:	d0 90 73 08 	lds	r13, 0x0873	; 0x800873 <cur_line>
+    1342:	81 e0       	ldi	r24, 0x01	; 1
+    1344:	8d 0d       	add	r24, r13
+    1346:	80 93 73 08 	sts	0x0873, r24	; 0x800873 <cur_line>
+		
+		if(Collision() == 1)	//이동후 충돌 발생시
+    134a:	27 db       	rcall	.-2482   	; 0x99a <Collision>
+    134c:	81 30       	cpi	r24, 0x01	; 1
+    134e:	09 f0       	breq	.+2      	; 0x1352 <__vector_12+0x8a>
+    1350:	b2 c0       	rjmp	.+356    	; 0x14b6 <__vector_12+0x1ee>
+		{
+			cur_line--;	//원래 라인으로 복귀
+    1352:	d0 92 73 08 	sts	0x0873, r13	; 0x800873 <cur_line>
+    1356:	80 91 74 08 	lds	r24, 0x0874	; 0x800874 <cur_col>
+    135a:	90 e0       	ldi	r25, 0x00	; 0
+    135c:	fc 01       	movw	r30, r24
+    135e:	ee 0f       	add	r30, r30
+    1360:	ff 1f       	adc	r31, r31
+    1362:	e2 95       	swap	r30
+    1364:	f2 95       	swap	r31
+    1366:	f0 7f       	andi	r31, 0xF0	; 240
+    1368:	fe 27       	eor	r31, r30
+    136a:	e0 7f       	andi	r30, 0xF0	; 240
+    136c:	fe 27       	eor	r31, r30
+    136e:	ed 0d       	add	r30, r13
+    1370:	f1 1d       	adc	r31, r1
+    1372:	ed 53       	subi	r30, 0x3D	; 61
+    1374:	fd 4f       	sbci	r31, 0xFD	; 253
+    1376:	dc 01       	movw	r26, r24
+    1378:	aa 0f       	add	r26, r26
+    137a:	bb 1f       	adc	r27, r27
+    137c:	aa 0f       	add	r26, r26
+    137e:	bb 1f       	adc	r27, r27
+    1380:	ad 5b       	subi	r26, 0xBD	; 189
+    1382:	bb 4f       	sbci	r27, 0xFB	; 251
+    1384:	88 0f       	add	r24, r24
+    1386:	99 1f       	adc	r25, r25
+    1388:	88 0f       	add	r24, r24
+    138a:	99 1f       	adc	r25, r25
+    138c:	8d 5c       	subi	r24, 0xCD	; 205
+    138e:	9b 4f       	sbci	r25, 0xFB	; 251
+			for(int i = 0; i < 4; i++)	//복귀후 임시저장소의 테트리미노스 메인보드에 저장
+			{
+				main_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+    1390:	30 81       	ld	r19, Z
+    1392:	2c 91       	ld	r18, X
+    1394:	23 2b       	or	r18, r19
+    1396:	20 83       	st	Z, r18
+				main_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+    1398:	31 81       	ldd	r19, Z+1	; 0x01
+    139a:	11 96       	adiw	r26, 0x01	; 1
+    139c:	2c 91       	ld	r18, X
+    139e:	11 97       	sbiw	r26, 0x01	; 1
+    13a0:	23 2b       	or	r18, r19
+    13a2:	21 83       	std	Z+1, r18	; 0x01
+				main_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+    13a4:	32 81       	ldd	r19, Z+2	; 0x02
+    13a6:	12 96       	adiw	r26, 0x02	; 2
+    13a8:	2c 91       	ld	r18, X
+    13aa:	12 97       	sbiw	r26, 0x02	; 2
+    13ac:	23 2b       	or	r18, r19
+    13ae:	22 83       	std	Z+2, r18	; 0x02
+				main_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+    13b0:	33 81       	ldd	r19, Z+3	; 0x03
+    13b2:	13 96       	adiw	r26, 0x03	; 3
+    13b4:	2c 91       	ld	r18, X
+    13b6:	13 97       	sbiw	r26, 0x03	; 3
+    13b8:	23 2b       	or	r18, r19
+    13ba:	23 83       	std	Z+3, r18	; 0x03
+    13bc:	b0 97       	sbiw	r30, 0x20	; 32
+    13be:	14 97       	sbiw	r26, 0x04	; 4
+		cur_line++;	//현재라인 아래로 이동
+		
+		if(Collision() == 1)	//이동후 충돌 발생시
+		{
+			cur_line--;	//원래 라인으로 복귀
+			for(int i = 0; i < 4; i++)	//복귀후 임시저장소의 테트리미노스 메인보드에 저장
+    13c0:	a8 17       	cp	r26, r24
+    13c2:	b9 07       	cpc	r27, r25
+    13c4:	29 f7       	brne	.-54     	; 0x1390 <__vector_12+0xc8>
+				main_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+				main_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+				main_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+			}
+
+			new_block = 1;	//새로운 블록 플레그 켜짐
+    13c6:	81 e0       	ldi	r24, 0x01	; 1
+    13c8:	80 93 42 01 	sts	0x0142, r24	; 0x800142 <new_block>
+    13cc:	74 c0       	rjmp	.+232    	; 0x14b6 <__vector_12+0x1ee>
+
+		for(int i = 0; i < 12; i++)
+		{
+			for(int j = 0; j< 32; j++)
+			{
+				game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+    13ce:	89 91       	ld	r24, Y+
+    13d0:	81 93       	st	Z+, r24
+			new_block = 1;	//새로운 블록 플레그 켜짐
+		}
+
+		for(int i = 0; i < 12; i++)
+		{
+			for(int j = 0; j< 32; j++)
+    13d2:	c2 17       	cp	r28, r18
+    13d4:	d3 07       	cpc	r29, r19
+    13d6:	d9 f7       	brne	.-10     	; 0x13ce <__vector_12+0x106>
+    13d8:	40 5e       	subi	r20, 0xE0	; 224
+    13da:	5f 4f       	sbci	r21, 0xFF	; 255
+    13dc:	e9 01       	movw	r28, r18
+			}
+
+			new_block = 1;	//새로운 블록 플레그 켜짐
+		}
+
+		for(int i = 0; i < 12; i++)
+    13de:	2e 15       	cp	r18, r14
+    13e0:	3f 05       	cpc	r19, r15
+    13e2:	29 f0       	breq	.+10     	; 0x13ee <__vector_12+0x126>
+    13e4:	9e 01       	movw	r18, r28
+    13e6:	20 5e       	subi	r18, 0xE0	; 224
+    13e8:	3f 4f       	sbci	r19, 0xFF	; 255
+}
+
+
+ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+{
+	if(new_block == 0)
+    13ea:	fa 01       	movw	r30, r20
+    13ec:	f0 cf       	rjmp	.-32     	; 0x13ce <__vector_12+0x106>
+				game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+			}
+		}
+		for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+		{
+			game_board[cur_col-i][cur_line] |= temp_line[cur_col-i][0];
+    13ee:	40 91 73 08 	lds	r20, 0x0873	; 0x800873 <cur_line>
+    13f2:	50 e0       	ldi	r21, 0x00	; 0
+    13f4:	60 91 74 08 	lds	r22, 0x0874	; 0x800874 <cur_col>
+    13f8:	70 e0       	ldi	r23, 0x00	; 0
+    13fa:	db 01       	movw	r26, r22
+    13fc:	aa 0f       	add	r26, r26
+    13fe:	bb 1f       	adc	r27, r27
+    1400:	a2 95       	swap	r26
+    1402:	b2 95       	swap	r27
+    1404:	b0 7f       	andi	r27, 0xF0	; 240
+    1406:	ba 27       	eor	r27, r26
+    1408:	a0 7f       	andi	r26, 0xF0	; 240
+    140a:	ba 27       	eor	r27, r26
+    140c:	9a 01       	movw	r18, r20
+    140e:	2a 0f       	add	r18, r26
+    1410:	3b 1f       	adc	r19, r27
+    1412:	2d 5b       	subi	r18, 0xBD	; 189
+    1414:	3e 4f       	sbci	r19, 0xFE	; 254
+    1416:	fb 01       	movw	r30, r22
+    1418:	ee 0f       	add	r30, r30
+    141a:	ff 1f       	adc	r31, r31
+    141c:	ee 0f       	add	r30, r30
+    141e:	ff 1f       	adc	r31, r31
+    1420:	ed 5b       	subi	r30, 0xBD	; 189
+    1422:	fb 4f       	sbci	r31, 0xFB	; 251
+    1424:	cd 01       	movw	r24, r26
+    1426:	84 0f       	add	r24, r20
+    1428:	95 1f       	adc	r25, r21
+    142a:	8c 5b       	subi	r24, 0xBC	; 188
+    142c:	9e 4f       	sbci	r25, 0xFE	; 254
+    142e:	ed 01       	movw	r28, r26
+    1430:	c4 0f       	add	r28, r20
+    1432:	d5 1f       	adc	r29, r21
+    1434:	cb 5b       	subi	r28, 0xBB	; 187
+    1436:	de 4f       	sbci	r29, 0xFE	; 254
+    1438:	a4 0f       	add	r26, r20
+    143a:	b5 1f       	adc	r27, r21
+    143c:	ad 01       	movw	r20, r26
+    143e:	4a 5b       	subi	r20, 0xBA	; 186
+    1440:	5e 4f       	sbci	r21, 0xFE	; 254
+    1442:	7a 01       	movw	r14, r20
+    1444:	66 0f       	add	r22, r22
+    1446:	77 1f       	adc	r23, r23
+    1448:	66 0f       	add	r22, r22
+    144a:	77 1f       	adc	r23, r23
+    144c:	6d 5c       	subi	r22, 0xCD	; 205
+    144e:	7b 4f       	sbci	r23, 0xFB	; 251
+    1450:	d9 01       	movw	r26, r18
+    1452:	5c 91       	ld	r21, X
+    1454:	40 81       	ld	r20, Z
+    1456:	45 2b       	or	r20, r21
+    1458:	4c 93       	st	X, r20
+			game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+    145a:	dc 01       	movw	r26, r24
+    145c:	5c 91       	ld	r21, X
+    145e:	41 81       	ldd	r20, Z+1	; 0x01
+    1460:	45 2b       	or	r20, r21
+    1462:	4c 93       	st	X, r20
+			game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+    1464:	58 81       	ld	r21, Y
+    1466:	42 81       	ldd	r20, Z+2	; 0x02
+    1468:	45 2b       	or	r20, r21
+    146a:	48 83       	st	Y, r20
+			game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+    146c:	d7 01       	movw	r26, r14
+    146e:	5c 91       	ld	r21, X
+    1470:	43 81       	ldd	r20, Z+3	; 0x03
+    1472:	45 2b       	or	r20, r21
+    1474:	4c 93       	st	X, r20
+    1476:	20 52       	subi	r18, 0x20	; 32
+    1478:	31 09       	sbc	r19, r1
+    147a:	34 97       	sbiw	r30, 0x04	; 4
+    147c:	80 97       	sbiw	r24, 0x20	; 32
+    147e:	a0 97       	sbiw	r28, 0x20	; 32
+    1480:	b0 e2       	ldi	r27, 0x20	; 32
+    1482:	eb 1a       	sub	r14, r27
+    1484:	f1 08       	sbc	r15, r1
+			for(int j = 0; j< 32; j++)
+			{
+				game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+			}
+		}
+		for(int i = 0; i < 4; i++)	//현재라인 아래로 이동 후 변화하는 보드에 반영
+    1486:	e6 17       	cp	r30, r22
+    1488:	f7 07       	cpc	r31, r23
+    148a:	11 f7       	brne	.-60     	; 0x1450 <__vector_12+0x188>
+    148c:	a3 ea       	ldi	r26, 0xA3	; 163
+    148e:	b2 e0       	ldi	r27, 0x02	; 2
+    1490:	e2 e6       	ldi	r30, 0x62	; 98
+    1492:	f1 e0       	ldi	r31, 0x01	; 1
+			game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+		}
+
+		for(int i = 0; i < 31; i++)	//pattern = 1, 3 일때 너무 오른쪽으로 가면 옆에 벽 뚫리는 현상 방지 위해
+		{
+			game_board[0][i] = 1;
+    1494:	81 e0       	ldi	r24, 0x01	; 1
+    1496:	e8 01       	movw	r28, r16
+    1498:	89 93       	st	Y+, r24
+    149a:	8e 01       	movw	r16, r28
+			game_board[11][i] = 1;
+    149c:	8d 93       	st	X+, r24
+			game_board[cur_col-i][cur_line + 1] |= temp_line[cur_col-i][1];
+			game_board[cur_col-i][cur_line + 2] |= temp_line[cur_col-i][2];
+			game_board[cur_col-i][cur_line + 3] |= temp_line[cur_col-i][3];
+		}
+
+		for(int i = 0; i < 31; i++)	//pattern = 1, 3 일때 너무 오른쪽으로 가면 옆에 벽 뚫리는 현상 방지 위해
+    149e:	ec 17       	cp	r30, r28
+    14a0:	fd 07       	cpc	r31, r29
+    14a2:	c9 f7       	brne	.-14     	; 0x1496 <__vector_12+0x1ce>
+    14a4:	22 ee       	ldi	r18, 0xE2	; 226
+    14a6:	32 e0       	ldi	r19, 0x02	; 2
+			game_board[0][i] = 1;
+			game_board[11][i] = 1;
+		}
+		for(int i = 0; i < 12; i++)
+		{
+			game_board[i][31] = 1;
+    14a8:	81 e0       	ldi	r24, 0x01	; 1
+    14aa:	80 83       	st	Z, r24
+    14ac:	b0 96       	adiw	r30, 0x20	; 32
+		for(int i = 0; i < 31; i++)	//pattern = 1, 3 일때 너무 오른쪽으로 가면 옆에 벽 뚫리는 현상 방지 위해
+		{
+			game_board[0][i] = 1;
+			game_board[11][i] = 1;
+		}
+		for(int i = 0; i < 12; i++)
+    14ae:	2e 17       	cp	r18, r30
+    14b0:	3f 07       	cpc	r19, r31
+    14b2:	d9 f7       	brne	.-10     	; 0x14aa <__vector_12+0x1e2>
+    14b4:	03 c0       	rjmp	.+6      	; 0x14bc <__vector_12+0x1f4>
+}
+
+
+ISR(TIMER1_COMPA_vect)	//OCR1A값에 따라 블록 이동속도가 결정된다.
+{
+	if(new_block == 0)
+    14b6:	43 e4       	ldi	r20, 0x43	; 67
+    14b8:	51 e0       	ldi	r21, 0x01	; 1
+    14ba:	94 cf       	rjmp	.-216    	; 0x13e4 <__vector_12+0x11c>
+		for(int i = 0; i < 12; i++)
+		{
+			game_board[i][31] = 1;
+		}
+	}
+}
+    14bc:	ff 91       	pop	r31
+    14be:	ef 91       	pop	r30
+    14c0:	df 91       	pop	r29
+    14c2:	cf 91       	pop	r28
+    14c4:	bf 91       	pop	r27
+    14c6:	af 91       	pop	r26
+    14c8:	9f 91       	pop	r25
+    14ca:	8f 91       	pop	r24
+    14cc:	7f 91       	pop	r23
+    14ce:	6f 91       	pop	r22
+    14d0:	5f 91       	pop	r21
+    14d2:	4f 91       	pop	r20
+    14d4:	3f 91       	pop	r19
+    14d6:	2f 91       	pop	r18
+    14d8:	1f 91       	pop	r17
+    14da:	0f 91       	pop	r16
+    14dc:	ff 90       	pop	r15
+    14de:	ef 90       	pop	r14
+    14e0:	df 90       	pop	r13
+    14e2:	0f 90       	pop	r0
+    14e4:	0b be       	out	0x3b, r0	; 59
+    14e6:	0f 90       	pop	r0
+    14e8:	0f be       	out	0x3f, r0	; 63
+    14ea:	0f 90       	pop	r0
+    14ec:	1f 90       	pop	r1
+    14ee:	18 95       	reti
+
+000014f0 <main>:
+
+int main(void)
+{
+	char cmd;
+
+	UART_Init();
+    14f0:	0e 94 d6 01 	call	0x3ac	; 0x3ac <UART_Init>
+
+	TCCR0 = 0x07;	//타이머 카운터 0 1024분주로 켜기
+    14f4:	87 e0       	ldi	r24, 0x07	; 7
+    14f6:	83 bf       	out	0x33, r24	; 51
+
+	TCCR1A |= (0 << COM1A0) | (0 << WGM10);	//CTC, OC1A핀 차단
+    14f8:	8f b5       	in	r24, 0x2f	; 47
+    14fa:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B |= (1 << WGM12) | (5 << CS10); //CTC, 1024분주
+    14fc:	8e b5       	in	r24, 0x2e	; 46
+    14fe:	8d 60       	ori	r24, 0x0D	; 13
+    1500:	8e bd       	out	0x2e, r24	; 46
+	OCR1A = 0xFFF;
+    1502:	8f ef       	ldi	r24, 0xFF	; 255
+    1504:	9f e0       	ldi	r25, 0x0F	; 15
+    1506:	9b bd       	out	0x2b, r25	; 43
+    1508:	8a bd       	out	0x2a, r24	; 42
+	TIMSK |= (1 << OCIE1A);	//타이머 카운터 1 출력비교 A 매치 인터럽트 인에이블
+    150a:	87 b7       	in	r24, 0x37	; 55
+    150c:	80 61       	ori	r24, 0x10	; 16
+    150e:	87 bf       	out	0x37, r24	; 55
+
+	DDRD = 0x00;	//인터럽트 4,5,6,7 켜기위해 포트 입력으로
+    1510:	11 ba       	out	0x11, r1	; 17
+	DDRE = 0x00;	//인터럽트 3 켜기위해 포트 입력으로
+    1512:	12 b8       	out	0x02, r1	; 2
+
+	EICRB = (2 << ISC40) | (2 << ISC50) | (2 << ISC60) | (2 << ISC70);
+    1514:	8a ea       	ldi	r24, 0xAA	; 170
+    1516:	8a bf       	out	0x3a, r24	; 58
+	
+	EICRA = (2 << ISC30);
+    1518:	80 e8       	ldi	r24, 0x80	; 128
+    151a:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <__TEXT_REGION_LENGTH__+0x7e006a>
+
+	EIMSK = (1 << INT3) | (1 << INT4) | (1 << INT5) | (1 << INT6) | (1 << INT7);
+    151e:	88 ef       	ldi	r24, 0xF8	; 248
+    1520:	89 bf       	out	0x39, r24	; 57
+
+	sei();
+    1522:	78 94       	sei
+
+	setup();
+    1524:	0e 94 60 02 	call	0x4c0	; 0x4c0 <setup>
+    1528:	0f 2e       	mov	r0, r31
+    152a:	f3 ec       	ldi	r31, 0xC3	; 195
+    152c:	4f 2e       	mov	r4, r31
+    152e:	f2 e0       	ldi	r31, 0x02	; 2
+    1530:	5f 2e       	mov	r5, r31
+    1532:	f0 2d       	mov	r31, r0
+		game_over = 0;	//게임종료 플레그 끄기
+
+
+		for(int i = 0; i < 31; i++)	//메인 보드 초기화
+		{
+			main_board[0][i] = 1;
+    1534:	bb 24       	eor	r11, r11
+    1536:	b3 94       	inc	r11
+    1538:	0f 2e       	mov	r0, r31
+    153a:	f2 e6       	ldi	r31, 0x62	; 98
+    153c:	6f 2e       	mov	r6, r31
+    153e:	f4 e0       	ldi	r31, 0x04	; 4
+    1540:	7f 2e       	mov	r7, r31
+    1542:	f0 2d       	mov	r31, r0
+    1544:	0f 2e       	mov	r0, r31
+    1546:	f3 e4       	ldi	r31, 0x43	; 67
+    1548:	2f 2e       	mov	r2, r31
+    154a:	f4 e0       	ldi	r31, 0x04	; 4
+    154c:	3f 2e       	mov	r3, r31
+    154e:	f0 2d       	mov	r31, r0
+    1550:	0f 2e       	mov	r0, r31
+    1552:	f3 ee       	ldi	r31, 0xE3	; 227
+    1554:	8f 2e       	mov	r8, r31
+    1556:	f2 e0       	ldi	r31, 0x02	; 2
+    1558:	9f 2e       	mov	r9, r31
+    155a:	f0 2d       	mov	r31, r0
+	setup();
+
+	while(1)
+	{
+
+		game_over = 0;	//게임종료 플레그 끄기
+    155c:	10 92 41 01 	sts	0x0141, r1	; 0x800141 <game_over>
+    1560:	43 e2       	ldi	r20, 0x23	; 35
+    1562:	54 e0       	ldi	r21, 0x04	; 4
+    1564:	22 ee       	ldi	r18, 0xE2	; 226
+    1566:	32 e0       	ldi	r19, 0x02	; 2
+    1568:	a3 ec       	ldi	r26, 0xC3	; 195
+    156a:	b2 e0       	ldi	r27, 0x02	; 2
+
+
+		for(int i = 0; i < 31; i++)	//메인 보드 초기화
+		{
+			main_board[0][i] = 1;
+    156c:	bc 92       	st	X, r11
+			main_board[11][i] = 1;
+    156e:	ea 01       	movw	r28, r20
+    1570:	b9 92       	st	Y+, r11
+    1572:	ae 01       	movw	r20, r28
+    1574:	cd 01       	movw	r24, r26
+    1576:	80 5c       	subi	r24, 0xC0	; 192
+    1578:	9e 4f       	sbci	r25, 0xFE	; 254
+    157a:	fd 01       	movw	r30, r26
+			for(int j = 1; j < 11; j++)
+			{
+				main_board[j][i] = 0;
+    157c:	10 a2       	std	Z+32, r1	; 0x20
+    157e:	b0 96       	adiw	r30, 0x20	; 32
+
+		for(int i = 0; i < 31; i++)	//메인 보드 초기화
+		{
+			main_board[0][i] = 1;
+			main_board[11][i] = 1;
+			for(int j = 1; j < 11; j++)
+    1580:	e8 17       	cp	r30, r24
+    1582:	f9 07       	cpc	r31, r25
+    1584:	d9 f7       	brne	.-10     	; 0x157c <main+0x8c>
+    1586:	11 96       	adiw	r26, 0x01	; 1
+	{
+
+		game_over = 0;	//게임종료 플레그 끄기
+
+
+		for(int i = 0; i < 31; i++)	//메인 보드 초기화
+    1588:	a2 17       	cp	r26, r18
+    158a:	b3 07       	cpc	r27, r19
+    158c:	79 f7       	brne	.-34     	; 0x156c <main+0x7c>
+				main_board[j][i] = 0;
+			}
+		}
+		for(int i = 0; i < 12; i++)
+		{
+			main_board[i][31] = 1;
+    158e:	f9 01       	movw	r30, r18
+    1590:	b0 82       	st	Z, r11
+    1592:	20 5e       	subi	r18, 0xE0	; 224
+    1594:	3f 4f       	sbci	r19, 0xFF	; 255
+			for(int j = 1; j < 11; j++)
+			{
+				main_board[j][i] = 0;
+			}
+		}
+		for(int i = 0; i < 12; i++)
+    1596:	62 16       	cp	r6, r18
+    1598:	73 06       	cpc	r7, r19
+    159a:	c9 f7       	brne	.-14     	; 0x158e <main+0x9e>
+    159c:	86 c0       	rjmp	.+268    	; 0x16aa <main+0x1ba>
+    159e:	df 01       	movw	r26, r30
+    15a0:	11 96       	adiw	r26, 0x01	; 1
+
+		while(game_over == 0)	//게임종료 플레그가 꺼저있을동안 반복
+		{
+			for(int i = 0; i < 31; i++)
+			{
+				if(main_board[1][i] == 1 && main_board[2][i] == 1 && main_board[3][i] == 1 && main_board[4][i] == 1 && main_board[5][i] == 1 && main_board[6][i] == 1 && main_board[7][i] == 1 && main_board[8][i] == 1 && main_board[9][i] == 1 && main_board[10][i] == 1)
+    15a2:	c0 81       	ld	r28, Z
+    15a4:	c1 30       	cpi	r28, 0x01	; 1
+    15a6:	09 f0       	breq	.+2      	; 0x15aa <main+0xba>
+    15a8:	4d c0       	rjmp	.+154    	; 0x1644 <main+0x154>
+    15aa:	5f 96       	adiw	r26, 0x1f	; 31
+    15ac:	fc 90       	ld	r15, X
+    15ae:	5f 97       	sbiw	r26, 0x1f	; 31
+    15b0:	fc 12       	cpse	r15, r28
+    15b2:	48 c0       	rjmp	.+144    	; 0x1644 <main+0x154>
+    15b4:	df 96       	adiw	r26, 0x3f	; 63
+    15b6:	fc 90       	ld	r15, X
+    15b8:	df 97       	sbiw	r26, 0x3f	; 63
+    15ba:	fc 12       	cpse	r15, r28
+    15bc:	43 c0       	rjmp	.+134    	; 0x1644 <main+0x154>
+    15be:	e8 01       	movw	r28, r16
+    15c0:	f8 80       	ld	r15, Y
+    15c2:	d1 e0       	ldi	r29, 0x01	; 1
+    15c4:	fd 12       	cpse	r15, r29
+    15c6:	3e c0       	rjmp	.+124    	; 0x1644 <main+0x154>
+    15c8:	e8 01       	movw	r28, r16
+    15ca:	f8 a0       	ldd	r15, Y+32	; 0x20
+    15cc:	d1 e0       	ldi	r29, 0x01	; 1
+    15ce:	fd 12       	cpse	r15, r29
+    15d0:	39 c0       	rjmp	.+114    	; 0x1644 <main+0x154>
+    15d2:	eb 01       	movw	r28, r22
+    15d4:	f8 80       	ld	r15, Y
+    15d6:	d1 e0       	ldi	r29, 0x01	; 1
+    15d8:	fd 12       	cpse	r15, r29
+    15da:	34 c0       	rjmp	.+104    	; 0x1644 <main+0x154>
+    15dc:	eb 01       	movw	r28, r22
+    15de:	f8 a0       	ldd	r15, Y+32	; 0x20
+    15e0:	d1 e0       	ldi	r29, 0x01	; 1
+    15e2:	fd 12       	cpse	r15, r29
+    15e4:	2f c0       	rjmp	.+94     	; 0x1644 <main+0x154>
+    15e6:	ea 01       	movw	r28, r20
+    15e8:	f8 80       	ld	r15, Y
+    15ea:	d1 e0       	ldi	r29, 0x01	; 1
+    15ec:	fd 12       	cpse	r15, r29
+    15ee:	2a c0       	rjmp	.+84     	; 0x1644 <main+0x154>
+    15f0:	ea 01       	movw	r28, r20
+    15f2:	f8 a0       	ldd	r15, Y+32	; 0x20
+    15f4:	d1 e0       	ldi	r29, 0x01	; 1
+    15f6:	fd 12       	cpse	r15, r29
+    15f8:	25 c0       	rjmp	.+74     	; 0x1644 <main+0x154>
+    15fa:	7d 01       	movw	r14, r26
+    15fc:	c1 ee       	ldi	r28, 0xE1	; 225
+    15fe:	ec 1a       	sub	r14, r28
+    1600:	ce ef       	ldi	r28, 0xFE	; 254
+    1602:	fc 0a       	sbc	r15, r28
+    1604:	e7 01       	movw	r28, r14
+    1606:	f8 80       	ld	r15, Y
+    1608:	d1 e0       	ldi	r29, 0x01	; 1
+    160a:	fd 12       	cpse	r15, r29
+    160c:	1b c0       	rjmp	.+54     	; 0x1644 <main+0x154>
+				//1줄이 모두 완성되어서 깨질 줄이 있는지 확인
+				{
+					main_board[0][i] = 1;	//양끝 벽은 채우기
+    160e:	7d 01       	movw	r14, r26
+    1610:	c1 e2       	ldi	r28, 0x21	; 33
+    1612:	ec 1a       	sub	r14, r28
+    1614:	f1 08       	sbc	r15, r1
+    1616:	e7 01       	movw	r28, r14
+    1618:	b8 82       	st	Y, r11
+					main_board[11][i] = 1;
+    161a:	e9 01       	movw	r28, r18
+    161c:	b9 82       	std	Y+1, r11	; 0x01
+    161e:	31 97       	sbiw	r30, 0x01	; 1
+					for(int j = 1; j < 11; j++)
+					{
+						main_board[j][i] = 0;	//깨저야하는 줄은 지우기
+    1620:	11 82       	std	Z+1, r1	; 0x01
+						for(int k = i; k > 0; k--)
+    1622:	18 16       	cp	r1, r24
+    1624:	19 06       	cpc	r1, r25
+    1626:	54 f4       	brge	.+20     	; 0x163c <main+0x14c>
+    1628:	6f 01       	movw	r12, r30
+    162a:	c8 1a       	sub	r12, r24
+    162c:	d9 0a       	sbc	r13, r25
+    162e:	ef 01       	movw	r28, r30
+						{
+							main_board[j][k] = main_board[j][k - 1];	//깨진 줄의 위에 줄들 아래로 이동(행렬상 열 증가)
+    1630:	a8 80       	ld	r10, Y
+    1632:	a9 82       	std	Y+1, r10	; 0x01
+    1634:	21 97       	sbiw	r28, 0x01	; 1
+					main_board[0][i] = 1;	//양끝 벽은 채우기
+					main_board[11][i] = 1;
+					for(int j = 1; j < 11; j++)
+					{
+						main_board[j][i] = 0;	//깨저야하는 줄은 지우기
+						for(int k = i; k > 0; k--)
+    1636:	cc 15       	cp	r28, r12
+    1638:	dd 05       	cpc	r29, r13
+    163a:	d1 f7       	brne	.-12     	; 0x1630 <main+0x140>
+    163c:	b0 96       	adiw	r30, 0x20	; 32
+				if(main_board[1][i] == 1 && main_board[2][i] == 1 && main_board[3][i] == 1 && main_board[4][i] == 1 && main_board[5][i] == 1 && main_board[6][i] == 1 && main_board[7][i] == 1 && main_board[8][i] == 1 && main_board[9][i] == 1 && main_board[10][i] == 1)
+				//1줄이 모두 완성되어서 깨질 줄이 있는지 확인
+				{
+					main_board[0][i] = 1;	//양끝 벽은 채우기
+					main_board[11][i] = 1;
+					for(int j = 1; j < 11; j++)
+    163e:	e2 17       	cp	r30, r18
+    1640:	f3 07       	cpc	r31, r19
+    1642:	71 f7       	brne	.-36     	; 0x1620 <main+0x130>
+
+
+
+		while(game_over == 0)	//게임종료 플레그가 꺼저있을동안 반복
+		{
+			for(int i = 0; i < 31; i++)
+    1644:	01 96       	adiw	r24, 0x01	; 1
+    1646:	0f 5f       	subi	r16, 0xFF	; 255
+    1648:	1f 4f       	sbci	r17, 0xFF	; 255
+    164a:	6f 5f       	subi	r22, 0xFF	; 255
+    164c:	7f 4f       	sbci	r23, 0xFF	; 255
+    164e:	4f 5f       	subi	r20, 0xFF	; 255
+    1650:	5f 4f       	sbci	r21, 0xFF	; 255
+    1652:	2f 5f       	subi	r18, 0xFF	; 255
+    1654:	3f 4f       	sbci	r19, 0xFF	; 255
+    1656:	fd 01       	movw	r30, r26
+    1658:	8f 31       	cpi	r24, 0x1F	; 31
+    165a:	91 05       	cpc	r25, r1
+    165c:	09 f0       	breq	.+2      	; 0x1660 <main+0x170>
+    165e:	9f cf       	rjmp	.-194    	; 0x159e <main+0xae>
+    1660:	43 e4       	ldi	r20, 0x43	; 67
+    1662:	51 e0       	ldi	r21, 0x01	; 1
+    1664:	f2 01       	movw	r30, r4
+    1666:	0b c0       	rjmp	.+22     	; 0x167e <main+0x18e>
+
+			for(int i = 0; i < 12; i++)
+			{
+				for(int j = 0; j< 32; j++)
+				{
+					game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+    1668:	81 91       	ld	r24, Z+
+    166a:	8d 93       	st	X+, r24
+				}
+			}
+
+			for(int i = 0; i < 12; i++)
+			{
+				for(int j = 0; j< 32; j++)
+    166c:	2e 17       	cp	r18, r30
+    166e:	3f 07       	cpc	r19, r31
+    1670:	d9 f7       	brne	.-10     	; 0x1668 <main+0x178>
+    1672:	40 5e       	subi	r20, 0xE0	; 224
+    1674:	5f 4f       	sbci	r21, 0xFF	; 255
+    1676:	f9 01       	movw	r30, r18
+						}
+					}
+				}
+			}
+
+			for(int i = 0; i < 12; i++)
+    1678:	22 16       	cp	r2, r18
+    167a:	33 06       	cpc	r3, r19
+    167c:	29 f0       	breq	.+10     	; 0x1688 <main+0x198>
+    167e:	9f 01       	movw	r18, r30
+    1680:	20 5e       	subi	r18, 0xE0	; 224
+    1682:	3f 4f       	sbci	r19, 0xFF	; 255
+					main_board[0][i] = 1;	//양끝 벽은 채우기
+					main_board[11][i] = 1;
+					for(int j = 1; j < 11; j++)
+					{
+						main_board[j][i] = 0;	//깨저야하는 줄은 지우기
+						for(int k = i; k > 0; k--)
+    1684:	da 01       	movw	r26, r20
+    1686:	f0 cf       	rjmp	.-32     	; 0x1668 <main+0x178>
+				{
+					game_board[i][j] = main_board[i][j];	//굳어진후 저장된 보드를 변화하는 보드로 복사
+				}
+			}
+			
+			NewTetriminos();	//새로운 테트리미노스 생성
+    1688:	0e 94 25 03 	call	0x64a	; 0x64a <NewTetriminos>
+			NextTetriminos();
+    168c:	91 d8       	rcall	.-3806   	; 0x7b0 <NextTetriminos>
+			while(new_block == 0)	//새로운 블록 프레그 꺼져있는 동안 반족
+    168e:	80 91 42 01 	lds	r24, 0x0142	; 0x800142 <new_block>
+    1692:	81 11       	cpse	r24, r1
+    1694:	06 c0       	rjmp	.+12     	; 0x16a2 <main+0x1b2>
+			{
+				draw_map();	//반영된 변화하는 보드 화면으로 출력
+    1696:	0e 94 87 02 	call	0x50e	; 0x50e <draw_map>
+				}
+			}
+			
+			NewTetriminos();	//새로운 테트리미노스 생성
+			NextTetriminos();
+			while(new_block == 0)	//새로운 블록 프레그 꺼져있는 동안 반족
+    169a:	80 91 42 01 	lds	r24, 0x0142	; 0x800142 <new_block>
+    169e:	88 23       	and	r24, r24
+    16a0:	d1 f3       	breq	.-12     	; 0x1696 <main+0x1a6>
+			main_board[i][31] = 1;
+		}
+
+
+
+		while(game_over == 0)	//게임종료 플레그가 꺼저있을동안 반복
+    16a2:	80 91 41 01 	lds	r24, 0x0141	; 0x800141 <game_over>
+    16a6:	81 11       	cpse	r24, r1
+    16a8:	59 cf       	rjmp	.-334    	; 0x155c <main+0x6c>
+    16aa:	f4 01       	movw	r30, r8
+    16ac:	03 e4       	ldi	r16, 0x43	; 67
+    16ae:	13 e0       	ldi	r17, 0x03	; 3
+    16b0:	63 e8       	ldi	r22, 0x83	; 131
+    16b2:	73 e0       	ldi	r23, 0x03	; 3
+    16b4:	43 ec       	ldi	r20, 0xC3	; 195
+    16b6:	53 e0       	ldi	r21, 0x03	; 3
+    16b8:	22 e2       	ldi	r18, 0x22	; 34
+    16ba:	34 e0       	ldi	r19, 0x04	; 4
+
+
+		for(int i = 0; i < 31; i++)	//메인 보드 초기화
+		{
+			main_board[0][i] = 1;
+			main_board[11][i] = 1;
+    16bc:	80 e0       	ldi	r24, 0x00	; 0
+    16be:	90 e0       	ldi	r25, 0x00	; 0
+    16c0:	6e cf       	rjmp	.-292    	; 0x159e <main+0xae>
+
+000016c2 <_exit>:
+    16c2:	f8 94       	cli
+
+000016c4 <__stop_program>:
+    16c4:	ff cf       	rjmp	.-2      	; 0x16c4 <__stop_program>

@@ -547,7 +547,7 @@ ISR(INT4_vect)
 	}
 	else
 	{
-		screen = Menu_snake;
+		screen = Ready;
 	}
 }
 
@@ -656,7 +656,7 @@ ISR(INT7_vect)
 	{
 		if(dir != RIGHT)
 		{
-			SendCommand01(0x0F, 0x01, 0x03);
+			//SendCommand01(0x0F, 0x01, 0x03);
 			
 			dir = LEFT;
 		}
@@ -684,7 +684,7 @@ ISR(INT7_vect)
 	}
 	else
 	{
-		screen = Menu_snake;
+		screen = Ready;
 	}
 }
 
@@ -867,7 +867,7 @@ void food()
 
 void snake_game_over()
 {
-	SendCommand01(0x06, 0x00, 0x0F);
+	SendCommand01(0x06, 0x00, 0x0F);	//게임오버소리 너무 커서 절반으로 
 	_delay_ms(200);
 	SendCommand01(0x0F, 0x01, 0x04);
 	snake_clear_map();
@@ -939,6 +939,10 @@ void NewTetriminos()
 		for (int i = 0; i < 31; i++ ) game_board[i] = 0x801;	//게임보드 초기화
 		game_board[31] = 0xFFF;
 		Tetris_draw_map();
+
+		SendCommand01(0x06, 0x00, 0x0F);	//게임오버소리 너무 커서 절반으로 
+		_delay_ms(200);
+		SendCommand01(0x0F, 0x01, 0x04);
 
 		screen = Over_tetris;
 	}
@@ -1021,8 +1025,8 @@ int main(void)
 	
 	SendCommand(CMD_TF);
 	_delay_ms(20);
-	SendCommand01(0x06, 0x00, 0x0F);
-	_delay_ms(200);
+	//SendCommand01(0x06, 0x00, 0x0F);
+	//_delay_ms(200);
 	SendCommand01(0x0F, 0x01, 0x01);
 	_delay_ms(200);
 	
@@ -1068,6 +1072,7 @@ int main(void)
 	{
 		if(screen == Ready)
 		{
+			SendCommand01(0x06, 0x00, 0x1E);	//게임 오버로 줄인 볼륨 다시 원상태
 			clear_screen();
 			for(int i = 0; i < 128; i++)
 			{
